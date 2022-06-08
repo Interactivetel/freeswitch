@@ -1,0 +1,56 @@
+This Readme shows how we can compile (sangoma + public) merged freeTDM
+with public freeswitch v-1.6
+
+Download and Compile Public Freeswitch v1.6 and (sangom + public v1.6) Merged FreeTDM
+-------------------------------------------------------------------------------------
+1) Download public freeswitch using git or from public freeswitch website
+   git clone https://freeswitch.org/stash/scm/fs/freeswitch.git public_freeswitch
+
+2) change public freeswitch git repo branch to "v1.6"
+   git checkout -b v1.6 origin/v1.6
+
+3) Download (sangoma + public) merged freetdm from the public git directory
+
+4) Now change merged freetdm git repo branch to "public_v1.6-merge"
+   git checkout -b public_v1.6-merge origin/public_v1.6-merge
+
+5) Now replace freetdm directorty as present in public freeswitch with
+   the merged freeTDM directory
+
+6) Now compile public freeswitch containing merged freeTDM
+   Public freeswitch v1.6 has configuration of compiling freeswitch with File System Hierarchy(FHS) enable or disable
+
+   E.g.: Compiling FS with merged freeTDM with FHS enable
+         ./devel-bootstrap.sh --prefix=<base-directory> --enable-fhs
+                               or
+         ./devel-bootstrap.sh --prefix=<base-directory>
+
+         Compiling FS with merged freeTDM with FHS disable
+         ./devel-bootstrap.sh --prefix=<base-directory> --disable-fhs
+
+NOTE: 1) <base-directory> is where FS is installed
+      2) By default FHS is enable.
+
+
+Run Merged freeTDM with public FS:
+----------------------------------
+In v1.6 public freeswitch added a support to build/compile freeswitch with fhs for further information regarding "fhs" please refer to below link
+https://freeswitch.org/fisheye/changelog/freeswitch?cs=f5ecbc84ca2f12a31d14474044ddcd4ca3187715
+
+Compiling public freeswitch with FHS enable is by default and it would lead to set default patch as per file system hierarchy standard(FHS) in such case
+freeswitch config directory changes to : <base-directory>/etc/freeswitch/conf
+freeswitch modules directory changes to: <base-directory>/lib/freeswitch/mod
+
+NOTE:
+      ========================================
+      1) When FHS is enable while compiling FS
+      ========================================
+          1.1) In such case please copy freetdm modules specific libs as present in <base-directory>/mod/ to <base-directory>/lib/freeswitch/mod/
+          1.2) Make sure the comiguration file must present inside <base-directory>/etc/freeswitch/conf/
+
+
+      ========================================
+      2) When FHS is disable while compiling FS
+      ========================================
+          1.1) No need to move freeTDM modules as everything is on the proper path
+          1.2) Make sure the comiguration file must present inside <base-directory>/conf/

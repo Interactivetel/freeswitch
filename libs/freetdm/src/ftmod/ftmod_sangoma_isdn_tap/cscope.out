@@ -1,0 +1,27619 @@
+cscope 15 /tmp/fs-tap/public_fs_merge_v1.6/libs/freetdm/src/ftmod/ftmod_sangoma_isdn_tap               0000173140
+	@ftmod_sangoma_isdn_bidir_tap.c
+
+42 
+	~"·mod_ßngoma_isdn_èp.h
+"
+
+58 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_bidú_èp_gíî©e_övôe
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+¸v
+)
+
+60 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+61 
+·dm_ch™√l_t
+ *
+≥îfch™
+ = 
+NULL
+;
+
+62 
+·dm_°©us_t
+ 
+ªt
+ = 
+FTDM_FAIL
+;
+
+63 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+64 
+·dm_ch™√l_t
+ *
+pch™
+ = 
+NULL
+;
+
+66 i‡(!
+pˇŒ
+) {
+
+67 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s Callref- %d] InvalidÖcallÑeceived!\n",
+
+68 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+69 
+d⁄e
+;
+
+73 
+fch™
+ = 
+	`ßngoma_isdn_bidú_èp_gë_fch™
+(
+èp
+, 
+pˇŒ
+,ÖˇŒ->
+ch™Id
+, 1, 
+CALL_DIRECTION_INBOUND
+, 
+FTDM_TRUE
+);
+
+74 i‡(!
+fch™
+) {
+
+75 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] TryingÅo Open odd/unavailable channel\n",
+
+76 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+77 
+d⁄e
+;
+
+79 
+pˇŒ
+->
+ch™_¥es
+ = 
+FTDM_TRUE
+;
+
+80 
+pˇŒ
+->
+fch™
+ = fchan;
+
+83 
+≥îfch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+≥îèp
+, 
+pˇŒ
+->
+ch™Id
+);
+
+84 i‡(!
+≥îfch™
+) {
+
+85 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] NoÖeer channelávailable\n",
+
+86 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+87 
+d⁄e
+;
+
+90 
+pch™
+ = 
+≥îfch™
+;
+
+91 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+92 i‡(
+	`·dm_ã°_Êag
+(
+≥îfch™
+, 
+FTDM_CHANNEL_INUSE
+)) {
+
+93 
+ªu£_ch™_c⁄_ªcv
+++;
+
+94 
+	`·dm_log_ch™
+(
+≥îfch™
+, 
+FTDM_LOG_NOTICE
+,
+
+96 
+≥îèp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+(
+≥îfch™
+->
+°©e
+));
+
+98 i‡(
+	`·dm_ã°_Êag
+(
+pch™
+, 
+FTDM_CHANNEL_OPEN
+)) {
+
+99 
+pch™
+->
+ˇŒ_d©a
+ = 
+NULL
+;
+
+100 
+pch™
+->
+pÊags
+ = 0;
+
+101 
+	`·dm_ch™√l_˛o£
+(&
+pch™
+);
+
+103 
+	`·dm_log_ch™
+(
+≥îfch™
+, 
+FTDM_LOG_NOTICE
+,
+
+105 
+≥îèp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+(
+≥îfch™
+->
+°©e
+));
+
+107 
+	`·dm_˛ór_Êag
+(
+≥îfch™
+, 
+FTDM_CHANNEL_INUSE
+);
+
+109 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+111 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+116 
+fch™
+->
+ˇŒ_d©a
+ = 
+≥îfch™
+;
+
+117 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_DIALING
+);
+
+118 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+121 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+123 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+124 
+d⁄e
+:
+
+125  
+ªt
+;
+
+126 
+	}
+}
+
+135 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_bidú_èp_h™dÀ_evít_c⁄
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+)
+
+137 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+138 
+ˇŒ_ªf
+[25] = { 0 };
+
+139 
+·dm_ch™√l_t
+ *
+≥îfch™
+ = 
+NULL
+;
+
+140 
+∑ssive_ˇŒ_t
+ *
+≥îpˇŒ
+ = 
+NULL
+;
+
+141 
+c⁄_ˇŒ_öfo_t
+ *
+ˇŒ_öfo
+ = 
+NULL
+;
+
+142 *
+¸v_key
+ = 
+NULL
+;
+
+143 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+144 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+146 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s Callref- %d] %sÉventÑeceive\n",
+
+147 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+151 i‡(!(
+≥îpˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+≥îèp
+, 
+¸v
+))) {
+
+156 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+¸v
+);
+
+157 i‡(
+	`hashèbÀ_£¨ch
+(
+≥îèp
+->
+≥nd_ˇŒ_l°
+, (*)
+ˇŒ_ªf
+)) {
+
+158 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "CÆ»wôh cÆ»ª„ª˚ %d i†Æªady in£πed i¿thêhashÅabÀ\n", 
+¸v
+);
+
+159  
+FTDM_SUCCESS
+;
+
+163 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%†CÆÃef- %d] In£πögÖìrˇŒ i¿hashÜi° f‹ %†ª˚ived\n", 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+164 
+ˇŒ_öfo
+ = 
+	`·dm_ˇŒoc
+((*call_info), 1);
+
+165 i‡(!
+ˇŒ_öfo
+) {
+
+166 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "U«bÀÅÿÆloˇã mem‹y wôh crv = %d i¿≥îÅ≠ cÆ»li° f‹ s∑¿%s\n", 
+¸v
+, 
+èp
+->
+•™
+->
+«me
+);
+
+167  
+FTDM_FAIL
+;
+
+171 
+ˇŒ_öfo
+->
+c⁄ªcv_time
+ = 
+	`time
+(
+NULL
+);
+
+172 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+ = 0;
+
+173 
+ˇŒ_öfo
+->
+msgTy≥
+ = 0;
+
+174 
+ˇŒ_öfo
+->
+ªcv_c⁄
+ = 
+FTDM_FALSE
+;
+
+175 
+ˇŒ_öfo
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+176 
+ˇŒ_öfo
+->
+èp_¥o˚ed
+ = 
+FTDM_FALSE
+;
+
+179 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+182 
+	`time
+(&
+ˇŒ_öfo
+->
+c⁄ªcv_time
+);
+
+185 
+ˇŒ_öfo
+->
+msgTy≥
+ = msgType;
+
+187 i‡(
+msgTy≥
+ =
+Q931_CONNECT
+) {
+
+188 
+ˇŒ_öfo
+->
+ªcv_c⁄
+ = 
+FTDM_TRUE
+;
+
+190 
+ˇŒ_öfo
+->
+ªcv_c⁄
+ = 
+FTDM_FALSE
+;
+
+192 
+ˇŒ_öfo
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+194 i‡(
+ötfCb
+->
+ch™_id
+) {
+
+195 
+ˇŒ_öfo
+->
+èp_¥o˚ed
+ = 
+FTDM_TRUE
+;
+
+197 
+ˇŒ_öfo
+->
+èp_¥o˚ed
+ = 
+FTDM_FALSE
+;
+
+200 
+	`mem£t
+(
+ˇŒ_ªf
+, 0 , (call_ref));
+
+201 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+¸v
+);
+
+203 
+¸v_key
+ = 
+	`·dm_°rdup
+(
+ˇŒ_ªf
+);
+
+205 i‡(!
+	`hashèbÀ_ö£π
+(
+≥îèp
+->
+≥nd_ˇŒ_l°
+, (*)
+¸v_key
+, 
+ˇŒ_öfo
+, 
+HASHTABLE_FLAG_FREE_KEY
+)) {
+
+206 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "U«bÀÅÿö£π cÆ»öfÿf‹ cÆ»ª„ªn˚ vÆuêa†%d\n", 
+¸v
+);
+
+207  
+FTDM_FAIL
+;
+
+210 i‡(
+ötfCb
+->
+ch™_id
+) {
+
+211 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] Donot wait for SETUPás channel ID inÖresent CONNECT message",
+
+212 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+214 
+≥îpˇŒ
+ = 
+	`ßngoma_isdn_èp_¸óã_pˇŒ
+(
+≥îèp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+215 i‡(!
+≥îpˇŒ
+) {
+
+216 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] FailedÅo createÖcall wait for SETUP messageÅo beÑeceived",
+
+217 
+≥îèp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+219  
+FTDM_FAIL
+;
+
+222 
+≥îpˇŒ
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+223 
+≥îpˇŒ
+->
+ch™Id
+ = 
+ötfCb
+->
+ch™_id
+;
+
+224 
+≥îpˇŒ
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+226 
+c⁄√˘_ªcv_wôh_ch™Id
+++;
+
+229 i‡(
+≥îpˇŒ
+->
+ch™_¥es
+ =
+FTDM_FALSE
+) {
+
+230 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+232 
+≥îèp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+234 
+	`ßngoma_isdn_bidú_èp_gíî©e_övôe
+(
+≥îèp
+, 
+≥îpˇŒ
+, 
+¸v
+);
+
+238 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s Callref- %d] %sÉventÑeceived before SETUP, holding itsÖrocessing\n",
+
+239 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+241 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+243 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+245  
+FTDM_FAIL
+;
+
+251 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] %sÉventÑeceive\n",
+
+252 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+254 
+≥îpˇŒ
+->
+ªcv_c⁄n
+ = 
+FTDM_TRUE
+;
+
+257 
+	`time
+(&
+≥îpˇŒ
+->
+t_c⁄_ªcv
+);
+
+260 i‡((
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+261 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,
+
+263 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+264  
+FTDM_FAIL
+;
+
+268 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, &
+¸v
+);
+
+269 i‡(!
+pˇŒ
+) {
+
+271 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, 
+NULL
+);
+
+272 i‡(!
+pˇŒ
+) {
+
+273 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] FailedÅo getá freeÖeer ISDNÖassive call slot!\n",
+
+274 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+276 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "***** Print TAP Pcalls structure *****\n");
+
+277 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+èp
+);
+
+279 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "\n***** Print PEERTAP Pcalls structure *****\n");
+
+280 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+≥îèp
+);
+
+282  
+FTDM_FAIL
+;
+
+285 
+	`ßngoma_isdn_èp_ª£t_pˇŒ
+(
+pˇŒ
+);
+
+287 
+pˇŒ
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+288 i‡(
+≥îpˇŒ
+->
+ch™Id
+) {
+
+289 
+pˇŒ
+->
+ch™Id
+ = 
+≥îpˇŒ
+->chanId;
+
+290 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Setting chanIdás %d for %sÉventÑeceived on Span %s from itsÖeer\n",
+
+291 
+pˇŒ
+->
+ch™Id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+èp
+->
+•™
+->
+«me
+);
+
+292 } i‡(
+ötfCb
+->
+ch™_id
+) {
+
+293 
+pˇŒ
+->
+ch™Id
+ = 
+ötfCb
+->
+ch™_id
+;
+
+294 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Setting chanIdás %d for %sÉventÑeceived on Span %s\n",
+
+295 
+pˇŒ
+->
+ch™Id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+èp
+->
+•™
+->
+«me
+);
+
+297 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Invalid chanIdás %d for %sÉventÑeceived on Span %s\n",
+
+298 
+ötfCb
+->
+ch™_id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+èp
+->
+•™
+->
+«me
+);
+
+299  
+FTDM_FAIL
+;
+
+303 i‡(
+≥îpˇŒ
+->
+ch™_¥es
+ =
+FTDM_FALSE
+) {
+
+304 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] Invalid channelÖresent\n",
+
+305 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+307  
+FTDM_FAIL
+;
+
+310 
+pˇŒ
+->
+ªcv_c⁄n
+ = 
+FTDM_TRUE
+;
+
+313 
+fch™
+ = 
+	`ßngoma_isdn_bidú_èp_gë_fch™
+(
+èp
+, 
+pˇŒ
+,ÖˇŒ->
+ch™Id
+, 1, 
+CALL_DIRECTION_NONE
+, 
+FTDM_FALSE
+);
+
+314 i‡(!
+fch™
+) {
+
+315 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] ConnectÑequested on odd/unavailable\n",
+
+316 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+317  
+FTDM_FAIL
+;
+
+319 
+≥îfch™
+ = 
+≥îpˇŒ
+->
+fch™
+;
+
+320 
+pˇŒ
+->
+fch™
+ = fchan;
+
+322 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+323 
+fch™
+->
+ˇŒ_d©a
+ = 
+≥îfch™
+;
+
+324 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+326 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+327 
+≥îfch™
+->
+ˇŒ_d©a
+ = 
+fch™
+;
+
+328 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+330 i‡(!
+pˇŒ
+) {
+
+331 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] GettingÅheÖcall\n",
+
+332 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+334 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+335 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,
+
+337 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+338  
+FTDM_FAIL
+;
+
+342 
+	`ßngoma_isdn_èp_£t_èp_msg_öfo
+(
+èp
+, 
+msgTy≥
+, 
+pˇŒ
+, 
+ötfCb
+);
+
+344 
+pˇŒ
+->
+èp_msg
+.
+ch™_id
+ = 
+≥îpˇŒ
+->tap_msg.chan_id;
+
+346 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_c⁄
+ = 1;
+
+349 
+	`mem£t
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+, 0, (pcall->tap_msg.called_num));
+
+350 
+	`mem£t
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+, 0, (pcall->tap_msg.calling_num));
+
+352 i‡(!
+	`·dm_°æí_zîo
+(
+≥îpˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+)) {
+
+353 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+, 
+≥îpˇŒ
+->tap_msg.called_num);
+
+354 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆÀd Numbî[%s] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+);
+
+357 i‡(!
+	`·dm_°æí_zîo
+(
+≥îpˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+)) {
+
+358 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+, 
+≥îpˇŒ
+->tap_msg.calling_num);
+
+359 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆlög Numbî[%s] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+);
+
+362 
+≥îpˇŒ
+->
+èp_msg
+.
+ˇŒ_c⁄
+ = 1;
+
+364 i‡(!
+pˇŒ
+->
+fch™
+) {
+
+365 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,
+
+367 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+368  
+FTDM_FAIL
+;
+
+372 
+	`·dm_ch™√l_lock
+(
+pˇŒ
+->
+fch™
+);
+
+373 
+	`·dm_log_ch™
+(
+pˇŒ
+->
+fch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] Tap callánswered in state %s\n",
+
+374 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+’ˇŒ->
+fch™
+->
+°©e
+));
+
+376 
+	`·dm_£t_pÊag
+(
+pˇŒ
+->
+fch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+);
+
+377 if(
+	`·dm_ã°_Êag
+(
+pˇŒ
+->
+fch™
+, 
+FTDM_CHANNEL_OUTBOUND
+)) {
+
+378 i‡(
+	`·dm_ch™√l_gë_°©e
+(
+pˇŒ
+->
+fch™
+Ë=
+FTDM_CHANNEL_STATE_RINGING
+) {
+
+379 
+	`·dm_£t_°©e
+(
+pˇŒ
+->
+fch™
+, 
+FTDM_CHANNEL_STATE_UP
+);
+
+381 
+óæy_c⁄√˘_ªcv
+++;
+
+382 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] WaitingÅo change channel stateÅo %s\n",
+
+383 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+(
+fch™
+->
+°©e
+));
+
+386 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] WaitingÅoÑeceive 200 OKÅo move channel stateÅo UP\n",
+
+387 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+389 
+	`·dm_ch™√l_u∆ock
+(
+pˇŒ
+->
+fch™
+);
+
+392 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+394 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+395 
+	`·dm_log_ch™
+(
+≥îfch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] PeerTap call wasánswered in state %s\n",
+
+396 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+(
+≥îfch™
+->
+°©e
+));
+
+398 
+	`·dm_£t_pÊag
+(
+≥îfch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+);
+
+400 if(
+	`·dm_ã°_Êag
+(
+≥îfch™
+, 
+FTDM_CHANNEL_OUTBOUND
+)) {
+
+401 
+≥îpˇŒ
+->
+ªcv_c⁄n
+ = 
+FTDM_TRUE
+;
+
+403 i‡(
+	`·dm_ch™√l_gë_°©e
+(
+≥îpˇŒ
+->
+fch™
+Ë=
+FTDM_CHANNEL_STATE_RINGING
+) {
+
+404 
+	`·dm_£t_°©e
+(
+≥îfch™
+, 
+FTDM_CHANNEL_STATE_UP
+);
+
+406 
+óæy_c⁄√˘_ªcv
+++;
+
+407 
+	`·dm_log_ch™
+(
+≥îfch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] WaitingÅo change channel stateÅo %s\n",
+
+408 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+(
+≥îfch™
+->
+°©e
+));
+
+411 
+	`·dm_log_ch™
+(
+≥îfch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] WaitingÅoÑeceive 200 OKÅo move channel stateÅo UP\n",
+
+412 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+414 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+417 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥îèp
+->
+•™
+);
+
+419  
+FTDM_SUCCESS
+;
+
+421 
+	}
+}
+
+430 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_bidú_èp_h™dÀ_evít_ªl
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¸v
+)
+
+432 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+433 
+·dm_ch™√l_t
+ *
+≥îfch™
+ = 
+NULL
+;
+
+434 
+∑ssive_ˇŒ_t
+ *
+≥îpˇŒ
+ = 
+NULL
+;
+
+435 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+436 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+438 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s Callref- %d] %sÉventÑeceived\n",
+
+439 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+441 i‡(
+msgTy≥
+ =
+Q931_DISCONNECT
+) {
+
+443 
+disc⁄√˘_ªcv
+++;
+
+446 
+ªÀa£_ªcv
+++;
+
+449 
+	`ßngoma_isdn_èp_is_c⁄_ªcv
+(
+èp
+, 
+¸v
+, 
+msgTy≥
+);
+
+453 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+454 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+456 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+457 
+íd
+;
+
+460 i‡(
+pˇŒ
+->
+fch™
+) {
+
+461 
+fch™
+ = 
+pˇŒ
+->fchan;
+
+463 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+464 i‡(
+fch™
+->
+œ°_°©e
+ =
+FTDM_CHANNEL_STATE_HANGUP
+) {
+
+465 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+467 
+	`·dm_log_ch™
+(
+fch™
+,
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] Changing channel stateÅo DOWN\n",
+
+468 
+èp
+->
+•™
+->
+«me
+, 
+fch™
+->
+physiˇl_ch™_id
+, 
+¸v
+);
+
+469 } i‡((
+fch™
+->
+°©e
+ < 
+FTDM_CHANNEL_STATE_TERMINATING
+Ë&& (fch™->°©ê!
+FTDM_CHANNEL_STATE_DOWN
+)) {
+
+470 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+);
+
+472 
+	`·dm_log_ch™
+(
+fch™
+,
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] Changing channel stateÅo TERMINATING\n",
+
+473 
+èp
+->
+•™
+->
+«me
+, 
+fch™
+->
+physiˇl_ch™_id
+, 
+¸v
+);
+
+475 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+478 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+479 
+íd
+;
+
+482 i‡(!(
+≥îpˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+≥îèp
+, 
+¸v
+))) {
+
+483 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+485 
+≥îèp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+486 
+íd
+;
+
+489 i‡(
+≥îpˇŒ
+->
+fch™
+) {
+
+490 
+≥îfch™
+ = 
+≥îpˇŒ
+->
+fch™
+;
+
+492 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+493 i‡(
+≥îfch™
+->
+œ°_°©e
+ =
+FTDM_CHANNEL_STATE_HANGUP
+) {
+
+494 
+	`·dm_£t_°©e
+(
+≥îfch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+496 
+	`·dm_log_ch™
+(
+≥îfch™
+,
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] ChangingÖeer channel stateÅo DOWN\n",
+
+497 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îfch™
+->
+physiˇl_ch™_id
+, 
+¸v
+);
+
+498 } i‡((
+≥îfch™
+->
+°©e
+ < 
+FTDM_CHANNEL_STATE_TERMINATING
+Ë&& (≥îfch™->°©ê!
+FTDM_CHANNEL_STATE_DOWN
+)) {
+
+499 
+	`·dm_£t_°©e
+(
+≥îfch™
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+);
+
+501 
+	`·dm_log_ch™
+(
+≥îfch™
+,
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] ChangingÖeer channel stateÅo TERMINATING\n",
+
+502 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îfch™
+->
+physiˇl_ch™_id
+, 
+¸v
+);
+
+504 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+507 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥îèp
+->
+•™
+);
+
+510 
+íd
+:
+
+511 
+	`ßngoma_isdn_èp_put_pˇŒ
+(
+èp
+, &
+¸v
+);
+
+512 
+	`ßngoma_isdn_èp_put_pˇŒ
+(
+≥îèp
+, &
+¸v
+);
+
+514  
+FTDM_SUCCESS
+;
+
+515 
+	}
+}
+
+524 
+·dm_ch™√l_t
+ *
+	$ßngoma_isdn_bidú_èp_gë_fch™
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+ch™_id
+, 
+f‹˚_˛ór_ch™
+, 
+èp_ˇŒ_dúe˘i⁄_t
+ 
+ˇŒ_dú
+, 
+·dm_boﬁ_t
+ 
+to_›í
+)
+
+526 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+527 
+îr
+ = 0;
+
+529 
+fch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+èp
+, 
+ch™_id
+);
+
+530 i‡(!
+fch™
+) {
+
+531 
+îr
+ = 1;
+
+532 
+d⁄e
+;
+
+535 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+537 i‡(
+to_›í
+ =
+FTDM_TRUE
+) {
+
+538 i‡(
+	`·dm_ã°_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_INUSE
+)) {
+
+539 
+ªu£_ch™_c⁄_ªcv
+++;
+
+540 i‡(
+f‹˚_˛ór_ch™
+) {
+
+541 
+	`·dm_˛ór_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_INUSE
+);
+
+543 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_ERROR
+, "Ch™√»i†Æªady i¿u£ ..°©e[%s]\n", 
+	`·dm_ch™√l_°©e2°r
+(fch™->
+°©e
+));
+
+544 
+îr
+ = 1;
+
+545 
+d⁄e
+;
+
+550 i‡((
+fch™
+->
+°©e
+ !
+FTDM_CHANNEL_STATE_DOWN
+Ë&& (fch™->°©ê< 
+FTDM_CHANNEL_STATE_TERMINATING
+)) {
+
+551 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "Bi-dúe˘i⁄ÆÅ≠ Ch™√»ö sèã [%s]. Ch™gög sèãÅÿTERMINATING!\n", 
+	`·dm_ch™√l_°©e2°r
+(fch™->
+°©e
+));
+
+552 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+);
+
+553 } i‡(
+fch™
+->
+°©e
+ =
+FTDM_CHANNEL_STATE_HANGUP
+) {
+
+554 
+	`·dm_log_ch™_msg
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "Bi-directionalÅap Channel is in HANGUP stateÖlease move channelÅo DOWN state\n");
+
+555 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+558 i‡(
+fch™
+->
+°©e
+ !
+FTDM_CHANNEL_STATE_DOWN
+) {
+
+560 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+562 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+567 
+fch™
+->
+°©e
+ !
+FTDM_CHANNEL_STATE_DOWN
+) {
+
+570 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+573 i‡(
+	`·dm_ch™√l_›í_ch™
+(
+fch™
+Ë!
+FTDM_SUCCESS
+) {
+
+574 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_ERROR
+, "CouldÇot openÅap channel %s\n","");
+
+575 
+îr
+ = 1;
+
+576 
+d⁄e
+;
+
+578 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_DEBUG
+, "Tap channel openned successfully \n %s","");
+
+581 
+	`mem£t
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 0, (fchan->caller_data.cid_num.digits));
+
+582 
+	`mem£t
+(
+fch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 0, (fchan->caller_data.dnis.digits));
+
+583 
+	`mem£t
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 0, (fchan->caller_data.cid_name));
+
+584 
+fch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 0;
+
+586 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 
+pˇŒ
+->
+ˇŒögnum
+.digits);
+
+587 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 
+pˇŒ
+->
+ˇŒögnum
+.
+digôs
+);
+
+588 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 
+pˇŒ
+->
+ˇŒednum
+.digits);
+
+589 
+fch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 
+pˇŒ
+->
+ˇŒªf_vÆ
+;
+
+591 i‡(
+ˇŒ_dú
+ =
+CALL_DIRECTION_INBOUND
+) {
+
+592 
+	`·dm_˛ór_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_OUTBOUND
+);
+
+593 } i‡(
+ˇŒ_dú
+ =
+CALL_DIRECTION_OUTBOUND
+) {
+
+594 
+	`·dm_£t_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_OUTBOUND
+);
+
+597 
+d⁄e
+:
+
+598 i‡(
+fch™
+) {
+
+599 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+602 i‡(
+îr
+) {
+
+603  
+NULL
+;
+
+606  
+fch™
+;
+
+607 
+	}
+}
+
+	@ftmod_sangoma_isdn_tap.c
+
+42 
+	~"·mod_ßngoma_isdn_èp.h
+"
+
+49 
+	gg_decodî_lib_öô
+;
+
+52 
+¢g_decodî_evít_öãrÁ˚_t
+ 
+	g¢g_evít
+;
+
+53 
+·dm_io_öãrÁ˚_t
+ 
+	g·dm_¢gisdn_èp_öãrÁ˚
+;
+
+54 
+·dm_¢gisdn_èp_d©a_t
+ 
+	gg_¢gisdn_èp_d©a
+;
+
+57 
+uöt64_t
+ 
+	g£tup_ªcv
+;
+
+58 
+uöt64_t
+ 
+	gªu£_ch™_c⁄_ªcv
+;
+
+59 
+uöt64_t
+ 
+	g£tup_ªcv_övÆid_ch™Id
+;
+
+60 
+uöt64_t
+ 
+	g£tup_nŸ_ªcv
+;
+
+61 
+uöt64_t
+ 
+	gc⁄√˘_ªcv_wôh_ch™Id
+;
+
+62 
+uöt64_t
+ 
+	gc⁄√˘_ªcv
+;
+
+63 
+uöt64_t
+ 
+	góæy_c⁄√˘_ªcv
+;
+
+64 
+uöt64_t
+ 
+	gœã_övôe_ªcv
+;
+
+65 
+uöt64_t
+ 
+	gˇŒ_¥o˚ed_ªcv
+;
+
+66 
+uöt64_t
+ 
+	gªÀa£_ªcv
+;
+
+67 
+uöt64_t
+ 
+	gdisc⁄√˘_ªcv
+;
+
+68 
+uöt64_t
+ 
+	gˇŒ_èµed
+;
+
+69 
+uöt64_t
+ 
+	gmsg_ªcv_a·_time
+;
+
+72 
+uöt32_t
+ 
+	gèp_dch™_queue_size
+;
+
+79 
+·dm_°©us_t
+ 
+·dm_ßngoma_isdn_èp_°¨t
+(
+·dm_•™_t
+ *
+•™
+);
+
+80 
+ßngoma_isdn_èp_£t_debug
+(
+¢gisdn_t
+ *
+¥i
+, 
+debug
+);
+
+81 
+h™dÀ_isdn_èµög_log
+(
+uöt8_t
+ 
+Àvñ
+, *
+fmt
+,...);
+
+82 
+·dm_ßngoma_isdn_gë_swôch_ty≥
+(c⁄° *
+vÆ
+);
+
+83 
+·dm_°©us_t
+ 
+ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+);
+
+86 
+·dm_°©us_t
+ 
+ßngoma_isdn_èp_is_fch™_öu£
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™√l
+);
+
+87 
+·dm_°©us_t
+ 
+ßngoma_isdn_èp_ªl_°Æe_ˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™_id
+);
+
+88 
+·dm_°©us_t
+ 
+ßngoma_isdn_èp_h™dÀ_evít_ªl
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¸v
+);
+
+89 
+ßngoma_isdn_èp_check_°Æe_c⁄evt
+(
+¢gisdn_èp_t
+ *
+èp
+);
+
+90 
+ßngoma_isdn_èp_‰ì_hashli°
+(
+¢gisdn_èp_t
+ *
+èp
+);
+
+93 
+∑ssive_ˇŒ_t
+ *
+ßngoma_isdn_èp_gë_pˇŒ_bych™Id
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™_id
+);
+
+96 
+·dm_°©us_t
+ 
+·dm_ßngoma_isdn_èp_io_°©s
+(
+·dm_°ªam_h™dÀ_t
+ *
+°ªam
+, 
+·dm_•™_t
+ *
+•™
+, c⁄° * 
+cmd
+);
+
+99 
+¢gisdn_èp_c⁄n_°©e_t
+ 
+ßngoma_isdn_èp_gë_pˇŒ_°©e
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¸v
+);
+
+101 
+FIO_API_FUNCTION
+(
+·dm_ßngoma_isdn_èp_≠i
+);
+
+102 
+·dm_°©us_t
+ 
+ßngoma_isdn_ªad_msg
+(
+¢gisdn_èp_t
+ *
+èp
+);
+
+117 
+	$FIO_IO_UNLOAD_FUNCTION
+(
+·dm_ßngoma_isdn_èp_u∆ﬂd
+)
+
+120 if(
+g_decodî_lib_öô
+) {
+
+121 
+	`¢g_decodî_lib_deöô
+();
+
+122 
+g_decodî_lib_öô
+ = 0x00;
+
+124  
+FTDM_SUCCESS
+;
+
+125 
+	}
+}
+
+135 
+	$FIO_CHANNEL_GET_SIG_STATUS_FUNCTION
+(
+ßngoma_isdn_èp_gë_ch™√l_sig_°©us
+)
+
+137 i‡(
+	`·dm_ã°_Êag
+(
+·dmch™
+, 
+FTDM_CHANNEL_SIG_UP
+)) {
+
+138 *
+°©us
+ = 
+FTDM_SIG_STATE_UP
+;
+
+140 *
+°©us
+ = 
+FTDM_SIG_STATE_DOWN
+;
+
+143 *
+°©us
+ = 
+FTDM_SIG_STATE_UP
+;
+
+144  
+FTDM_SUCCESS
+;
+
+145 
+	}
+}
+
+155 
+	$FIO_SPAN_GET_SIG_STATUS_FUNCTION
+(
+ßngoma_isdn_èp_gë_•™_sig_°©us
+)
+
+157 *
+°©us
+ = 
+FTDM_SIG_STATE_UP
+;
+
+158  
+FTDM_SUCCESS
+;
+
+159 
+	}
+}
+
+169 
+	$FIO_CHANNEL_OUTGOING_CALL_FUNCTION
+(
+ßngoma_isdn_èp_outgoög_ˇŒ
+)
+
+171 
+¢gisdn_èp_t
+ *
+èp
+ = 
+·dmch™
+->
+•™
+->
+sig«l_d©a
+;
+
+173 i‡–!
+èp
+ ) {
+
+174 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_ERROR
+, "Cannot findássociatedÅap information, can't dial oná ISDNÅap channel withoutánÉxisting call\n");
+
+175  
+FTDM_FAIL
+;
+
+178 i‡(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+179  
+FTDM_SUCCESS
+;
+
+180 } i‡(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_NORMAL
+) {
+
+181 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "Cannot dial on ISDNÅappingÜine!\n");
+
+182  
+FTDM_FAIL
+;
+
+184 } i‡(
+	`·dm_ã°_Êag
+(
+·dmch™
+, 
+FTDM_CHANNEL_CALL_STARTED
+)) {
+
+185 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_ERROR
+, "Callálready started?\n");
+
+186  
+FTDM_FAIL
+;
+
+189  
+FTDM_SUCCESS
+;
+
+190 
+	}
+}
+
+199 
+	$∑r£_debug
+(c⁄° *
+ö
+)
+
+201 
+Êags
+ = 0;
+
+203 i‡(!
+ö
+) {
+
+207 i‡(!
+	`°rcmp
+(
+ö
+, "none")) {
+
+211 i‡(!
+	`°rcmp
+(
+ö
+, "all")) {
+
+212  
+DEBUG_ALL
+;
+
+215 i‡(
+	`°r°r
+(
+ö
+, "q921_raw")) {
+
+216 
+Êags
+ |
+DEBUG_Q921_RAW
+;
+
+219  
+Êags
+;
+
+220 
+	}
+}
+
+229 
+	$FIO_IO_LOAD_FUNCTION
+(
+·dm_ßngoma_isdn_èp_io_öô
+)
+
+231 
+	`mem£t
+(&
+·dm_¢gisdn_èp_öãrÁ˚
+, 0, (ftdm_sngisdn_tap_interface));
+
+233 
+·dm_¢gisdn_èp_öãrÁ˚
+.
+«me
+ = "isdn_tap";
+
+234 
+·dm_¢gisdn_èp_öãrÁ˚
+.
+≠i
+ = 
+·dm_ßngoma_isdn_èp_≠i
+;
+
+236 *
+fio
+ = &
+·dm_¢gisdn_èp_öãrÁ˚
+;
+
+238  
+FTDM_SUCCESS
+;
+
+239 
+	}
+}
+
+249 
+	$FIO_SIG_LOAD_FUNCTION
+(
+·dm_ßngoma_isdn_èp_öô
+)
+
+251  
+FTDM_SUCCESS
+;
+
+252 
+	}
+}
+
+259 
+·dm_°©e_m≠_t
+ 
+	g¢gisdn_èp_°©e_m≠
+ = {
+
+262 
+ZSD_INBOUND
+,
+
+263 
+ZSM_UNACCEPTABLE
+,
+
+264 {
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+265 {
+FTDM_CHANNEL_STATE_DIALING
+, 
+FTDM_CHANNEL_STATE_RING
+, 
+FTDM_CHANNEL_STATE_END
+}
+
+268 
+ZSD_INBOUND
+,
+
+269 
+ZSM_UNACCEPTABLE
+,
+
+270 {
+FTDM_CHANNEL_STATE_DIALING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+271 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_PROGRESS
+, 
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_RING
+, 
+FTDM_CHANNEL_STATE_END
+}
+
+274 
+ZSD_INBOUND
+,
+
+275 
+ZSM_UNACCEPTABLE
+,
+
+276 {
+FTDM_CHANNEL_STATE_RING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+277 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_PROGRESS
+, 
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+}
+
+280 
+ZSD_INBOUND
+,
+
+281 
+ZSM_UNACCEPTABLE
+,
+
+282 {
+FTDM_CHANNEL_STATE_RINGING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+283 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_PROGRESS
+, 
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+286 
+ZSD_INBOUND
+,
+
+287 
+ZSM_UNACCEPTABLE
+,
+
+288 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+289 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+292 
+ZSD_INBOUND
+,
+
+293 
+ZSM_UNACCEPTABLE
+,
+
+294 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+295 {
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+298 
+ZSD_INBOUND
+,
+
+299 
+ZSM_UNACCEPTABLE
+,
+
+300 {
+FTDM_CHANNEL_STATE_PROGRESS
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+301 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+304 
+ZSD_INBOUND
+,
+
+305 
+ZSM_UNACCEPTABLE
+,
+
+306 {
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+307 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+310 
+ZSD_INBOUND
+,
+
+311 
+ZSM_UNACCEPTABLE
+,
+
+312 {
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+313 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+316 
+ZSD_INBOUND
+,
+
+317 
+ZSM_UNACCEPTABLE
+,
+
+318 {
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+319 {
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+322 
+ZSD_OUTBOUND
+,
+
+323 
+ZSM_UNACCEPTABLE
+,
+
+324 {
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+325 {
+FTDM_CHANNEL_STATE_DIALING
+, 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_END
+}
+
+328 
+ZSD_OUTBOUND
+,
+
+329 
+ZSM_UNACCEPTABLE
+,
+
+330 {
+FTDM_CHANNEL_STATE_DIALING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+331 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_HANGUP
+,
+
+332 
+FTDM_CHANNEL_STATE_PROCEED
+, 
+FTDM_CHANNEL_STATE_RINGING
+, 
+FTDM_CHANNEL_STATE_PROGRESS
+, 
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_UP
+,
+
+333 
+FTDM_CHANNEL_STATE_END
+}
+
+336 
+ZSD_OUTBOUND
+,
+
+337 
+ZSM_UNACCEPTABLE
+,
+
+338 {
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+339 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_HANGUP
+,
+
+340 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+343 
+ZSD_OUTBOUND
+,
+
+344 
+ZSM_UNACCEPTABLE
+,
+
+345 {
+FTDM_CHANNEL_STATE_UP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+346 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+,
+
+347 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+350 
+ZSD_OUTBOUND
+,
+
+351 
+ZSM_UNACCEPTABLE
+,
+
+352 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+353 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+356 
+ZSD_OUTBOUND
+,
+
+357 
+ZSM_UNACCEPTABLE
+,
+
+358 {
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+359 {
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+362 
+ZSD_OUTBOUND
+,
+
+363 
+ZSM_UNACCEPTABLE
+,
+
+364 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+365 {
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+368 
+ZSD_OUTBOUND
+,
+
+369 
+ZSM_UNACCEPTABLE
+,
+
+370 {
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+371 {
+FTDM_CHANNEL_STATE_DOWN
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+374 
+ZSD_OUTBOUND
+,
+
+375 
+ZSM_UNACCEPTABLE
+,
+
+376 {
+FTDM_CHANNEL_STATE_RINGING
+, 
+FTDM_CHANNEL_STATE_END
+},
+
+377 {
+FTDM_CHANNEL_STATE_HANGUP
+, 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+,
+
+378 
+FTDM_CHANNEL_STATE_TERMINATING
+, 
+FTDM_CHANNEL_STATE_UP
+,
+
+379 
+FTDM_CHANNEL_STATE_END
+},
+
+391 
+·dm_°©us_t
+ 
+	$°©e_adv™˚
+(
+·dm_ch™√l_t
+ *
+·dmch™
+)
+
+393 
+¢gisdn_èp_t
+ *
+èp
+ = 
+·dmch™
+->
+•™
+->
+sig«l_d©a
+;
+
+394 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+NULL
+;
+
+395 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+396 
+·dm_°©us_t
+ 
+°©us
+;
+
+397 
+·dm_sigmsg_t
+ 
+sigmsg
+;
+
+399 
+	`·dm_log_ch™
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+, "¥o˚ssög sèã %s\n", 
+	`·dm_ch™√l_°©e2°r
+(·dmch™->
+°©e
+));
+
+401 
+	`·dm_ch™√l_com∂ëe_°©e
+(
+·dmch™
+);
+
+403 i‡(!
+èp
+) {
+
+404 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_ERROR
+, "No Signal data/tap structureÖresent!\n");
+
+405  
+FTDM_FAIL
+;
+
+408 
+	`mem£t
+(&
+sigmsg
+, 0, (sigmsg));
+
+410 
+sigmsg
+.
+ch™_id
+ = 
+·dmch™
+->chan_id;
+
+411 
+sigmsg
+.
+•™_id
+ = 
+·dmch™
+->span_id;
+
+412 
+sigmsg
+.
+ch™√l
+ = 
+·dmch™
+;
+
+413 
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+416 
+·dmch™
+->
+°©e
+) {
+
+417 
+FTDM_CHANNEL_STATE_DOWN
+:
+
+419 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+·dmch™
+;
+
+422 i‡(
+fch™
+->
+ˇŒ_d©a
+) {
+
+423 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+424 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_DEBUG
+, "DoÇot closeÖeer channelás ISDN Tapping isÑunning is Bi-Directional mode! %s\n", "");
+
+426 
+·dm_ch™√l_t
+ *
+≥îch™
+ = 
+fch™
+->
+ˇŒ_d©a
+;
+
+427 
+·dm_ch™√l_t
+ *
+pch™
+ = 
+≥îch™
+;
+
+429 
+	`·dm_ch™√l_lock
+(
+≥îch™
+);
+
+431 i‡((
+pch™
+->
+ˇŒ_d©a
+Ë&& (((
+èp
+->
+èp_mode
+ =
+ISDN_TAP_FS
+Ë&& (pch™->
+°©e
+ =
+FTDM_CHANNEL_STATE_DOWN
+)) ||
+
+432 (
+èp
+->
+èp_mode
+ =
+ISDN_TAP_NORMAL
+))) {
+
+433 
+pch™
+->
+ˇŒ_d©a
+ = 
+NULL
+;
+
+434 
+pch™
+->
+pÊags
+ = 0;
+
+436 
+	`·dm_log_ch™
+(
+pch™
+, 
+FTDM_LOG_DEBUG
+, "Tapping done..Closing Peer channel. %s\n", "");
+
+437 
+	`·dm_ch™√l_˛o£
+(&
+pch™
+);
+
+440 
+	`·dm_ch™√l_u∆ock
+(
+≥îch™
+);
+
+443 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_CRIT
+, "No call data?\n");
+
+446 
+	`·dm_ch™√l_lock
+(
+·dmch™
+);
+
+447 
+fch™
+->
+ˇŒ_d©a
+ = 
+NULL
+;
+
+448 
+fch™
+->
+pÊags
+ = 0;
+
+449 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_DEBUG
+, "Tapping done..Closing channel.%s\n", "");
+
+450 
+	`·dm_ch™√l_˛o£
+(&
+fch™
+);
+
+451 
+	`·dm_ch™√l_u∆ock
+(
+·dmch™
+);
+
+455 
+FTDM_CHANNEL_STATE_PROGRESS
+:
+
+456 
+FTDM_CHANNEL_STATE_PROGRESS_MEDIA
+:
+
+459 
+FTDM_CHANNEL_STATE_UP
+:
+
+461 i‡(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+462 i‡(!
+	`·dm_ã°_Êag
+(
+·dmch™
+, 
+FTDM_CHANNEL_OUTBOUND
+)) {
+
+463 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_INFO
+, "DoÇothingásÅhis isán INBOUND channel!\n");
+
+467 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_bych™Id
+(
+èp
+, 
+·dmch™
+->
+physiˇl_ch™_id
+))) {
+
+468 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+, "NoÖcallÖresent!\n");
+
+472 i‡((
+	`·dm_ã°_pÊag
+(
+·dmch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+)Ë|| 
+	`·dm_ã°_Êag
+(·dmch™, 
+FTDM_CHANNEL_OUTBOUND
+)) {
+
+473 i‡(
+	`·dm_ã°_pÊag
+(
+·dmch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+))
+
+474 
+	`·dm_˛ór_pÊag
+(
+·dmch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+);
+
+477 
+sigmsg
+.
+evít_id
+ = 
+FTDM_SIGEVENT_UP
+;
+
+480 
+ˇŒ_èµed
+++;
+
+482 i‡((
+°©us
+ = 
+	`·dm_•™_£nd_sig«l
+(
+·dmch™
+->
+•™
+, &
+sigmsg
+Ë!
+FTDM_SUCCESS
+)) {
+
+483 
+	`·dm_£t_°©e_locked
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_HANGUP
+);
+
+484 
+	`·dm_log_ch™
+(
+·dmch™
+, 
+FTDM_LOG_INFO
+, "[CÆÃef- %d]U«bÀÅÿ£nd SIGEVENT_UP!\n", 
+pˇŒ
+->
+ˇŒªf_vÆ
+);
+
+486 
+	`·dm_log_ch™
+(
+·dmch™
+, 
+FTDM_LOG_INFO
+, "[CÆÃef- %d]SIGEVENT_UP Sít!\n", 
+pˇŒ
+->
+ˇŒªf_vÆ
+);
+
+492 
+FTDM_CHANNEL_STATE_RING
+:
+
+495 i‡(
+èp
+->
+èp_mode
+ !
+ISDN_TAP_NORMAL
+) {
+
+496 
+v¨übÀ_vÆ
+[3] = { 0 };
+
+497 
+·dm_ch™√l_t
+ *
+≥îch™
+ = 
+NULL
+;
+
+499 
+sigmsg
+.
+evít_id
+ = 
+FTDM_SIGEVENT_START
+;
+
+501 
+≥îch™
+ = (
+·dm_ch™√l_t
+*)
+·dmch™
+->
+ˇŒ_d©a
+;
+
+502 if–!
+≥îch™
+ ) {
+
+503 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_ERROR
+, "NotÖeer chan data! \n");
+
+506 
+	`·dm_£t_°rög
+(
+≥îch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 
+·dmch™
+->caller_data.cid_num.digits);
+
+507 
+	`·dm_£t_°rög
+(
+≥îch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 
+·dmch™
+->caller_data.cid_name);
+
+508 
+	`·dm_£t_°rög
+(
+≥îch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 
+·dmch™
+->caller_data.dnis.digits);
+
+509 
+	`·dm_£t_°rög
+(
+≥îch™
+->
+ˇŒî_d©a
+.
+™i
+.
+digôs
+, 
+·dmch™
+->caller_data.ani.digits);
+
+511 
+≥îch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 
+·dmch™
+->caller_data.call_reference;
+
+516 
+	`·dm_sigmsg_add_v¨
+(&
+sigmsg
+, "isdn_èp_rög_öãrÁ˚", 
+	`SNG_ISDN_TAP_GET_INTERFACE
+(
+≥îèp
+->
+iÁ˚
+));
+
+518 
+	`¢¥ötf
+(
+v¨übÀ_vÆ
+, (v¨übÀ_vÆ), "%d", 
+≥îch™
+->
+•™_id
+);
+
+519 
+	`·dm_sigmsg_add_v¨
+(&
+sigmsg
+, "isdn_èp_≥î_•™", 
+v¨übÀ_vÆ
+);
+
+520 
+	`¢¥ötf
+(
+v¨übÀ_vÆ
+, (v¨übÀ_vÆ), "%d", 
+≥îch™
+->
+ch™_id
+);
+
+521 
+	`·dm_sigmsg_add_v¨
+(&
+sigmsg
+, "isdn_èp_≥î_ch™", 
+v¨übÀ_vÆ
+);
+
+523 i‡(
+	`·dm_•™_£nd_sig«l
+(
+≥îch™
+->
+•™
+, &
+sigmsg
+Ë!
+FTDM_SUCCESS
+) {
+
+524 
+	`·dm_£t_°©e_locked
+(
+≥îch™
+, 
+FTDM_CHANNEL_STATE_HANGUP
+);
+
+527 i‡(
+sigmsg
+.
+v¨übÀs
+) {
+
+528 
+	`hashèbÀ_de°roy
+(
+sigmsg
+.
+v¨übÀs
+);
+
+529 
+sigmsg
+.
+v¨übÀs
+ = 
+NULL
+;
+
+535 
+FTDM_CHANNEL_STATE_HANGUP
+:
+
+537 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Getting into HANGUP state handler \n");
+
+538 if(
+èp
+->
+èp_mode
+ !
+ISDN_TAP_NORMAL
+) {
+
+539 
+	`·dm_£t_°©e_locked
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+544 
+FTDM_CHANNEL_STATE_HANGUP_COMPLETE
+:
+
+546 if(
+èp
+->
+èp_mode
+ !
+ISDN_TAP_NORMAL
+) {
+
+547 
+	`·dm_£t_°©e_locked
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+552 
+FTDM_CHANNEL_STATE_TERMINATING
+:
+
+554 i‡(
+·dmch™
+->
+œ°_°©e
+ !
+FTDM_CHANNEL_STATE_HANGUP
+) {
+
+555 
+sigmsg
+.
+evít_id
+ = 
+FTDM_SIGEVENT_STOP
+;
+
+556 
+	`·dm_˛ór_Êag
+(
+·dmch™
+, 
+FTDM_CHANNEL_USER_HANGUP
+);
+
+557 
+°©us
+ = 
+	`·dm_•™_£nd_sig«l
+(
+·dmch™
+->
+•™
+, &
+sigmsg
+);
+
+559 
+	`·dm_£t_°©e_locked
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+563 
+FTDM_CHANNEL_STATE_DIALING
+:
+
+564 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+565 i‡(
+	`·dm_ã°_Êag
+(
+·dmch™
+, 
+FTDM_CHANNEL_OUTBOUND
+)) {
+
+566 
+	`·dm_£t_°©e_locked
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_RINGING
+);
+
+568 
+	`·dm_£t_°©e_locked
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_RING
+);
+
+570 } if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_FS
+) {
+
+571 
+	`·dm_£t_°©e
+(
+·dmch™
+, 
+FTDM_CHANNEL_STATE_UP
+);
+
+575 
+FTDM_CHANNEL_STATE_RINGING
+:
+
+576 if((
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+Ë&& (
+	`·dm_ã°_Êag
+(
+·dmch™
+, 
+FTDM_CHANNEL_OUTBOUND
+))) {
+
+578 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_bych™Id
+(
+èp
+, 
+·dmch™
+->
+physiˇl_ch™_id
+))) {
+
+579 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+, "NoÖcallÖresent!\n");
+
+583 
+	`·dm_log_ch™
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+, "[CÆÃef- %d] RINGINGÑe˚ived f‹ ch™√l\n", 
+pˇŒ
+->
+ˇŒªf_vÆ
+);
+
+584 i‡(
+pˇŒ
+->
+ªcv_c⁄n
+ =
+FTDM_TRUE
+) {
+
+585 
+œã_övôe_ªcv
+++;
+
+586 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+, "Changing stateÅo UPás connect isálready beingÖrocessed!\n");
+
+587 
+	`·dm_£t_°©e_locked
+(
+pˇŒ
+->
+fch™
+, 
+FTDM_CHANNEL_STATE_UP
+);
+
+589 
+	`·dm_log_ch™
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+,
+
+591 
+	`·dm_ch™√l_°©e2°r
+(
+·dmch™
+->
+œ°_°©e
+), ftdm_ch™√l_°©e2°r(·dmch™->
+°©e
+));
+
+598 
+	`·dm_log_ch™
+(
+·dmch™
+, 
+FTDM_LOG_DEBUG
+, "ign‹ög sèã ch™gê‰om %†tÿ%s\n", 
+	`·dm_ch™√l_°©e2°r
+(·dmch™->
+œ°_°©e
+), ftdm_ch™√l_°©e2°r(·dmch™->
+°©e
+));
+
+603  
+FTDM_SUCCESS
+;
+
+604 
+	}
+}
+
+615 
+·dm_°©us_t
+ 
+	$·mod_isdn_¥o˚ss_evít
+(
+·dm_•™_t
+ *
+•™
+, 
+·dm_evít_t
+ *
+evít
+)
+
+617 
+·dm_Æ¨m_Êag_t
+ 
+Æ¨mbôs
+;
+
+618 
+·dm_sigmsg_t
+ 
+sig
+;
+
+620 
+	`mem£t
+(&
+sig
+, 0, (sig));
+
+621 
+sig
+.
+•™_id
+ = 
+	`·dm_ch™√l_gë_•™_id
+(
+evít
+->
+ch™√l
+);
+
+622 
+sig
+.
+ch™_id
+ = 
+	`·dm_ch™√l_gë_id
+(
+evít
+->
+ch™√l
+);
+
+623 
+sig
+.
+ch™√l
+ = 
+evít
+->channel;
+
+625 
+	`·dm_log_ch™
+(
+evít
+->
+ch™√l
+, 
+FTDM_LOG_DEBUG
+, "EVENT:%d Recieved on Span:%d Channel:%d\n",
+
+626 
+evít
+->
+íum_id
+, 
+	`·dm_ch™√l_gë_•™_id
+”vít->
+ch™√l
+),
+
+627 
+	`·dm_ch™√l_gë_id
+(
+evít
+->
+ch™√l
+));
+
+629 
+evít
+->
+íum_id
+) {
+
+630 
+FTDM_OOB_ALARM_TRAP
+:
+
+632 
+sig
+.
+evít_id
+ = 
+FTDM_OOB_ALARM_TRAP
+;
+
+633 i‡(
+	`·dm_ch™√l_gë_°©e
+(
+evít
+->
+ch™√l
+Ë!
+FTDM_CHANNEL_STATE_DOWN
+) {
+
+634 
+	`·dm_£t_°©e_locked
+(
+evít
+->
+ch™√l
+, 
+FTDM_CHANNEL_STATE_RESTART
+);
+
+636 
+	`·dm_£t_Êag
+(
+evít
+->
+ch™√l
+, 
+FTDM_CHANNEL_SUSPENDED
+);
+
+637 
+	`·dm_ch™√l_gë_Æ¨ms
+(
+evít
+->
+ch™√l
+, &
+Æ¨mbôs
+);
+
+638 
+	`·dm_•™_£nd_sig«l
+(
+•™
+, &
+sig
+);
+
+640 
+	`·dm_log
+(
+FTDM_LOG_WARNING
+, "channel %d:%d (%d:%d) hasálarms [%s]\n",
+
+641 
+	`·dm_ch™√l_gë_•™_id
+(
+evít
+->
+ch™√l
+),
+
+642 
+	`·dm_ch™√l_gë_id
+(
+evít
+->
+ch™√l
+),
+
+643 
+	`·dm_ch™√l_gë_ph_•™_id
+(
+evít
+->
+ch™√l
+),
+
+644 
+	`·dm_ch™√l_gë_ph_id
+(
+evít
+->
+ch™√l
+),
+
+645 
+	`·dm_ch™√l_gë_œ°_îr‹
+(
+evít
+->
+ch™√l
+));
+
+649 
+FTDM_OOB_ALARM_CLEAR
+:
+
+651 
+sig
+.
+evít_id
+ = 
+FTDM_OOB_ALARM_CLEAR
+;
+
+652 
+	`·dm_˛ór_Êag
+(
+evít
+->
+ch™√l
+, 
+FTDM_CHANNEL_SUSPENDED
+);
+
+653 
+	`·dm_ch™√l_gë_Æ¨ms
+(
+evít
+->
+ch™√l
+, &
+Æ¨mbôs
+);
+
+654 
+	`·dm_•™_£nd_sig«l
+(
+•™
+, &
+sig
+);
+
+662  
+FTDM_SUCCESS
+;
+
+663 
+	}
+}
+
+672 
+	$ßngoma_isdn_èp_check_°©e
+(
+·dm_•™_t
+ *
+•™
+)
+
+674 i‡(
+	`·dm_ã°_Êag
+(
+•™
+, 
+FTDM_SPAN_STATE_CHANGE
+)) {
+
+675 
+uöt32_t
+ 
+j
+;
+
+676 
+	`·dm_˛ór_Êag_locked
+(
+•™
+, 
+FTDM_SPAN_STATE_CHANGE
+);
+
+677 
+j
+ = 1; j <
+•™
+->
+ch™_cou¡
+; j++) {
+
+678 
+	`·dm_ch™√l_lock
+(
+•™
+->
+ch™√ls
+[
+j
+]);
+
+679 
+	`·dm_ch™√l_adv™˚_°©es
+(
+•™
+->
+ch™√ls
+[
+j
+]);
+
+680 
+	`·dm_ch™√l_u∆ock
+(
+•™
+->
+ch™√ls
+[
+j
+]);
+
+683 
+	}
+}
+
+692 
+	$ßngoma_isdn_io_ªad
+(
+¢gisdn_t
+ *
+isdn_msg
+, *
+buf
+, 
+buÊí
+)
+
+694 
+ªs
+ = 0;
+
+695 
+·dm_°©us_t
+ 
+z°
+;
+
+696 
+¢gisdn_èp_t
+ *
+èp
+ = 
+	`ßngoma_isdn_gë_u£rd©a
+(
+isdn_msg
+);
+
+697 
+·dm_size_t
+ 
+Àn
+ = 
+buÊí
+;
+
+700 i‡((
+z°
+ = 
+	`·dm_ch™√l_ªad
+(
+èp
+->
+dch™
+, 
+buf
+, &
+Àn
+)Ë!
+FTDM_SUCCESS
+) {
+
+701 i‡(
+z°
+ =
+FTDM_FAIL
+) {
+
+702 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "S∑¿%d D ch™√»ªad faû! [%s]\n", 
+èp
+->
+•™
+->
+•™_id
+,Å≠->
+dch™
+->
+œ°_îr‹
+);
+
+704 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "S∑¿%d D ch™√»ªadÅimeout!\n", 
+èp
+->
+•™
+->
+•™_id
+);
+
+706  
+ªs
+;
+
+710 
+ªs
+ = ()
+Àn
+;
+
+713 i‡(
+èp
+->
+debug
+ & 
+DEBUG_Q921_RAW
+) {
+
+714 
+hbuf
+[2048] = { 0 };
+
+716 
+	`¥öt_hex_byãs
+(
+buf
+, 
+Àn
+, 
+hbuf
+, (hbuf));
+
+717 
+	`·dm_log_ch™
+(
+èp
+->
+dch™
+, 
+FTDM_LOG_DEBUG
+, "READ %"
+FTDM_SIZE_FMT
+"\n%s\n", 
+Àn
+, 
+hbuf
+);
+
+720  
+ªs
+;
+
+721 
+	}
+}
+
+731 
+∑ssive_ˇŒ_t
+ *
+	$ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¸v
+)
+
+733 
+i
+;
+
+734 
+t°¸v
+;
+
+736 
+	`·dm_muãx_lock
+(
+èp
+->
+pˇŒs_lock
+);
+
+740 
+i
+ = 0; i < 
+	`·dm_¨øy_Àn
+(
+èp
+->
+pˇŒs
+); i++) {
+
+741 
+t°¸v
+ = 
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+;
+
+742 i‡(
+t°¸v
+ =
+¸v
+) {
+
+743 i‡(
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+) {
+
+744 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+745  &
+èp
+->
+pˇŒs
+[
+i
+];
+
+749 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Found crv %d in slot %d of span %s with call %d but isÇoÜonger in use\n",
+
+750 
+¸v
+, 
+i
+, 
+èp
+->
+•™
+->
+«me
+,Å≠->
+pˇŒs
+[i].
+ˇŒªf_vÆ
+);
+
+754 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "CÆ»ª„ªn˚ vÆuê%dÇŸ foundá˘ivêö s∑¿%s\n", 
+¸v
+, 
+èp
+->
+•™
+->
+«me
+);
+
+755 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+756  
+NULL
+;
+
+757 
+	}
+}
+
+766 
+∑ssive_ˇŒ_t
+ *
+	$ßngoma_isdn_èp_gë_pˇŒ_bych™Id
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™_id
+)
+
+768 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+769 
+idx
+ = 0;
+
+771 
+	`·dm_muãx_lock
+(
+èp
+->
+pˇŒs_lock
+);
+
+775 
+idx
+ = 0; idx < 
+	`·dm_¨øy_Àn
+(
+èp
+->
+pˇŒs
+); idx++) {
+
+776 
+fch™
+ = 
+èp
+->
+pˇŒs
+[
+idx
+].fchan;
+
+778 i‡(!
+fch™
+) {
+
+782 i‡(
+ch™_id
+ =
+fch™
+->
+physiˇl_ch™_id
+) {
+
+783 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+784  &
+èp
+->
+pˇŒs
+[
+idx
+];
+
+788 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "pˇŒ wôhÖhysiˇ»ch™√»%dÇŸÖª£¡áàÆl\n", 
+ch™_id
+);
+
+789 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+791  
+NULL
+;
+
+792 
+	}
+}
+
+803 
+∑ssive_ˇŒ_t
+ *
+	$ßngoma_isdn_èp_gë_nÁs_pˇŒ_by¸v
+(
+¢gisdn_èp_t
+ **
+èp
+, 
+¸v
+)
+
+805 
+¢gisdn_èp_t
+ *
+ˇŒ_èp
+ = 
+NULL
+;
+
+806 
+¢gisdn_èp_t
+ *
+sig_èp
+ = 
+NULL
+;
+
+807 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+808 
+·dm_•™_t
+ *
+•™
+ = 
+NULL
+;
+
+809 
+idx
+ = 0;
+
+811 i‡(!
+èp
+) {
+
+812 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvalidÅap value\n");
+
+813  
+NULL
+;
+
+816 
+sig_èp
+ = *
+èp
+;
+
+818 
+idx
+ = 0; idx < 
+sig_èp
+->
+nÁs
+.
+åunk
+->
+num_èp_•™s
+; idx++) {
+
+819 i‡(!
+sig_èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+idx
+]) {
+
+820 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s Callref- %d]No ISDN NFAS Tap span foundát index %d\n",
+
+821 
+sig_èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+idx
+);
+
+822  
+NULL
+;
+
+825 
+•™
+ = 
+sig_èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+idx
+];
+
+826 
+ˇŒ_èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+828 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+ˇŒ_èp
+, 
+¸v
+);
+
+830 i‡(
+pˇŒ
+) {
+
+831 *
+èp
+ = 
+ˇŒ_èp
+;
+
+833 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s Callref- %d]FoundÖcallát index %d\n",
+
+834 
+ˇŒ_èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+idx
+);
+
+835  
+pˇŒ
+;
+
+839  
+NULL
+;
+
+840 
+	}
+}
+
+850 
+∑ssive_ˇŒ_t
+ *
+	$ßngoma_isdn_èp_gë_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, *
+ˇŒªf
+)
+
+852 
+i
+;
+
+853 
+¸v
+ = 0;
+
+854 *
+tmp_¸v
+ = 
+NULL
+;
+
+855 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+857 
+	`·dm_muãx_lock
+(
+èp
+->
+pˇŒs_lock
+);
+
+860 
+i
+ = 0; i < 
+	`·dm_¨øy_Àn
+(
+èp
+->
+pˇŒs
+); i++) {
+
+861 i‡(
+ˇŒªf
+) {
+
+862 
+tmp_¸v
+ = (*)
+ˇŒªf
+;
+
+863 
+¸v
+ = *
+tmp_¸v
+;
+
+866 i‡(
+¸v
+ =
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+) {
+
+867 i‡(
+ˇŒªf
+ =
+NULL
+) {
+
+868 
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+ = 1;
+
+869 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "E«blög cÆÃe‡¶Ÿ %d i¿•™ %s\n", 
+i
+, 
+èp
+->
+•™
+->
+«me
+);
+
+870 } i‡(!
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+) {
+
+871 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Recyclying callref slot %d in span %s for callref %d/%p\n",
+
+872 
+i
+, 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+ˇŒªf
+);
+
+873 
+	`mem£t
+(&
+èp
+->
+pˇŒs
+[
+i
+], 0, (tap->pcalls[0]));
+
+875 
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+876 
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+ = 1;
+
+879 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+880 
+pˇŒ
+ = &
+èp
+->
+pˇŒs
+[
+i
+];
+
+881  
+pˇŒ
+;
+
+885 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+886  
+NULL
+;
+
+887 
+	}
+}
+
+889 
+	$ßngoma_isdn_èp_¥öt_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+)
+
+891 
+∑ssive_ˇŒ_t
+* 
+pˇŒ
+ = 
+NULL
+;
+
+892 
+i
+ = 0;
+
+894 
+	`·dm_muãx_lock
+(
+èp
+->
+pˇŒs_lock
+);
+
+897 
+i
+ = 0; i < 
+	`·dm_¨øy_Àn
+(
+èp
+->
+pˇŒs
+); i++) {
+
+898 
+pˇŒ
+ = &
+èp
+->
+pˇŒs
+[
+i
+];
+
+899 i‡(
+pˇŒ
+) {
+
+900 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "PˇŒÖª£¡áà¶Ÿ %d wôh cÆ»ª„ªn˚ vÆuêa†%d\n", 
+i
+, 
+èp
+->
+pˇŒs
+[i].
+ˇŒªf_vÆ
+);
+
+905 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+906 
+	}
+}
+
+916 
+	$ßngoma_isdn_èp_put_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, *
+ˇŒªf
+)
+
+918 
+i
+;
+
+919 
+¸v
+;
+
+920 
+t°¸v
+;
+
+921 *
+tmp_¸v
+ = 
+ˇŒªf
+;
+
+923 i‡(!
+ˇŒªf
+) {
+
+924 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s] C™nŸÖuàpˇŒ f‹ÇuŒ cÆÃef\n", 
+èp
+->
+•™
+->
+«me
+);
+
+928 
+	`·dm_muãx_lock
+(
+èp
+->
+pˇŒs_lock
+);
+
+931 
+¸v
+ = *
+tmp_¸v
+;
+
+935 
+i
+ = 0; i < 
+	`·dm_¨øy_Àn
+(
+èp
+->
+pˇŒs
+); i++) {
+
+936 i‡(!
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+) {
+
+939 
+t°¸v
+ = 
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+;
+
+941 i‡(
+t°¸v
+ =
+¸v
+) {
+
+942 i‡(
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+) {
+
+943 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] Releasing slot %d\n",
+
+944 
+èp
+->
+•™
+->
+«me
+,Å≠->
+pˇŒs
+[
+i
+].
+ch™Id
+,Å≠->pˇŒs[i].
+ˇŒªf_vÆ
+, i);
+
+945 
+	`ßngoma_isdn_èp_ª£t_pˇŒ
+(&
+èp
+->
+pˇŒs
+[
+i
+]);
+
+946 
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+ = 0;
+
+951 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+952 
+	}
+}
+
+961 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_ª£t_pˇŒ
+(
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+)
+
+963 i‡(!
+pˇŒ
+) {
+
+964 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvalidÖcallÅo clear\n");
+
+965  
+FTDM_FAIL
+;
+
+968 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "Resetting Pcall \n");
+
+970 
+pˇŒ
+->
+ˇŒªf_vÆ
+ = 0;
+
+971 
+pˇŒ
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+972 
+pˇŒ
+->
+ch™_¥es
+ = 
+FTDM_FALSE
+;
+
+973 
+pˇŒ
+->
+ªcv_c⁄n
+ = 
+FTDM_FALSE
+;
+
+974 
+pˇŒ
+->
+ªcv_Ÿhî_msg
+ = 
+FTDM_FALSE
+;
+
+975 
+pˇŒ
+->
+rög_evít_£¡
+ = 
+FTDM_FALSE
+;
+
+976 
+pˇŒ
+->
+fch™
+ = 
+NULL
+;
+
+977 
+pˇŒ
+->
+ch™Id
+ = 0;
+
+978 
+pˇŒ
+->
+t_£tup_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+979 
+pˇŒ
+->
+t_c⁄_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+980 
+pˇŒ
+->
+t_msg_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+981 
+	`mem£t
+(&
+pˇŒ
+->
+ˇŒögnum
+.
+digôs
+, 0, (pcall->callingnum.digits));
+
+982 
+	`mem£t
+(&
+pˇŒ
+->
+ˇŒednum
+.
+digôs
+, 0, (pcall->callednum.digits));
+
+983 
+	`mem£t
+(&
+pˇŒ
+->
+ˇŒögnum
+, 0, (pcall->callingnum));
+
+984 
+	`mem£t
+(&
+pˇŒ
+->
+ˇŒednum
+, 0, (pcall->callednum));
+
+985 
+pˇŒ
+->
+èp_msg
+.
+ch™_id
+ = 0;
+
+986 
+pˇŒ
+->
+èp_msg
+.
+•™_id
+ = 0;
+
+987 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_ªf
+ = 0;
+
+988 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_dú
+ = 
+CALL_DIRECTION_NONE
+;
+
+989 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_c⁄
+ = 0;
+
+990 
+	`mem£t
+(&
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+, 0, (pcall->tap_msg.calling_num));
+
+991 
+	`mem£t
+(&
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+, 0, (pcall->tap_msg.called_num));
+
+992 
+	`mem£t
+(&
+pˇŒ
+->
+èp_msg
+, 0, (pcall->tap_msg));
+
+993 
+	`mem£t
+(&
+pˇŒ
+->
+èp_msg
+, 0, (pcall->tap_msg));
+
+995  
+FTDM_SUCCESS
+;
+
+996 
+	}
+}
+
+1006 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_is_c⁄_ªcv
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¸v
+, 
+uöt8_t
+ 
+msgTy≥
+)
+
+1008 
+ˇŒ_ªf
+[25];
+
+1009 
+·dm_°©us_t
+ 
+ªt
+ = 
+FTDM_FAIL
+;
+
+1010 
+c⁄_ˇŒ_öfo_t
+ *
+ˇŒ_öfo
+ = 
+NULL
+;
+
+1012 
+	`mem£t
+(
+ˇŒ_ªf
+, 0 , (call_ref));
+
+1014 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+¸v
+);
+
+1016 
+ˇŒ_öfo
+ = 
+	`hashèbÀ_£¨ch
+(
+èp
+->
+≥nd_ˇŒ_l°
+, (*)
+ˇŒ_ªf
+);
+
+1018 i‡(
+ˇŒ_öfo
+) {
+
+1019 i‡(
+ˇŒ_öfo
+->
+èp_¥o˚ed
+) {
+
+1020 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%s Callref- %d] Call found in hashÅable for whichÅapping isálready started\n",
+
+1021 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1022 
+ªt
+ = 
+FTDM_BREAK
+;
+
+1024 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%s Callref- %d] Call found in hashÅable for which connect isálreadyÑeceived\n",
+
+1025 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1026 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+1029 i‡((
+msgTy≥
+ =
+Q931_DISCONNECT
+Ë|| (msgTy≥ =
+Q931_RELEASE
+)) {
+
+1030 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%†CÆÃef- %d] CÆ»found f‹ whichÅhîêi†nÿSETUP\n", 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1031 
+£tup_nŸ_ªcv
+++;
+
+1032 } i‡(
+msgTy≥
+ !
+Q931_SETUP
+) {
+
+1033 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%s Callref- %d] Call foundálready in hashÜist for message %s\n",
+
+1034 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1035  
+ªt
+;
+
+1038 
+	`hashèbÀ_ªmove
+(
+èp
+->
+≥nd_ˇŒ_l°
+, (*)
+ˇŒ_ªf
+);
+
+1039 
+	`·dm_ß„_‰ì
+(
+ˇŒ_öfo
+);
+
+1042  
+ªt
+;
+
+1043 
+	}
+}
+
+1045 
+¢gisdn_èp_c⁄n_°©e_t
+ 
+	$ßngoma_isdn_èp_gë_pˇŒ_°©e
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¸v
+)
+
+1047 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1048 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+1052 i‡(
+èp
+->
+èp_mode
+ !
+ISDN_TAP_FS
+)
+
+1053  
+PCALL_CONN
+;
+
+1056 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+1057 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥îèp
+->
+•™
+);
+
+1059 i‡((
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+1060 i‡–(
+pˇŒ
+->
+rög_evít_£¡
+ =
+FTDM_TRUE
+Ë&& (pˇŒ->
+ªcv_c⁄n
+ != FTDM_TRUE) ) {
+
+1061  
+PCALL_RING
+;
+
+1064 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%s Callref- %d] We cannot findÖcall forÅheÑefernceÅo get call state\n",
+
+1065 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1068  
+PCALL_CONN
+;
+
+1069 
+	}
+}
+
+1079 
+	$ßngoma_isdn_èp_check_°Æe_ˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+, 
+uöt8_t
+ 
+msgTy≥
+)
+
+1081 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1091 i‡(
+FTDM_SUCCESS
+ =
+	`ßngoma_isdn_èp_is_fch™_öu£
+(
+èp
+, 
+ötfCb
+->
+ch™_id
+)) {
+
+1092 i‡(
+FTDM_FAIL
+ =
+	`ßngoma_isdn_èp_ªl_°Æe_ˇŒ
+(
+èp
+, 
+ötfCb
+->
+ch™_id
+)) {
+
+1093 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d] NŸábÀÅÿªÀa£ STALE CÆl\n", 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+);
+
+1097 i‡(
+FTDM_SUCCESS
+ =
+	`ßngoma_isdn_èp_is_fch™_öu£
+(
+≥îèp
+, 
+ötfCb
+->
+ch™_id
+)) {
+
+1098 i‡(
+FTDM_FAIL
+ =
+	`ßngoma_isdn_èp_ªl_°Æe_ˇŒ
+(
+≥îèp
+, 
+ötfCb
+->
+ch™_id
+)) {
+
+1100 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "[%s:%d] NŸábÀÅÿªÀa£Öì∏STALE CÆl\n", 
+≥îèp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+);
+
+1105 i‡(
+msgTy≥
+ !
+Q931_CONNECT
+) {
+
+1106 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%†CÆÃef- %d] Check f‹ C⁄√˘i⁄Ñe˚ived SèÀ CÆl\n", 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1107 
+	`ßngoma_isdn_èp_check_°Æe_c⁄evt
+(
+èp
+);
+
+1109 
+	}
+}
+
+1118 
+	$ßngoma_isdn_èp_ª£t_pˇŒ_bych™Id
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+)
+
+1120 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+1121 
+i
+ = 0;
+
+1123 
+	`·dm_muãx_lock
+(
+èp
+->
+pˇŒs_lock
+);
+
+1126 
+i
+ = 0; i < 
+	`·dm_¨øy_Àn
+(
+èp
+->
+pˇŒs
+); i++) {
+
+1127 
+pˇŒ
+ = &
+èp
+->
+pˇŒs
+[
+i
+];
+
+1128 i‡(
+pˇŒ
+) {
+
+1129 i‡(
+pˇŒ
+->
+ch™Id
+ =
+ötfCb
+->
+ch™_id
+) {
+
+1130 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] FoundÖcallÖresentát slot %d\n",
+
+1131 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+,Å≠->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+, i);
+
+1133 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, " [%s:%d Callref- %d] Releasing slot %d\n",
+
+1134 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+,Å≠->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+, i);
+
+1136 i‡(
+èp
+->
+pˇŒs
+[
+i
+].
+fch™
+) {
+
+1137 
+	`·dm_log_ch™
+(
+èp
+->
+pˇŒs
+[
+i
+].
+fch™
+, 
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] Got channel on StaleÖcall with channel stateás %s\n",
+
+1138 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+,Å≠->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+, 
+	`·dm_ch™√l_°©e2°r
+—≠->pˇŒs[i].
+fch™
+->
+°©e
+));
+
+1141 
+èp
+->
+pˇŒs
+[
+i
+].
+öu£
+ = 0;
+
+1142 
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒªf_vÆ
+ = 0;
+
+1143 
+èp
+->
+pˇŒs
+[
+i
+].
+fch™
+ = 
+NULL
+;
+
+1144 
+èp
+->
+pˇŒs
+[
+i
+].
+t_£tup_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+1145 
+èp
+->
+pˇŒs
+[
+i
+].
+t_c⁄_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+1146 
+èp
+->
+pˇŒs
+[
+i
+].
+t_msg_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+1147 
+èp
+->
+pˇŒs
+[
+i
+].
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+1148 
+èp
+->
+pˇŒs
+[
+i
+].
+ªcv_c⁄n
+ = 
+FTDM_FALSE
+;
+
+1149 
+èp
+->
+pˇŒs
+[
+i
+].
+ªcv_Ÿhî_msg
+ = 
+FTDM_FALSE
+;
+
+1150 
+èp
+->
+pˇŒs
+[
+i
+].
+rög_evít_£¡
+ = 
+FTDM_FALSE
+;
+
+1151 
+èp
+->
+pˇŒs
+[
+i
+].
+ch™_¥es
+ = 
+FTDM_FALSE
+;
+
+1152 
+èp
+->
+pˇŒs
+[
+i
+].
+ch™Id
+ = 0;
+
+1153 
+	`mem£t
+(&
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒögnum
+.
+digôs
+, 0, (tap->pcalls[i].callingnum.digits));
+
+1154 
+	`mem£t
+(&
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒednum
+.
+digôs
+, 0, (tap->pcalls[i].callednum.digits));
+
+1155 
+	`mem£t
+(&
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒögnum
+, 0, (tap->pcalls[i].callingnum));
+
+1156 
+	`mem£t
+(&
+èp
+->
+pˇŒs
+[
+i
+].
+ˇŒednum
+, 0, (tap->pcalls[i].callednum));
+
+1160 
+pˇŒ
+ = 
+NULL
+;
+
+1163 
+	`·dm_muãx_u∆ock
+(
+èp
+->
+pˇŒs_lock
+);
+
+1164 
+	}
+}
+
+1174 
+	$ßngoma_isdn_èp_check_°Æe_c⁄evt
+(
+¢gisdn_èp_t
+ *
+èp
+)
+
+1176 
+·dm_hash_ôî©‹_t
+ *
+idx
+ = 
+NULL
+;
+
+1177 
+c⁄_ˇŒ_öfo_t
+ *
+ˇŒ_öfo
+ = 
+NULL
+;
+
+1178 c⁄° *
+key
+ = 
+NULL
+;
+
+1179 *
+vÆ
+ = 
+NULL
+;
+
+1180 
+ˇŒ_ªf
+[25];
+
+1181 
+time_t
+ 
+cuº_time
+ = 
+	`time
+(
+NULL
+);
+
+1185 
+idx
+ = 
+	`hashèbÀ_fú°
+(
+èp
+->
+≥nd_ˇŒ_l°
+); idx; idx = 
+	`hashèbÀ_√xt
+(idx)) {
+
+1186 
+	`hashèbÀ_this
+(
+idx
+, &
+key
+, 
+NULL
+, &
+vÆ
+);
+
+1187 i‡(!
+key
+ || !
+vÆ
+) {
+
+1191 
+cuº_time
+ = 
+	`time
+(
+NULL
+);
+
+1193 
+ˇŒ_öfo
+ = (
+c⁄_ˇŒ_öfo_t
+*)
+vÆ
+;
+
+1194 
+	`time
+(&
+cuº_time
+);
+
+1196 i‡(
+	`dif·ime
+(
+cuº_time
+, 
+ˇŒ_öfo
+->
+c⁄ªcv_time
+Ë>
+SNG_TAP_STALE_TME_DURATION
+) {
+
+1197 
+	`mem£t
+(
+ˇŒ_ªf
+, 0, (call_ref));
+
+1198 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+);
+
+1200 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "[%†CÆÃef- %d] Removög SèÀ cÆ»a†found o√ i¿CONNECT hashÜi°.\n", 
+èp
+->
+•™
+->
+«me
+, 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+);
+
+1201 
+	`hashèbÀ_ªmove
+(
+èp
+->
+≥nd_ˇŒ_l°
+, (*)
+ˇŒ_ªf
+);
+
+1202 
+	`·dm_ß„_‰ì
+(
+ˇŒ_öfo
+);
+
+1205 
+	}
+}
+
+1214 
+·dm_ch™√l_t
+* 
+	$ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™√l
+)
+
+1216 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+1217 
+idx
+ = 0;
+
+1218 
+uöt16_t
+ 
+ch™pos
+ = 
+	`SNG_ISDN_CHANNEL
+(
+ch™√l
+);
+
+1220 i‡(!
+èp
+ || !
+ch™√l
+) {
+
+1221 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆid ch™√»%d o∏è∞poöã∏\n", 
+ch™√l
+);
+
+1222  
+NULL
+;
+
+1225 i‡(!
+ch™pos
+ || (ch™po†> 
+èp
+->
+•™
+->
+ch™_cou¡
+)) {
+
+1226 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "Invalid channel %dáságainst chanpos %d ,chan_count %dÑequested in span %s\n",
+
+1227 
+ch™√l
+, 
+ch™pos
+, 
+èp
+->
+•™
+->
+ch™_cou¡
+,èp->•™->
+«me
+);
+
+1228  
+NULL
+;
+
+1232 
+idx
+ = 1; idx < 128; idx++) {
+
+1233 
+fch™
+ = 
+èp
+->
+•™
+->
+ch™√ls
+[
+	`SNG_ISDN_CHANNEL
+(
+idx
+)];
+
+1235 i‡((
+fch™
+ =
+NULL
+Ë|| (fch™->
+physiˇl_ch™_id
+ =
+ch™√l
+)) {
+
+1240 i‡(!
+fch™
+) {
+
+1241 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "Ch™√»%dÑeque°ed o¿•™ %†nŸ found\n", 
+ch™√l
+, 
+èp
+->
+•™
+->
+«me
+);
+
+1242  
+NULL
+;
+
+1245  
+fch™
+;
+
+1246 
+	}
+}
+
+1255 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_is_fch™_öu£
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™√l
+)
+
+1257 
+·dm_°©us_t
+ 
+ªt
+ = 
+FTDM_FAIL
+;
+
+1258 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+1260 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "Gëtög ch™√»%d sètus\n", 
+ch™√l
+);
+
+1262 i‡(
+NULL
+ =(
+fch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+èp
+, 
+ch™√l
+))) {
+
+1263  
+ªt
+;
+
+1266 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+1269 i‡((
+	`·dm_ã°_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_INUSE
+)Ë|| (·dm_ã°_Êag(fch™, 
+FTDM_CHANNEL_OPEN
+))) {
+
+1270 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "Ch™√»i†›í o∏ö u£..°©e[%s]\n", 
+	`·dm_ch™√l_°©e2°r
+(fch™->
+°©e
+));
+
+1271 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+1275 i‡((
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+Ë&& (
+ªt
+ !
+FTDM_SUCCESS
+)) {
+
+1276 i‡((
+fch™
+->
+°©e
+ !
+FTDM_CHANNEL_STATE_DOWN
+Ë&& (fch™->°©ê< 
+FTDM_CHANNEL_STATE_TERMINATING
+)) {
+
+1277 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "Ch™√»ö sèã [%s]. PÀa£Ññó£Åhi†ch™√l!\n", 
+	`·dm_ch™√l_°©e2°r
+(fch™->
+°©e
+));
+
+1278 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+1279 } i‡(
+fch™
+->
+°©e
+ =
+FTDM_CHANNEL_STATE_HANGUP
+) {
+
+1280 
+	`·dm_log_ch™_msg
+(
+fch™
+, 
+FTDM_LOG_INFO
+, "Channel is in HANGUP stateÖlease move channelÅo DOWN state\n");
+
+1281 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+1282 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+1286 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+1288  
+ªt
+;
+
+1289 
+	}
+}
+
+1298 
+__ölöe__
+ 
+·dm_ch™√l_t
+ *
+	$ßngoma_isdn_èp_gë_fch™
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+ch™√l
+, 
+f‹˚_˛ór_ch™
+, 
+›í
+)
+
+1300 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+1301 
+îr
+ = 0;
+
+1303 
+fch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+èp
+, 
+ch™√l
+);
+
+1304 i‡(!
+fch™
+) {
+
+1305 
+îr
+ = 1;
+
+1306 
+d⁄e
+;
+
+1309 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+1311 i‡(
+	`·dm_ã°_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_INUSE
+)) {
+
+1312 
+ªu£_ch™_c⁄_ªcv
+++;
+
+1313 i‡(
+f‹˚_˛ór_ch™
+) {
+
+1314 
+	`·dm_˛ór_Êag
+(
+fch™
+, 
+FTDM_CHANNEL_INUSE
+);
+
+1316 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_ERROR
+, "Ch™√»i†Æªady i¿u£ ..°©e[%s]\n", 
+	`·dm_ch™√l_°©e2°r
+(fch™->
+°©e
+));
+
+1317 
+îr
+ = 1;
+
+1318 
+d⁄e
+;
+
+1322 i‡–(
+èp
+->
+èp_mode
+ = 
+ISDN_TAP_FS
+Ë&& (!
+›í
+) )
+
+1323 
+d⁄e
+;
+
+1325 i‡(
+	`·dm_ch™√l_›í_ch™
+(
+fch™
+Ë!
+FTDM_SUCCESS
+) {
+
+1326 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_ERROR
+, "CouldÇot openÅap channel %s\n","");
+
+1327 
+îr
+ = 1;
+
+1328 
+d⁄e
+;
+
+1330 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_DEBUG
+, "Tap channel openned successfully \n %s","");
+
+1332 
+	`mem£t
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 0, (fchan->caller_data.cid_num.digits));
+
+1333 
+	`mem£t
+(
+fch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 0, (fchan->caller_data.dnis.digits));
+
+1334 
+	`mem£t
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 0, (fchan->caller_data.cid_name));
+
+1335 
+fch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 0;
+
+1337 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 
+pˇŒ
+->
+ˇŒögnum
+.digits);
+
+1338 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 
+pˇŒ
+->
+ˇŒögnum
+.
+digôs
+);
+
+1339 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 
+pˇŒ
+->
+ˇŒednum
+.digits);
+
+1340 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+™i
+.
+digôs
+, 
+pˇŒ
+->
+ˇŒögnum
+.digits);
+
+1341 
+fch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 
+pˇŒ
+->
+ˇŒªf_vÆ
+;
+
+1343 
+d⁄e
+:
+
+1344 i‡(
+fch™
+) {
+
+1345 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+1348 i‡(
+îr
+) {
+
+1349  
+NULL
+;
+
+1352  
+fch™
+;
+
+1353 
+	}
+}
+
+1363 
+	$£nd_¥Ÿocﬁ_øw_d©a
+(
+isdn_èp_msg_öfo_t
+ *
+d©a
+, 
+·dm_ch™√l_t
+ *
+·dmch™
+)
+
+1365 *
+myd©a
+;
+
+1366 
+·dm_sigmsg_t
+ 
+sig
+;
+
+1368 
+	`·dm_as£π
+(
+d©a
+, "InvalidÖrotocolÑaw dataÖointer. \n");
+
+1369 
+	`·dm_as£π
+(
+·dmch™
+, "Invalid ftdm channelÖointer. \n");
+
+1371 
+	`mem£t
+(&
+sig
+, 0, (
+·dm_sigmsg_t
+));
+
+1372 
+sig
+.
+evít_id
+ = 
+FTDM_SIGEVENT_RAW
+;
+
+1373 
+sig
+.
+ch™√l
+ = 
+·dmch™
+;
+
+1375 
+myd©a
+ = 
+	`·dm_mÆloc
+((
+isdn_èp_msg_öfo_t
+));
+
+1376 
+	`·dm_as£π
+(
+myd©a
+, "FailedÅoállocate memory\n");
+
+1377 
+	`mem˝y
+(
+myd©a
+, 
+d©a
+, (
+isdn_èp_msg_öfo_t
+));
+
+1379 
+	`·dm_sigmsg_£t_øw_d©a
+(&
+sig
+, 
+myd©a
+, (
+isdn_èp_msg_öfo_t
+));
+
+1381 i‡(
+	`·dm_•™_£nd_sig«l
+(
+·dmch™
+->
+•™
+, &
+sig
+Ë!
+FTDM_SUCCESS
+) {
+
+1382 
+	`·dm_log_ch™_msg
+(
+·dmch™
+, 
+FTDM_LOG_CRIT
+, "FailedÅo sendÑaw dataÉventÅo user \n");
+
+1384 
+	}
+}
+
+1394 
+	$h™dÀ_isdn_∑ssive_evít
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+)
+
+1396 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1397 
+·dm_boﬁ_t
+ 
+is_c⁄_ªcv
+ = 
+FTDM_FALSE
+;
+
+1398 
+·dm_°©us_t
+ 
+°©us
+ = 
+FTDM_FAIL
+;
+
+1399 
+¢gisdn_èp_t
+ *
+tmp_èp
+ = 
+NULL
+;
+
+1400 
+time_t
+ 
+cuº_time
+ = 
+	`time
+(
+NULL
+);
+
+1401 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+1402 
+·dm_•™_t
+ *
+•™
+ = 
+NULL
+;
+
+1403 
+¸v
+ = 0;
+
+1405 i‡(!
+ötfCb
+) {
+
+1406 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "handle_isdn_passive_event failed.Invalid intfCb \n");
+
+1410 
+¸v
+ = 
+ötfCb
+->
+ˇŒ_ªf
+;
+
+1412 i‡(
+ötfCb
+->
+ch™_id
+) {
+
+1413 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] Channel IdÖresent for message %s\n",
+
+1414 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1417 i‡(
+èp
+->
+nÁs
+.
+åunk
+) {
+
+1418 i‡((
+ötfCb
+->
+öãrÁ˚_id
+ < 0Ë&& (ötfCb->
+ch™_id
+)) {
+
+1419 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] Invalid Interface ID %d for message %s\n",
+
+1420 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, i¡fCb->
+öãrÁ˚_id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1424 i‡(
+ötfCb
+->
+öãrÁ˚_id
+ > -1) {
+
+1425 i‡(!
+èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+ötfCb
+->
+öãrÁ˚_id
+]) {
+
+1426 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] NFAS group %s doesÇot haveÜogical span ID %d for message %s\n",
+
+1427 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+,Å≠->
+nÁs
+.
+åunk
+->«me, i¡fCb->
+öãrÁ˚_id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1430 
+•™
+ = 
+èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+ötfCb
+->
+öãrÁ˚_id
+];
+
+1432 
+èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+1433 
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1436 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_nÁs_pˇŒ_by¸v
+(&
+èp
+, 
+¸v
+);
+
+1437 i‡(!
+pˇŒ
+) {
+
+1438 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_nÁs_pˇŒ_by¸v
+(&
+≥îèp
+, 
+¸v
+);
+
+1439 i‡(!
+pˇŒ
+) {
+
+1440 
+msgTy≥
+) {
+
+1441 
+Q931_SETUP
+:
+
+1442 
+Q931_SETUP_ACK
+:
+
+1443 
+Q931_PROGRESS
+:
+
+1444 
+Q931_PROCEEDING
+:
+
+1445 
+Q931_ALERTING
+:
+
+1446 
+Q931_INFORMATION
+:
+
+1447 
+Q931_CONNECT
+:
+
+1448 
+Q931_DISCONNECT
+:
+
+1449 
+Q931_RELEASE
+:
+
+1450 
+	`·dm_log
+(
+FTDM_LOG_NOTICE
+, "[%s Callref- %d] NoÅap/span found for %s message\n",
+
+1451 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1458 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%†CÆÃef- %d] CÆ»found o¿è∞≥î•™\n", 
+≥îèp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1460 
+èp
+ = 
+≥îèp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1462 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%†CÆÃef- %d] CÆ»found o¿è∞•™\n", 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+1464 
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1468 
+pˇŒ
+ = 
+NULL
+;
+
+1470 
+msgTy≥
+) {
+
+1471 
+Q931_SETUP
+:
+
+1473 i‡(!
+ötfCb
+->
+ch™_id
+) {
+
+1474 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] Invalid Channel found in setup message\n",
+
+1475 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1476 
+£tup_ªcv_övÆid_ch™Id
+++;
+
+1482 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] Call SETUPÑecieved\n",
+
+1483 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1486 
+£tup_ªcv
+++;
+
+1487 
+°©us
+ = 
+	`ßngoma_isdn_èp_is_c⁄_ªcv
+(
+èp
+, 
+¸v
+, 
+msgTy≥
+);
+
+1488 i‡(
+°©us
+ =
+FTDM_SUCCESS
+) {
+
+1489 
+is_c⁄_ªcv
+ = 
+FTDM_TRUE
+;
+
+1490 } i‡(
+°©us
+ =
+FTDM_BREAK
+) {
+
+1491 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, &
+¸v
+);
+
+1492 i‡(
+pˇŒ
+) {
+
+1495 
+	`time
+(&
+cuº_time
+);
+
+1496 i‡(!(
+	`dif·ime
+(
+cuº_time
+, 
+pˇŒ
+->
+t_c⁄_ªcv
+Ë> 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+)) {
+
+1497 
+is_c⁄_ªcv
+ = 
+FTDM_FALSE
+;
+
+1498 
+d⁄e
+;
+
+1500 
+msg_ªcv_a·_time
+++;
+
+1501 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+1503 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+);
+
+1506 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] PcallÇot found for whichÅapping isálready started\n",
+
+1507 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1515 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+);
+
+1516 i‡(
+pˇŒ
+) {
+
+1517 i‡(
+pˇŒ
+->
+ªcv_Ÿhî_msg
+) {
+
+1520 
+	`time
+(&
+cuº_time
+);
+
+1521 i‡(!(
+	`dif·ime
+(
+cuº_time
+, 
+pˇŒ
+->
+t_msg_ªcv
+Ë> 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+)) {
+
+1522 
+is_c⁄_ªcv
+ = 
+FTDM_FALSE
+;
+
+1523 
+d⁄e
+;
+
+1525 
+msg_ªcv_a·_time
+++;
+
+1526 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] CreatingáÇewÖcall SETUP isÑeceivedáfter %d seconds\n",
+
+1527 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+);
+
+1532 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_¸óã_pˇŒ
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1533 i‡(!
+pˇŒ
+) {
+
+1534 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] FailedÅo createÖcall for %s\n",
+
+1535 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1539 
+pˇŒ
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+1540 
+pˇŒ
+->
+ch™Id
+ = 
+ötfCb
+->
+ch™_id
+;
+
+1542 
+d⁄e
+:
+
+1543 
+pˇŒ
+->
+ªcv_£tup
+ = 
+FTDM_TRUE
+;
+
+1545 
+	`time
+(&
+pˇŒ
+->
+t_£tup_ªcv
+);
+
+1548 i‡(!
+	`·dm_°æí_zîo
+(
+ötfCb
+->
+˛d_num
+)) {
+
+1549 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,"˛d_num[%s]\n", 
+ötfCb
+->
+˛d_num
+);
+
+1550 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+ˇŒednum
+.
+digôs
+, 
+ötfCb
+->
+˛d_num
+);
+
+1554 i‡(!
+	`·dm_°æí_zîo
+(
+ötfCb
+->
+˛g_num
+)) {
+
+1555 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,"˛g_num[%s]\n", 
+ötfCb
+->
+˛g_num
+);
+
+1556 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+ˇŒögnum
+.
+digôs
+, 
+ötfCb
+->
+˛g_num
+);
+
+1557 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,"˛g_num[%s]\n", 
+pˇŒ
+->
+ˇŒögnum
+.
+digôs
+);
+
+1560 
+	`ßngoma_isdn_èp_£t_èp_msg_öfo
+(
+èp
+, 
+msgTy≥
+, 
+pˇŒ
+, 
+ötfCb
+);
+
+1563 i‡((
+pˇŒ
+->
+ch™_¥es
+ =
+FTDM_FALSE
+Ë&& (
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+)) {
+
+1564 
+	`ßngoma_isdn_bidú_èp_gíî©e_övôe
+(
+èp
+, 
+pˇŒ
+, 
+¸v
+);
+
+1568 i‡(
+is_c⁄_ªcv
+ =
+FTDM_TRUE
+) {
+
+1569 
+tmp_èp
+ = 
+èp
+;
+
+1570 
+èp
+ = 
+≥îèp
+;
+
+1571 
+≥îèp
+ = 
+tmp_èp
+;
+
+1572 
+msgTy≥
+ = 
+Q931_CONNECT
+;
+
+1573 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] Sending CONNECTÉvent,ás CONNECT isálreadyÑeceivedÉarlier\n",
+
+1574 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1578 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+1579 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1581 
+	`ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1585 i‡(
+	`ßngoma_isdn_èp_gë_pˇŒ_°©e
+(
+èp
+, 
+¸v
+Ë=
+PCALL_RING
+)
+
+1586 
+	`ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+Q931_CONNECT
+, 
+ötfCb
+, 
+¸v
+);
+
+1592 
+Q931_SETUP_ACK
+:
+
+1593 
+Q931_PROGRESS
+:
+
+1594 
+Q931_PROCEEDING
+:
+
+1595 
+Q931_ALERTING
+:
+
+1624 i‡(
+ötfCb
+->
+ch™_id
+) {
+
+1625 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d CÆÃef- %d] CÆ»%†ª˚ived\n", 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1626 
+°©us
+ = 
+	`ßngoma_isdn_èp_is_c⁄_ªcv
+(
+≥îèp
+, 
+¸v
+, 
+msgTy≥
+);
+
+1629 i‡((
+°©us
+ =
+FTDM_FAIL
+Ë|| (°©u†=
+FTDM_BREAK
+)) {
+
+1630 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+≥îèp
+, 
+¸v
+);
+
+1631 i‡(
+pˇŒ
+) {
+
+1633 i‡(
+pˇŒ
+->
+ªcv_c⁄n
+) {
+
+1636 
+	`time
+(&
+cuº_time
+);
+
+1637 i‡(!(
+	`dif·ime
+(
+cuº_time
+, 
+pˇŒ
+->
+t_c⁄_ªcv
+Ë> 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+)) {
+
+1641 
+msg_ªcv_a·_time
+++;
+
+1642 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+1644 
+≥îèp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+);
+
+1646 } i‡(
+pˇŒ
+->
+ªcv_£tup
+) {
+
+1649 
+	`time
+(&
+cuº_time
+);
+
+1650 i‡(!(
+	`dif·ime
+(
+cuº_time
+, 
+pˇŒ
+->
+t_£tup_ªcv
+Ë> 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+)) {
+
+1653 
+msg_ªcv_a·_time
+++;
+
+1654 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+1656 
+≥îèp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+);
+
+1664 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_¸óã_pˇŒ
+(
+≥îèp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1665 i‡(!
+pˇŒ
+) {
+
+1666 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] FailedÅo createÖcall for %s\n",
+
+1667 
+≥îèp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1670 
+pˇŒ
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+1671 
+pˇŒ
+->
+ch™Id
+ = 
+ötfCb
+->
+ch™_id
+;
+
+1672 
+pˇŒ
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+1673 
+pˇŒ
+->
+rög_evít_£¡
+ = 
+FTDM_FALSE
+;
+
+1674 
+pˇŒ
+->
+ªcv_Ÿhî_msg
+ = 
+FTDM_TRUE
+;
+
+1675 
+	`time
+(&
+pˇŒ
+->
+t_msg_ªcv
+);
+
+1678 i‡((
+pˇŒ
+->
+ch™_¥es
+ =
+FTDM_FALSE
+Ë&& (
+≥îèp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+)) {
+
+1679 
+	`ßngoma_isdn_bidú_èp_gíî©e_övôe
+(
+≥îèp
+, 
+pˇŒ
+, 
+¸v
+);
+
+1682 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] Sending CONNECTÉvent,ás CONNECT isálreadyÑeceivedÉarlier onÑeceipt of %s\n",
+
+1683 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1685 i‡(
+°©us
+ =
+FTDM_SUCCESS
+) {
+
+1686 
+pˇŒ
+->
+ªcv_Ÿhî_msg
+ = 
+FTDM_FALSE
+;
+
+1687 
+pˇŒ
+->
+t_msg_ªcv
+ = 
+	`time
+(
+NULL
+);
+
+1689 
+msgTy≥
+ = 
+Q931_CONNECT
+;
+
+1692 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+1693 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1695 
+	`ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1699 i‡(
+	`ßngoma_isdn_èp_gë_pˇŒ_°©e
+(
+èp
+, 
+¸v
+Ë=
+PCALL_RING
+)
+
+1700 
+	`ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+Q931_CONNECT
+, 
+ötfCb
+, 
+¸v
+);
+
+1709 
+Q931_INFORMATION
+:
+
+1711 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d]INFORMATION messageÑecieved.\n",
+
+1712 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1714 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+);
+
+1716 i‡(
+pˇŒ
+) {
+
+1718 i‡(!
+	`·dm_°æí_zîo
+(
+ötfCb
+->
+˛d_num
+)) {
+
+1719 
+digôs
+[25];
+
+1721 
+	`•rötf
+(
+digôs
+,"%s%s",
+pˇŒ
+->
+ˇŒednum
+.digôs,
+ötfCb
+->
+˛d_num
+);
+
+1722 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+ˇŒednum
+.
+digôs
+, digits);
+
+1723 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,"[%s Callref- %d]Received cld_num[%s] in INFORMATION message. Called Number Digits[%s] \n",
+
+1724 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+ötfCb
+->
+˛d_num
+, 
+pˇŒ
+->
+ˇŒednum
+.
+digôs
+);
+
+1731 
+Q931_CONNECT
+:
+
+1732 
+c⁄√˘_ªcv
+++;
+
+1734 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+1735 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1737 
+	`ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1741 i‡(
+	`ßngoma_isdn_èp_gë_pˇŒ_°©e
+(
+èp
+, 
+¸v
+Ë=
+PCALL_RING
+)
+
+1742 
+	`ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+èp
+, 
+Q931_CONNECT
+, 
+ötfCb
+, 
+¸v
+);
+
+1746 
+Q931_DISCONNECT
+:
+
+1747 
+Q931_RELEASE
+:
+
+1748 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+1749 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_ªl
+(
+èp
+, 
+msgTy≥
+, 
+¸v
+);
+
+1751 
+	`ßngoma_isdn_èp_h™dÀ_evít_ªl
+(
+èp
+, 
+msgTy≥
+, 
+¸v
+);
+
+1756 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Ign‹ögÖassivêevíà%d o¿•™ %s\n", 
+msgTy≥
+, 
+èp
+->
+•™
+->
+«me
+);
+
+1760 
+	}
+}
+
+1769 
+∑ssive_ˇŒ_t
+ *
+	$ßngoma_isdn_èp_¸óã_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+)
+
+1771 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1772 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+1775 
+	`ßngoma_isdn_èp_check_°Æe_ˇŒ
+(
+èp
+, 
+ötfCb
+, 
+¸v
+, 
+msgTy≥
+);
+
+1778 
+	`ßngoma_isdn_èp_ª£t_pˇŒ_bych™Id
+(
+èp
+, 
+ötfCb
+, 
+¸v
+);
+
+1782 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, &
+¸v
+);
+
+1783 i‡(!
+pˇŒ
+) {
+
+1784 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] CreatingÇewÖcall for message %s\n",
+
+1785 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1789 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, 
+NULL
+);
+
+1790 i‡(!
+pˇŒ
+) {
+
+1791 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] FailedÅo getá freeÖassive ISDN call slot for message %s\n",
+
+1792 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1795 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "***** Print TAP Pcalls structure *****\n");
+
+1796 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+èp
+);
+
+1798 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "\n***** Print PEERTAP Pcalls structure *****\n");
+
+1799 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+≥îèp
+);
+
+1801  
+NULL
+;
+
+1804 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d]InitializingÖcall for message %s\n",
+
+1805 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1806 
+	`ßngoma_isdn_èp_ª£t_pˇŒ
+(
+pˇŒ
+);
+
+1809  
+pˇŒ
+;
+
+1810 
+	}
+}
+
+1820 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_h™dÀ_evít_c⁄
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+)
+
+1822 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+1823 
+ˇŒ_ªf
+[25] = { 0 };
+
+1824 
+c⁄_ˇŒ_öfo_t
+ *
+ˇŒ_öfo
+ = 
+NULL
+;
+
+1825 
+∑ssive_ˇŒ_t
+ *
+≥îpˇŒ
+ = 
+NULL
+;
+
+1826 
+·dm_ch™√l_t
+ *
+≥îfch™
+ = 
+NULL
+;
+
+1827 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+1828 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+1829 *
+¸v_key
+ = 
+NULL
+;
+
+1840 i‡(!(
+≥îpˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+≥îèp
+, 
+¸v
+))) {
+
+1845 
+ˇŒ_öfo
+ = 
+	`·dm_ˇŒoc
+((*call_info), 1);
+
+1846 i‡(!
+ˇŒ_öfo
+) {
+
+1847 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "U«bÀÅÿÆloˇã mem‹y wôh crv = %d i¿≥îÅ≠ cÆ»li° f‹ s∑¿%s\n", 
+¸v
+, 
+èp
+->
+•™
+->
+«me
+);
+
+1848  
+FTDM_FAIL
+;
+
+1852 
+ˇŒ_öfo
+->
+c⁄ªcv_time
+ = 
+	`time
+(
+NULL
+);
+
+1853 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+ = 0;
+
+1854 
+ˇŒ_öfo
+->
+msgTy≥
+ = 0;
+
+1855 
+ˇŒ_öfo
+->
+ªcv_c⁄
+ = 
+FTDM_FALSE
+;
+
+1856 
+ˇŒ_öfo
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+1857 
+ˇŒ_öfo
+->
+èp_¥o˚ed
+ = 
+FTDM_FALSE
+;
+
+1860 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+¸v
+);
+
+1861 i‡(
+	`hashèbÀ_£¨ch
+(
+≥îèp
+->
+≥nd_ˇŒ_l°
+, (*)
+ˇŒ_ªf
+)) {
+
+1862 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "CÆ»wôh cÆ»ª„ª˚ %d i†Æªady in£πed i¿thêhashÅabÀ\n", 
+¸v
+);
+
+1863 
+	`·dm_ß„_‰ì
+(
+ˇŒ_öfo
+);
+
+1864  
+FTDM_SUCCESS
+;
+
+1868 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+1871 
+	`time
+(&
+ˇŒ_öfo
+->
+c⁄ªcv_time
+);
+
+1874 
+ˇŒ_öfo
+->
+msgTy≥
+ = msgType;
+
+1876 i‡(
+msgTy≥
+ =
+Q931_CONNECT
+) {
+
+1877 
+ˇŒ_öfo
+->
+ªcv_c⁄
+ = 
+FTDM_TRUE
+;
+
+1879 
+ˇŒ_öfo
+->
+ªcv_c⁄
+ = 
+FTDM_FALSE
+;
+
+1881 
+ˇŒ_öfo
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+1883 i‡(
+ötfCb
+->
+ch™_id
+) {
+
+1884 
+ˇŒ_öfo
+->
+èp_¥o˚ed
+ = 
+FTDM_TRUE
+;
+
+1886 
+ˇŒ_öfo
+->
+èp_¥o˚ed
+ = 
+FTDM_FALSE
+;
+
+1889 
+	`mem£t
+(
+ˇŒ_ªf
+, 0 , (call_ref));
+
+1890 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+¸v
+);
+
+1892 
+¸v_key
+ = 
+	`·dm_°rdup
+(
+ˇŒ_ªf
+);
+
+1894 i‡(!
+	`hashèbÀ_ö£π
+(
+≥îèp
+->
+≥nd_ˇŒ_l°
+, (*)
+¸v_key
+, 
+ˇŒ_öfo
+, 
+HASHTABLE_FLAG_FREE_KEY
+)) {
+
+1895 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "U«bÀÅÿö£π cÆ»öfÿf‹ cÆ»ª„ªn˚ vÆuêa†%d\n", 
+¸v
+);
+
+1896  
+FTDM_FAIL
+;
+
+1899 i‡(
+ötfCb
+->
+ch™_id
+) {
+
+1900 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d CÆÃef- %d] Found ch™√»ID i¿CONNECT mesßge\n", 
+èp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1902 
+≥îpˇŒ
+ = 
+	`ßngoma_isdn_èp_¸óã_pˇŒ
+(
+≥îèp
+, 
+msgTy≥
+, 
+ötfCb
+, 
+¸v
+);
+
+1903 i‡(!
+≥îpˇŒ
+) {
+
+1904 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] FailedÅo createÖcall. So, Lets wait for SETUPÅo beÑeceived",
+
+1905 
+≥îèp
+->
+•™
+->
+«me
+, 
+ötfCb
+->
+ch™_id
+, 
+¸v
+);
+
+1906  
+FTDM_FAIL
+;
+
+1909 
+≥îpˇŒ
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+1910 
+≥îpˇŒ
+->
+ch™Id
+ = 
+ötfCb
+->
+ch™_id
+;
+
+1911 
+≥îpˇŒ
+->
+ªcv_£tup
+ = 
+FTDM_FALSE
+;
+
+1913 
+c⁄√˘_ªcv_wôh_ch™Id
+++;
+
+1915 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s Callref- %d] HoldÉventÖrocessingás %sÉvent isÑeceived before SETUP\n",
+
+1916 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1918 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+1920 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1922  
+FTDM_FAIL
+;
+
+1928 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d CÆÃef- %d] %†evíàª˚ive\n", 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+1931 i‡((
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+1932 i‡(
+pˇŒ
+->
+ªcv_c⁄n
+ =
+FTDM_TRUE
+) {
+
+1933 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,
+
+1935 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+1936  
+FTDM_FAIL
+;
+
+1940 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, &
+¸v
+);
+
+1941 i‡(!
+pˇŒ
+) {
+
+1943 
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+èp
+, 
+NULL
+);
+
+1944 i‡(!
+pˇŒ
+) {
+
+1945 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] FailedÅo getá freeÖeer ISDNÖassive call slot!\n",
+
+1946 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+1948 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "***** Print TAP Pcalls structure *****\n");
+
+1949 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+èp
+);
+
+1951 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "\n***** Print PEERTAP Pcalls structure *****\n");
+
+1952 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+≥îèp
+);
+
+1954  
+FTDM_FAIL
+;
+
+1957 
+	`ßngoma_isdn_èp_ª£t_pˇŒ
+(
+pˇŒ
+);
+
+1959 
+pˇŒ
+->
+ˇŒªf_vÆ
+ = 
+¸v
+;
+
+1960 i‡(
+≥îpˇŒ
+->
+ch™Id
+) {
+
+1961 
+pˇŒ
+->
+ch™Id
+ = 
+≥îpˇŒ
+->chanId;
+
+1962 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög ch™Idá†%d f‹ %†evíàª˚ived o¿S∑¿%†‰om it†≥î\n", 
+pˇŒ
+->
+ch™Id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+èp
+->
+•™
+->
+«me
+);
+
+1963 } i‡(
+ötfCb
+->
+ch™_id
+) {
+
+1964 
+pˇŒ
+->
+ch™Id
+ = 
+ötfCb
+->
+ch™_id
+;
+
+1965 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög ch™Idá†%d f‹ %†evíàª˚ived o¿S∑¿%s\n", 
+pˇŒ
+->
+ch™Id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+èp
+->
+•™
+->
+«me
+);
+
+1967 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "InvÆid ch™Idá†%d f‹ %†evíàª˚ived o¿S∑¿%s\n", 
+ötfCb
+->
+ch™_id
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+èp
+->
+•™
+->
+«me
+);
+
+1968  
+FTDM_FAIL
+;
+
+1973 i‡(
+pˇŒ
+->
+rög_evít_£¡
+ =
+FTDM_FALSE
+) {
+
+1975 
+fch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™
+(
+èp
+, 
+pˇŒ
+,ÖˇŒ->
+ch™Id
+, 1, 1);
+
+1976 i‡(!
+fch™
+) {
+
+1977 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] ConnectÑequested on odd/unavailable\n",
+
+1978 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+1979  
+FTDM_FAIL
+;
+
+1983 
+≥îfch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™
+(
+≥îèp
+, 
+≥îpˇŒ
+,ÖìΩˇŒ->
+ch™Id
+, 1, 
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_STEREO
+ ? 0 : 1);
+
+1984 i‡(!
+≥îfch™
+) {
+
+1985 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "[%s:%d Callref- %d] ConnectÑequested on odd/unavailable channel\n",
+
+1986 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+1987  
+FTDM_FAIL
+;
+
+1990 
+pˇŒ
+->
+fch™
+ = fchan;
+
+1991 
+≥îpˇŒ
+->
+fch™
+ = 
+≥îfch™
+;
+
+1994 i‡((
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_BOTH
+Ë|| (èp->mixaudiÿ=
+ISDN_TAP_AUDIO_MIX_STEREO
+)) {
+
+1996 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 
+≥îpˇŒ
+->
+ˇŒögnum
+.digits);
+
+1997 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 
+≥îpˇŒ
+->
+ˇŒögnum
+.
+digôs
+);
+
+1998 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 
+≥îpˇŒ
+->
+ˇŒednum
+.digits);
+
+1999 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+™i
+.
+digôs
+, 
+≥îpˇŒ
+->
+ˇŒögnum
+.digits);
+
+2000 
+fch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 
+¸v
+;
+
+2003 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+2004 
+fch™
+->
+ˇŒ_d©a
+ = 
+≥îfch™
+;
+
+2005 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_RING
+);
+
+2006 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+2009 
+pˇŒ
+->
+rög_evít_£¡
+ = 
+FTDM_TRUE
+;
+
+2012 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+2014 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+2015 
+≥îfch™
+->
+ˇŒ_d©a
+ = 
+fch™
+;
+
+2016 i‡(
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_NULL
+) {
+
+2017 
+	`·dm_£t_°©e
+(
+≥îfch™
+, 
+FTDM_CHANNEL_STATE_RING
+);
+
+2019 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+2022 
+≥îpˇŒ
+->
+rög_evít_£¡
+ = 
+FTDM_TRUE
+;
+
+2025 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥îèp
+->
+•™
+);
+
+2028 i‡(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_FS
+)
+
+2029  
+FTDM_SUCCESS
+;
+
+2031 
+fch™
+ = 
+pˇŒ
+->fchan;
+
+2032 
+≥îfch™
+ = 
+≥îpˇŒ
+->
+fch™
+;
+
+2035 
+≥îpˇŒ
+->
+ªcv_c⁄n
+ = 
+FTDM_TRUE
+;
+
+2036 
+pˇŒ
+->
+ªcv_c⁄n
+ = 
+FTDM_TRUE
+;
+
+2039 
+	`time
+(&
+≥îpˇŒ
+->
+t_c⁄_ªcv
+);
+
+2040 
+	`time
+(&
+pˇŒ
+->
+t_c⁄_ªcv
+);
+
+2045 i‡(!
+pˇŒ
+) {
+
+2046 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d] GettingÅheÖcall\n",
+
+2047 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+2049 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+2050 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,
+
+2052 
+èp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+2053  
+FTDM_FAIL
+;
+
+2057 
+	`ßngoma_isdn_èp_£t_èp_msg_öfo
+(
+èp
+, 
+msgTy≥
+, 
+pˇŒ
+, 
+ötfCb
+);
+
+2059 
+pˇŒ
+->
+èp_msg
+.
+ch™_id
+ = 
+≥îpˇŒ
+->tap_msg.chan_id;
+
+2061 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_c⁄
+ = 1;
+
+2064 
+	`mem£t
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+, 0, (pcall->tap_msg.called_num));
+
+2065 
+	`mem£t
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+, 0, (pcall->tap_msg.calling_num));
+
+2067 i‡(!
+	`·dm_°æí_zîo
+(
+≥îpˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+)) {
+
+2068 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+, 
+≥îpˇŒ
+->tap_msg.called_num);
+
+2069 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆÀd Numbî[%s] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+);
+
+2072 i‡(!
+	`·dm_°æí_zîo
+(
+≥îpˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+)) {
+
+2073 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+, 
+≥îpˇŒ
+->tap_msg.calling_num);
+
+2074 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆlög Numbî[%s] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+);
+
+2077 
+≥îpˇŒ
+->
+èp_msg
+.
+ˇŒ_c⁄
+ = 1;
+
+2079 i‡(!
+pˇŒ
+->
+fch™
+) {
+
+2080 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,
+
+2082 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+2083  
+FTDM_FAIL
+;
+
+2086 i‡(((
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_BOTH
+Ë|| (èp->mixaudiÿ=
+ISDN_TAP_AUDIO_MIX_STEREO
+)) &&
+
+2087 !
+	`·dm_°æí_zîo
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+)) {
+
+2088 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_num
+.
+digôs
+, 
+≥îpˇŒ
+->
+ˇŒögnum
+.digits);
+
+2089 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+cid_«me
+, 
+≥îpˇŒ
+->
+ˇŒögnum
+.
+digôs
+);
+
+2090 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+dnis
+.
+digôs
+, 
+≥îpˇŒ
+->
+ˇŒednum
+.digits);
+
+2091 
+	`·dm_£t_°rög
+(
+fch™
+->
+ˇŒî_d©a
+.
+™i
+.
+digôs
+, 
+≥îpˇŒ
+->
+ˇŒögnum
+.digits);
+
+2092 
+fch™
+->
+ˇŒî_d©a
+.
+ˇŒ_ª„ªn˚
+ = 
+¸v
+;
+
+2096 
+	`·dm_ch™√l_lock
+(
+pˇŒ
+->
+fch™
+);
+
+2097 
+	`·dm_log_ch™
+(
+pˇŒ
+->
+fch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] Tap callánswered in state %s\n",
+
+2098 
+èp
+->
+•™
+->
+«me
+, 
+pˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+’ˇŒ->
+fch™
+->
+°©e
+));
+
+2100 
+	`·dm_£t_pÊag
+(
+pˇŒ
+->
+fch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+);
+
+2101 
+	`·dm_£t_°©e
+(
+pˇŒ
+->
+fch™
+, 
+FTDM_CHANNEL_STATE_UP
+);
+
+2102 
+	`·dm_ch™√l_u∆ock
+(
+pˇŒ
+->
+fch™
+);
+
+2105 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+2107 i‡(
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_NULL
+) {
+
+2109 
+≥îfch™
+ = (
+·dm_ch™√l_t
+*)
+pˇŒ
+->
+fch™
+->
+ˇŒ_d©a
+;
+
+2110 i‡(!
+≥îfch™
+) {
+
+2111 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+,"[%s:%d CÆÃef- %d] Pì∏ch™√»nŸ found \n", 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+);
+
+2112  
+FTDM_FAIL
+;
+
+2114 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+2115 
+	`·dm_log_ch™
+(
+≥îfch™
+, 
+FTDM_LOG_INFO
+, "[%s:%d Callref- %d] PeerTap call wasánswered in state %s\n",
+
+2116 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îpˇŒ
+->
+ch™Id
+, 
+¸v
+, 
+	`·dm_ch™√l_°©e2°r
+(
+≥îfch™
+->
+°©e
+));
+
+2118 
+	`·dm_£t_pÊag
+(
+≥îfch™
+, 
+ISDN_TAP_NETWORK_ANSWER
+);
+
+2119 
+	`·dm_£t_°©e
+(
+≥îfch™
+, 
+FTDM_CHANNEL_STATE_UP
+);
+
+2120 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+2123 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥îèp
+->
+•™
+);
+
+2126  
+FTDM_SUCCESS
+;
+
+2127 
+	}
+}
+
+2137 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_ªl_°Æe_ˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™_id
+)
+
+2139 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+2140 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+2142 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_bych™Id
+(
+èp
+, 
+ch™_id
+))) {
+
+2144 i‡((
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+Ë|| (èp->
+nÁs
+.
+åunk
+Ë|| (èp->èp_modê=
+ISDN_TAP_FS
+)) {
+
+2145 i‡(
+NULL
+ =(
+fch™
+ = 
+	`ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+èp
+, 
+ch™_id
+))) {
+
+2146 
+	`·dm_log_ch™_msg
+(
+fch™
+, 
+FTDM_LOG_ERROR
+, "ChannelÇot found\n");
+
+2147 
+d⁄e
+;
+
+2150 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+2151 i‡(
+fch™
+->
+œ°_°©e
+ =
+FTDM_CHANNEL_STATE_HANGUP
+) {
+
+2152 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_DOWN
+);
+
+2154 
+	`·dm_log_ch™_msg
+(
+fch™
+, 
+FTDM_LOG_NOTICE
+, "Changing channel stateÅo DOWN\n");
+
+2155 } i‡((
+fch™
+->
+°©e
+ < 
+FTDM_CHANNEL_STATE_TERMINATING
+Ë&& (fch™->°©ê!
+FTDM_CHANNEL_STATE_DOWN
+)) {
+
+2156 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+);
+
+2158 
+	`·dm_log_ch™_msg
+(
+fch™
+, 
+FTDM_LOG_NOTICE
+, "Changing channel stateÅo TERMINATING\n");
+
+2160 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+2163 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+2166 
+d⁄e
+:
+
+2167 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s:%d] NÿSèÀÖˇŒÖª£¡\n", 
+èp
+->
+•™
+->
+«me
+, 
+ch™_id
+);
+
+2168  
+FTDM_FAIL
+;
+
+2171 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "[%s:%d CÆÃef- %d] Rñósög SèÀ CÆl\n", 
+èp
+->
+•™
+->
+«me
+, 
+ch™_id
+, 
+pˇŒ
+->
+ˇŒªf_vÆ
+);
+
+2172 if(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+2173 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_ªl
+(
+èp
+, 
+Q931_RELEASE
+, 
+pˇŒ
+->
+ˇŒªf_vÆ
+);
+
+2175 
+	`ßngoma_isdn_èp_h™dÀ_evít_ªl
+(
+èp
+, 
+Q931_RELEASE
+, 
+pˇŒ
+->
+ˇŒªf_vÆ
+);
+
+2178  
+FTDM_SUCCESS
+;
+
+2179 
+	}
+}
+
+2188 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_h™dÀ_evít_ªl
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¸v
+)
+
+2190 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+ = 
+NULL
+;
+
+2191 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+2192 
+∑ssive_ˇŒ_t
+ *
+≥îpˇŒ
+ = 
+NULL
+;
+
+2193 
+·dm_ch™√l_t
+ *
+≥îfch™
+ = 
+NULL
+;
+
+2195 
+¢gisdn_èp_t
+ *
+≥îèp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+2197 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "[%s Callref- %d] %sÉventÑeceived\n",
+
+2198 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+, 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+));
+
+2200 i‡(
+msgTy≥
+ =
+Q931_DISCONNECT
+) {
+
+2202 
+disc⁄√˘_ªcv
+++;
+
+2205 
+ªÀa£_ªcv
+++;
+
+2208 
+	`ßngoma_isdn_èp_is_c⁄_ªcv
+(
+èp
+, 
+¸v
+, 
+msgTy≥
+);
+
+2210 i‡(!(
+pˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+èp
+, 
+¸v
+))) {
+
+2211 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+,
+
+2213 
+èp
+->
+•™
+->
+«me
+, 
+¸v
+);
+
+2214 
+íd
+;
+
+2217 i‡(
+pˇŒ
+->
+fch™
+) {
+
+2218 
+fch™
+ = 
+pˇŒ
+->fchan;
+
+2220 i‡(
+èp
+->
+ödiˇã_evít
+ =
+FTDM_TRUE
+) {
+
+2221 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Tap Message sentÅoápplication onÑeceipt of %sÉvent on span[%d] chan[%d]\n",
+
+2222 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+fch™
+->
+•™_id
+, fch™->
+ch™_id
+);
+
+2224 
+	`£nd_¥Ÿocﬁ_øw_d©a
+–&
+pˇŒ
+->
+èp_msg
+,ÖˇŒ->
+fch™
+);
+
+2227 
+	`·dm_ch™√l_lock
+(
+fch™
+);
+
+2228 i‡(
+fch™
+->
+°©e
+ < 
+FTDM_CHANNEL_STATE_TERMINATING
+) {
+
+2229 
+	`·dm_£t_°©e
+(
+fch™
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+);
+
+2230 
+	`·dm_log_ch™
+(
+fch™
+, 
+FTDM_LOG_DEBUG
+, "[%s:%d Callref- %d]Changing channel stateÅo TERMINATING\n",
+
+2231 
+èp
+->
+•™
+->
+«me
+, 
+fch™
+->
+physiˇl_ch™_id
+, 
+¸v
+);
+
+2233 
+	`·dm_ch™√l_u∆ock
+(
+fch™
+);
+
+2235 
+	`ßngoma_isdn_èp_check_°©e
+(
+èp
+->
+•™
+);
+
+2239 i‡(
+pˇŒ
+->
+fch™
+) {
+
+2240 
+≥îfch™
+ = (
+·dm_ch™√l_t
+*)
+pˇŒ
+->
+fch™
+->
+ˇŒ_d©a
+;
+
+2243 i‡(
+≥îfch™
+) {
+
+2244 i‡(
+≥îèp
+->
+ödiˇã_evít
+ =
+FTDM_TRUE
+) {
+
+2245 i‡((
+≥îpˇŒ
+ = 
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+≥îèp
+, 
+¸v
+))) {
+
+2246 i‡(
+≥îfch™
+->
+•™_id
+ =
+≥îpˇŒ
+->
+fch™
+->span_id) {
+
+2247 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "PeerÅap Message sentÅoápplication onÑeceipt of %sÉvent on span[%d] chan[%d]\n",
+
+2248 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), 
+≥îfch™
+->
+•™_id
+,Öìrfch™->
+ch™_id
+);
+
+2250 
+	`£nd_¥Ÿocﬁ_øw_d©a
+–&
+≥îpˇŒ
+->
+èp_msg
+,ÖìΩˇŒ->
+fch™
+);
+
+2255 
+	`·dm_ch™√l_lock
+(
+≥îfch™
+);
+
+2256 i‡(
+≥îfch™
+->
+°©e
+ < 
+FTDM_CHANNEL_STATE_TERMINATING
+) {
+
+2257 
+	`·dm_£t_°©e
+(
+≥îfch™
+, 
+FTDM_CHANNEL_STATE_TERMINATING
+);
+
+2258 
+	`·dm_log_ch™
+(
+≥îfch™
+,
+FTDM_LOG_DEBUG
+,"[%s:%d Callref- %d] ChangingÖeer channel stateÅo TERMINATING\n",
+
+2259 
+≥îèp
+->
+•™
+->
+«me
+, 
+≥îfch™
+->
+physiˇl_ch™_id
+, 
+¸v
+);
+
+2261 
+	`·dm_ch™√l_u∆ock
+(
+≥îfch™
+);
+
+2263 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥îèp
+->
+•™
+);
+
+2266 
+íd
+:
+
+2267 
+	`ßngoma_isdn_èp_put_pˇŒ
+(
+èp
+, &
+¸v
+);
+
+2268 
+	`ßngoma_isdn_èp_put_pˇŒ
+(
+≥îèp
+, &
+¸v
+);
+
+2270  
+FTDM_SUCCESS
+;
+
+2271 
+	}
+}
+
+2280 
+	$ßngoma_isdn_èp_check_evít
+(
+·dm_•™_t
+ *
+•™
+)
+
+2282 
+·dm_evít_t
+ *
+evít
+ = 
+NULL
+;
+
+2285 
+	`·dm_•™_√xt_evít
+(
+•™
+, &
+evít
+Ë=
+FTDM_SUCCESS
+) {
+
+2286 i‡(
+evít
+->
+e_ty≥
+ =
+FTDM_EVENT_OOB
+) {
+
+2287 
+	`·mod_isdn_¥o˚ss_evít
+(
+•™
+, 
+evít
+);
+
+2290 
+	}
+}
+
+2301 *
+	$·dm_ßngoma_isdn_èp_voi˚_•™_run
+(
+·dm_thªad_t
+ *
+me
+, *
+obj
+)
+
+2303 
+·dm_•™_t
+ *
+•™
+ = (·dm_•™_à*Ë
+obj
+;
+
+2304 
+¢gisdn_èp_t
+ *
+èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+2305 
+·dm_•™_t
+ *
+≥î_•™
+ = 
+NULL
+;
+
+2307 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "T≠pög ISDNÖuª voi˚Åhªad sèπed o¿•™ %s\n", 
+•™
+->
+«me
+);
+
+2308 
+	`·dm_£t_Êag
+(
+•™
+, 
+FTDM_SPAN_IN_THREAD
+);
+
+2310 
+≥î_•™
+ = 
+èp
+->
+≥î•™
+;
+
+2312 i‡(!
+èp
+) {
+
+2313 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "Invalid Tap value\n");
+
+2314 
+d⁄e
+;
+
+2317 i‡(!
+	`·dm_ã°_Êag
+(
+èp
+, 
+ISDN_TAP_MASTER
+)) {
+
+2318 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Ru¬ög dummyÅhªad o¿puª voi˚ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+2319 
+	`·dm_ru¬ög
+(Ë&& !
+	`·dm_ã°_Êag
+(
+•™
+, 
+FTDM_SPAN_STOP_THREAD
+)) {
+
+2321 
+	`·dm_¶ìp
+(100);
+
+2324 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Ma°îÅ≠pögÅhªad o¿puª voi˚ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+2326 
+	`·dm_ru¬ög
+(Ë&& !
+	`·dm_ã°_Êag
+(
+•™
+, 
+FTDM_SPAN_STOP_THREAD
+)) {
+
+2327 
+	`ßngoma_isdn_èp_check_°©e
+(
+•™
+);
+
+2328 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥î_•™
+);
+
+2329 
+	`·dm_¶ìp
+(10);
+
+2333 
+d⁄e
+:
+
+2334 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "T≠pög ISDNÖuª voi˚ÅhªadÉnded o¿•™ %s\n", 
+•™
+->
+«me
+);
+
+2336 
+	`·dm_˛ór_Êag
+(
+•™
+, 
+FTDM_SPAN_IN_THREAD
+);
+
+2337 
+	`·dm_˛ór_Êag
+(
+èp
+, 
+ISDN_TAP_MASTER
+);
+
+2339 
+	`ßngoma_isdn_èp_‰ì_hashli°
+(
+èp
+);
+
+2341  
+NULL
+;
+
+2342 
+	}
+}
+
+2353 *
+	$·dm_ßngoma_isdn_èp_run
+(
+·dm_thªad_t
+ *
+me
+, *
+obj
+)
+
+2355 
+·dm_•™_t
+ *
+•™
+ = (·dm_•™_à*Ë
+obj
+;
+
+2356 
+¢gisdn_èp_t
+ *
+èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+2357 
+¢gisdn_èp_t
+ *
+≥î_èp
+ = 
+NULL
+;
+
+2358 
+·dm_•™_t
+ *
+≥î
+ = 
+NULL
+;
+
+2361 
+·dm_ch™√l_t
+ *
+ch™_pﬁl
+[2] = { 0 };
+
+2362 
+·dm_waô_Êag_t
+ 
+pﬁl_evíts
+[2] = { 0 };
+
+2363 
+uöt32_t
+ 
+pﬁl_°©us
+ = 0;
+
+2364 
+uöt32_t
+ 
+waôms
+ = 0;
+
+2366 
+£tup_ªcv
+ = 0;
+
+2367 
+c⁄√˘_ªcv
+ = 0;
+
+2368 
+ˇŒ_¥o˚ed_ªcv
+ = 0;
+
+2369 
+ªÀa£_ªcv
+ = 0;
+
+2370 
+disc⁄√˘_ªcv
+ = 0;
+
+2371 
+ˇŒ_èµed
+ = 0;
+
+2372 
+msg_ªcv_a·_time
+ = 0;
+
+2373 
+óæy_c⁄√˘_ªcv
+ = 0;
+
+2374 
+œã_övôe_ªcv
+ = 0;
+
+2376 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "T≠pög ISDNÅhªad sèπed o¿•™ %s\n", 
+•™
+->
+«me
+);
+
+2378 
+	`·dm_£t_Êag
+(
+•™
+, 
+FTDM_SPAN_IN_THREAD
+);
+
+2380 i‡(
+	`·dm_ch™√l_›í
+(
+•™
+->
+•™_id
+, 
+èp
+->
+dch™
+->
+ch™_id
+, &èp->dch™Ë!
+FTDM_SUCCESS
+) {
+
+2381 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "FaûedÅÿ›í D-ch™√»f‹ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+2382 
+d⁄e
+;
+
+2385 i‡((
+èp
+->
+¥i
+ = 
+	`ßngoma_isdn_√w_cb
+—≠->
+dch™
+->
+sockfd
+, 
+PRI_NETWORK
+, 
+SW_NI2
+,Åap))) {
+
+2386 
+	`ßngoma_isdn_èp_£t_debug
+(
+èp
+->
+¥i
+,Å≠->
+debug
+);
+
+2388 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "FailedÅo createÅapping ISDN\n");
+
+2389 
+d⁄e
+;
+
+2395 
+≥î
+ = 
+èp
+->
+≥î•™
+;
+
+2396 
+≥î_èp
+ = 
+≥î
+->
+sig«l_d©a
+;
+
+2398 i‡(!
+	`·dm_ã°_Êag
+(
+èp
+, 
+ISDN_TAP_MASTER
+)) {
+
+2399 i‡(
+èp
+->
+nÁs
+.
+sigch™
+ =
+SNGISDN_NFAS_DCHAN_BACKUP
+) {
+
+2400 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Ru¬ög dummyÅhªad o¿backu∞•™ %s\n", 
+•™
+->
+«me
+);
+
+2402 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Ru¬ög dummyÅhªad o¿•™ %s\n", 
+•™
+->
+«me
+);
+
+2405 
+	`·dm_ru¬ög
+(Ë&& !
+	`·dm_ã°_Êag
+(
+•™
+, 
+FTDM_SPAN_STOP_THREAD
+)) {
+
+2407 
+	`·dm_¶ìp
+(100);
+
+2410 i‡(
+èp
+->
+nÁs
+.
+åunk
+) {
+
+2411 (
+èp
+->
+nÁs
+.
+åunk
+->
+num_èp_•™s
+ !èp->nÁs.åunk->
+num_•™s_c⁄figuªd
+)) {
+
+2417 i‡(
+èp
+->
+nÁs
+.
+sigch™
+ =
+SNGISDN_NFAS_DCHAN_BACKUP
+) {
+
+2418 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "MasterÅappingÅhread on backup span %s (fd1=%d, fd2=%d)\n",
+
+2419 
+•™
+->
+«me
+, 
+èp
+->
+dch™
+->
+sockfd
+, 
+≥î_èp
+->dchan->sockfd);
+
+2421 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "MasterÅappingÅhread on span %s (fd1=%d, fd2=%d)\n",
+
+2422 
+•™
+->
+«me
+, 
+èp
+->
+dch™
+->
+sockfd
+, 
+≥î_èp
+->dchan->sockfd);
+
+2425 
+	`·dm_ru¬ög
+(Ë&& !
+	`·dm_ã°_Êag
+(
+•™
+, 
+FTDM_SPAN_STOP_THREAD
+)) {
+
+2426 
+waôms
+ = 10;
+
+2427 
+	`ßngoma_isdn_èp_check_°©e
+(
+•™
+);
+
+2428 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥î
+);
+
+2430 
+ch™_pﬁl
+[0] = 
+èp
+->
+dch™
+;
+
+2431 
+ch™_pﬁl
+[1] = 
+≥î_èp
+->
+dch™
+;
+
+2433 
+pﬁl_evíts
+[0] = 
+FTDM_READ
+;
+
+2434 
+pﬁl_evíts
+[1] = 
+FTDM_READ
+;
+
+2437 
+pﬁl_°©us
+ = 
+	`·dm_ch™√l_waô_mu…ùÀ
+(
+ch™_pﬁl
+, 
+pﬁl_evíts
+, 2, 
+waôms
+);
+
+2439 
+pﬁl_°©us
+) {
+
+2440 
+FTDM_TIMEOUT
+:
+
+2441 
+FTDM_BREAK
+:
+
+2444 
+FTDM_SUCCESS
+:
+
+2446 i‡(
+	`·dm_ã°_io_Êag
+(
+èp
+->
+dch™
+, 
+FTDM_CHANNEL_IO_READ
+)) {
+
+2447 i‡(
+FTDM_SUCCESS
+ =
+	`ßngoma_isdn_ªad_msg
+(
+èp
+)) {
+
+2448 
+	`ßngoma_isdn_èp_check_°©e
+(
+•™
+);
+
+2449 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥î
+);
+
+2451 
+	`ßngoma_isdn_èp_check_°©e
+(
+•™
+);
+
+2454 i‡(
+	`·dm_ã°_io_Êag
+(
+≥î_èp
+->
+dch™
+, 
+FTDM_CHANNEL_IO_READ
+)) {
+
+2455 i‡(
+FTDM_SUCCESS
+ =
+	`ßngoma_isdn_ªad_msg
+(
+≥î_èp
+)) {
+
+2456 
+	`ßngoma_isdn_èp_check_°©e
+(
+•™
+);
+
+2457 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥î
+);
+
+2459 
+	`ßngoma_isdn_èp_check_°©e
+(
+≥î
+);
+
+2464 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "Invalid status.\n");
+
+2465 
+pﬁl_°©us
+ = 0;
+
+2469 
+	`ßngoma_isdn_èp_check_evít
+(
+•™
+);
+
+2470 
+	`ßngoma_isdn_èp_check_evít
+(
+≥î
+);
+
+2474 
+d⁄e
+:
+
+2475 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "T≠pög ISDNÅhªadÉnded o¿•™ %s\n", 
+•™
+->
+«me
+);
+
+2477 
+	`·dm_˛ór_Êag
+(
+•™
+, 
+FTDM_SPAN_IN_THREAD
+);
+
+2478 
+	`·dm_˛ór_Êag
+(
+èp
+, 
+ISDN_TAP_MASTER
+);
+
+2480 
+	`ßngoma_isdn_èp_‰ì_hashli°
+(
+èp
+);
+
+2482  
+NULL
+;
+
+2483 
+	}
+}
+
+2492 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_ªad_msg
+(
+¢gisdn_èp_t
+ *
+èp
+)
+
+2494 
+ªs
+ = 0;
+
+2495 
+d©a
+[1024] = { 0 };
+
+2496 
+uöt8_t
+ 
+msgTy≥
+ = 0;
+
+2497 
+¢g_decodî_öãrÁ˚_t
+ 
+ötf
+ = { 0 };
+
+2498 
+·dm_°©us_t
+ 
+ªt
+ = 
+FTDM_FAIL
+;
+
+2501 
+ªs
+ = 0;
+
+2504 
+ªs
+ = 
+	`ßngoma_isdn_io_ªad
+(
+èp
+->
+¥i
+, 
+d©a
+, (data));
+
+2506 i‡(
+ªs
+ < 5 || (()
+d©a
+[4] != 8)) {
+
+2507 
+msgTy≥
+ = 0;
+
+2510 
+msgTy≥
+ = (
+uöt8_t
+)
+	`q931_decode
+(
+èp
+->
+swôch_ty≥
+, (
+d©a
+ + 4), (
+ªs
+ - 4),Å≠->
+decCb
+, &
+ötf
+);
+
+2511 
+	`·dm_log_ch™
+(
+èp
+->
+dch™
+, 
+FTDM_LOG_DEBUG
+, "%†Mesßge(%dËª˚ived o¿%†•™\n", 
+	`SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+), msgTy≥,Å≠->
+•™
+->
+«me
+);
+
+2515 i‡(
+msgTy≥
+) {
+
+2516 
+	`h™dÀ_isdn_∑ssive_evít
+(
+èp
+, 
+msgTy≥
+, &
+ötf
+);
+
+2517 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+2520  
+ªt
+;
+
+2521 
+	}
+}
+
+2530 
+	$ßngoma_isdn_èp_‰ì_hashli°
+(
+¢gisdn_èp_t
+ *
+èp
+)
+
+2532 
+·dm_hash_ôî©‹_t
+ *
+idx
+ = 
+NULL
+;
+
+2533 
+c⁄_ˇŒ_öfo_t
+ *
+ˇŒ_öfo
+ = 
+NULL
+;
+
+2534 c⁄° *
+key
+ = 
+NULL
+;
+
+2535 *
+vÆ
+ = 
+NULL
+;
+
+2536 
+ˇŒ_ªf
+[25];
+
+2539 
+idx
+ = 
+	`hashèbÀ_fú°
+(
+èp
+->
+≥nd_ˇŒ_l°
+); idx; idx = 
+	`hashèbÀ_√xt
+(idx)) {
+
+2540 
+	`hashèbÀ_this
+(
+idx
+, &
+key
+, 
+NULL
+, &
+vÆ
+);
+
+2541 i‡(!
+key
+ || !
+vÆ
+) {
+
+2545 
+ˇŒ_öfo
+ = (
+c⁄_ˇŒ_öfo_t
+*)
+vÆ
+;
+
+2546 
+	`mem£t
+(
+ˇŒ_ªf
+, 0, (call_ref));
+
+2547 
+	`•rötf
+(
+ˇŒ_ªf
+, "%d", 
+ˇŒ_öfo
+->
+ˇŒªf_vÆ
+);
+
+2549 
+	`hashèbÀ_ªmove
+(
+èp
+->
+≥nd_ˇŒ_l°
+, (*)
+ˇŒ_ªf
+);
+
+2550 
+	`·dm_ß„_‰ì
+(
+ˇŒ_öfo
+);
+
+2554 
+	`hashèbÀ_de°roy
+(
+èp
+->
+≥nd_ˇŒ_l°
+);
+
+2555 
+èp
+->
+≥nd_ˇŒ_l°
+ = 
+NULL
+;
+
+2556 
+	}
+}
+
+2565 
+·dm_°©us_t
+ 
+	$·dm_ßngoma_isdn_èp_°›
+(
+·dm_•™_t
+ *
+•™
+)
+
+2567 
+¢gisdn_èp_t
+ *
+èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+2570 i‡(
+èp
+->
+decCb
+) {
+
+2571 
+	`¢g_q931_decodî_‰ìcb
+(
+èp
+->
+decCb
+);
+
+2574 i‡(!
+	`·dm_ã°_Êag
+(
+èp
+, 
+ISDN_TAP_RUNNING
+)) {
+
+2575  
+FTDM_FAIL
+;
+
+2578 
+	`·dm_˛ór_Êag
+(
+èp
+, 
+ISDN_TAP_RUNNING
+);
+
+2580 
+	`·dm_muãx_de°roy
+(&
+èp
+->
+pˇŒs_lock
+);
+
+2583 
+	`·dm_ß„_‰ì
+(
+èp
+->
+¥i
+);
+
+2585 
+	`·dm_£t_Êag
+(
+•™
+, 
+FTDM_SPAN_STOP_THREAD
+);
+
+2587 
+	`·dm_ã°_Êag
+(
+•™
+, 
+FTDM_SPAN_IN_THREAD
+)) {
+
+2588 
+	`·dm_¶ìp
+(100);
+
+2591  
+FTDM_SUCCESS
+;
+
+2592 
+	}
+}
+
+2602 
+·dm_°©us_t
+ 
+	$·dm_ßngoma_isdn_èp_medü_ªad
+(
+·dm_ch™√l_t
+ *
+·dmch™
+, *
+d©a
+, 
+·dm_size_t
+ 
+size
+)
+
+2604 
+·dm_°©us_t
+ 
+°©us
+ = 
+FTDM_SUCCESS
+;
+
+2605 
+fio_codec_t
+ 
+codec_func
+;
+
+2606 
+·dm_ch™√l_t
+ *
+≥îch™
+ = 
+·dmch™
+->
+ˇŒ_d©a
+;
+
+2607 
+¢gisdn_èp_t
+ *
+èp
+ = 
+·dmch™
+->
+•™
+->
+sig«l_d©a
+;
+
+2608 
+öt16_t
+ *
+ch™buf
+;
+
+2609 
+öt16_t
+ *
+≥îbuf
+;
+
+2610 
+öt16_t
+ *
+mixedbuf
+;
+
+2611 
+·dm_size_t
+ 
+i
+ = 0;
+
+2612 
+·dm_size_t
+ 
+sizîód
+ = 
+size
+;
+
+2613 
+·dm_waô_Êag_t
+ 
+Êags
+ = 
+FTDM_READ
+;
+
+2615 i‡(!
+d©a
+ || !
+size
+) {
+
+2616  
+FTDM_FAIL
+;
+
+2619 i‡(!
+	`FTDM_IS_VOICE_CHANNEL
+(
+·dmch™
+Ë|| !·dmch™->
+ˇŒ_d©a
+) {
+
+2620  
+FTDM_SUCCESS
+;
+
+2623 i‡((
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_SELF
+Ë|| (èp->mixaudiÿ=
+ISDN_TAP_AUDIO_MIX_STEREO
+)) {
+
+2624  
+FTDM_SUCCESS
+;
+
+2627 
+ch™buf
+ = (
+öt16_t
+*)
+	`mÆloc
+((öt16_tË*
+size
+);
+
+2628 
+≥îbuf
+ = (
+öt16_t
+*)
+	`mÆloc
+((öt16_tË*
+size
+);
+
+2629 
+mixedbuf
+ = (
+öt16_t
+*)
+	`mÆloc
+((öt16_tË*
+size
+);
+
+2631 i‡(
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_PEER
+) {
+
+2634 
+	`mem£t
+(
+d©a
+, 
+	`FTDM_SILENCE_VALUE
+(
+·dmch™
+), 
+size
+);
+
+2637 i‡(
+·dmch™
+->
+«tive_codec
+ !
+≥îch™
+->native_codec) {
+
+2638 
+	`·dm_log_ch™
+(
+≥îch™
+, 
+FTDM_LOG_CRIT
+, "InvalidÖeer channel with format %d, ours = %d\n",
+
+2639 
+≥îch™
+->
+«tive_codec
+, 
+·dmch™
+->native_codec);
+
+2640 
+°©us
+ = 
+FTDM_FAIL
+;
+
+2641 
+d⁄e
+;
+
+2644 
+	`mem˝y
+(
+ch™buf
+, 
+d©a
+, 
+size
+);
+
+2649 
+	`·dm_ch™√l_waô
+(
+≥îch™
+, &
+Êags
+, 0);
+
+2650 i‡(
+Êags
+ & 
+FTDM_READ
+) {
+
+2651 
+°©us
+ = 
+≥îch™
+->
+fio
+->
+	`ªad
+’ìrch™, 
+≥îbuf
+, &
+sizîód
+);
+
+2655 i‡(
+°©us
+ !
+FTDM_SUCCESS
+) {
+
+2656 
+	`·dm_log_ch™_msg
+(
+≥îch™
+, 
+FTDM_LOG_ERROR
+, "FailedÅoÑead fromÖeer channel!\n");
+
+2657 
+°©us
+ = 
+FTDM_FAIL
+;
+
+2658 
+d⁄e
+;
+
+2660 i‡(
+sizîód
+ !
+size
+) {
+
+2661 
+	`·dm_log_ch™
+(
+≥îch™
+, 
+FTDM_LOG_ERROR
+, "ªad fromÖì∏ch™√»⁄ly %"
+FTDM_SIZE_FMT
+" byãs!\n", 
+sizîód
+);
+
+2662 
+°©us
+ = 
+FTDM_FAIL
+;
+
+2663 
+d⁄e
+;
+
+2666 i‡(
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_PEER
+) {
+
+2668 
+	`mem˝y
+(
+d©a
+, 
+≥îbuf
+, 
+size
+);
+
+2669 
+°©us
+ = 
+FTDM_SUCCESS
+;
+
+2670 
+d⁄e
+;
+
+2673 
+codec_func
+ = 
+≥îch™
+->
+«tive_codec
+ =
+FTDM_CODEC_ULAW
+ ? 
+fio_uœw2¶ö
+ :Öìrch™->«tive_code¯=
+FTDM_CODEC_ALAW
+ ? 
+fio_Æaw2¶ö
+ : 
+NULL
+;
+
+2674 i‡(
+codec_func
+) {
+
+2675 
+sizîód
+ = 
+size
+;
+
+2676 
+	`codec_func
+(
+ch™buf
+, (
+öt16_t
+)*
+size
+, &
+sizîód
+);
+
+2677 
+sizîód
+ = 
+size
+;
+
+2678 
+	`codec_func
+(
+≥îbuf
+, (
+öt16_t
+)*
+size
+, &
+sizîód
+);
+
+2681 
+i
+ = 0; i < 
+size
+; i++) {
+
+2682 
+mixedbuf
+[
+i
+] = 
+	`·dm_ßtuøãd_add
+(
+ch™buf
+[i], 
+≥îbuf
+[i]);
+
+2685 
+codec_func
+ = 
+≥îch™
+->
+«tive_codec
+ =
+FTDM_CODEC_ULAW
+ ? 
+fio_¶ö2uœw
+ :Öìrch™->«tive_code¯=
+FTDM_CODEC_ALAW
+ ? 
+fio_¶ö2Æaw
+ : 
+NULL
+;
+
+2686 i‡(
+codec_func
+) {
+
+2687 
+	`codec_func
+(
+mixedbuf
+, (
+öt16_t
+)*
+size
+, &
+sizîód
+);
+
+2689 
+	`mem˝y
+(
+d©a
+, 
+mixedbuf
+, 
+sizîód
+);
+
+2691 
+°©us
+ = 
+FTDM_SUCCESS
+;
+
+2693 
+d⁄e
+:
+
+2694 
+	`·dm_ß„_‰ì
+(
+ch™buf
+);
+
+2695 
+	`·dm_ß„_‰ì
+(
+≥îbuf
+);
+
+2696 
+	`·dm_ß„_‰ì
+(
+mixedbuf
+);
+
+2697  
+°©us
+;
+
+2698 
+	}
+}
+
+2707 
+	$·dm_ßngoma_isdn_èp_dch™_£t_queue_size
+(
+·dm_ch™√l_t
+ *
+dch™
+)
+
+2709 
+·dm_°©us_t
+ 
+ªt_°©us
+;
+
+2710 
+uöt32_t
+ 
+queue_size
+ = 0;
+
+2712 i‡(!
+èp_dch™_queue_size
+) {
+
+2714 
+èp_dch™_queue_size
+ = 
+ISDN_TAP_DCHAN_QUEUE_LEN
+;
+
+2717 
+queue_size
+ = 
+èp_dch™_queue_size
+;
+
+2718 
+ªt_°©us
+ = 
+	`·dm_ch™√l_comm™d
+(
+dch™
+, 
+FTDM_COMMAND_SET_RX_QUEUE_SIZE
+, &
+queue_size
+);
+
+2720 i‡(
+ªt_°©us
+ !
+FTDM_SUCCESS
+) {
+
+2721 
+	`·dm_log_ch™_msg
+(
+dch™
+, 
+FTDM_LOG_CRIT
+, "FailedÅo set Rx Queue size\n");
+
+2723 
+	`·dm_log_ch™
+(
+dch™
+, 
+FTDM_LOG_INFO
+, "Rx Queuêsizêi†tÿ%d\n", 
+queue_size
+);
+
+2726 
+queue_size
+ = 
+èp_dch™_queue_size
+;
+
+2727 
+ªt_°©us
+ = 
+	`·dm_ch™√l_comm™d
+(
+dch™
+, 
+FTDM_COMMAND_SET_TX_QUEUE_SIZE
+, &
+queue_size
+);
+
+2729 i‡(
+ªt_°©us
+ !
+FTDM_SUCCESS
+) {
+
+2730 
+	`·dm_log_ch™_msg
+(
+dch™
+, 
+FTDM_LOG_CRIT
+, "FailedÅo set Rx Queue size\n");
+
+2732 
+	`·dm_log_ch™
+(
+dch™
+, 
+FTDM_LOG_INFO
+, "Rx Queuêsizêi†tÿ%d\n", 
+queue_size
+);
+
+2736 
+	}
+}
+
+2745 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_∑r£_åunkgroup
+(c⁄° *
+_åunkgroup
+)
+
+2747 
+·dm_°©us_t
+ 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+2748 
+uöt8_t
+ 
+num_èp_•™s
+ = 0;
+
+2749 *
+backup_•™
+ = 
+NULL
+;
+
+2750 *
+dch™_•™
+ = 
+NULL
+;
+
+2751 *
+åunkgroup
+ = 
+NULL
+;
+
+2752 *
+«me
+ = 
+NULL
+;
+
+2753 *
+vÆ
+ = 
+NULL
+;
+
+2754 
+idx
+ = 0;
+
+2756 
+åunkgroup
+ = 
+	`·dm_°rdup
+(
+_åunkgroup
+);
+
+2759 
+vÆ
+ = 
+	`°πok
+(
+åunkgroup
+, ","); vÆ; vÆ = såtok(
+NULL
+, ",")) {
+
+2760 *
+vÆ
+ == ' ') {
+
+2761 
+vÆ
+++;
+
+2764 
+idx
+++) {
+
+2766 
+«me
+ = 
+	`·dm_°rdup
+(
+vÆ
+);
+
+2769 
+num_èp_•™s
+ = 
+	`©oi
+(
+vÆ
+);
+
+2772 
+dch™_•™
+ = 
+	`·dm_°rdup
+(
+vÆ
+);
+
+2775 
+backup_•™
+ = 
+	`·dm_°rdup
+(
+vÆ
+);
+
+2779 i‡(!(
+«me
+Ë|| !(
+dch™_•™
+Ë|| (
+num_èp_•™s
+ <= 0)) {
+
+2780 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆidÅ≠Ö¨amëî†f‹Årunkgroup: %s\n", 
+_åunkgroup
+);
+
+2781 
+ªt
+ = 
+FTDM_FAIL
+;
+
+2782 
+d⁄e
+;
+
+2785 
+idx
+ = 0; idx < 
+g_¢gisdn_èp_d©a
+.
+num_nÁs
+; idx++) {
+
+2786 i‡(!
+	`·dm_°æí_zîo
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+«me
+) &&
+
+2787 !
+	`°rˇ£cmp
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+«me
+,Çame)) {
+
+2789 
+d⁄e
+;
+
+2794 
+	`°∫˝y
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+«me
+,Çame, (g_sngisdn_tap_data.nfas[idx].name));
+
+2795 
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+num_èp_•™s
+ =Çum_tap_spans;
+
+2796 
+	`°∫˝y
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+dch™_•™_«me
+, 
+dch™_•™
+, (g_sngisdn_tap_data.nfas[idx].dchan_span_name));
+
+2798 i‡(
+backup_•™
+) {
+
+2799 
+	`°∫˝y
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+backup_•™_«me
+, 
+backup_•™
+, (g_sngisdn_tap_data.nfas[idx].backup_span_name));
+
+2802 
+g_¢gisdn_èp_d©a
+.
+num_nÁs
+++;
+
+2804 
+d⁄e
+:
+
+2805 
+	`·dm_ß„_‰ì
+(
+åunkgroup
+);
+
+2806 
+	`·dm_ß„_‰ì
+(
+«me
+);
+
+2807 
+	`·dm_ß„_‰ì
+(
+dch™_•™
+);
+
+2808 
+	`·dm_ß„_‰ì
+(
+backup_•™
+);
+
+2809  
+ªt
+;
+
+2810 
+	}
+}
+
+2820 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_∑r£_•™m≠
+(c⁄° *
+_•™m≠
+, 
+·dm_•™_t
+ *
+•™
+)
+
+2822 
+¢gisdn_èp_t
+ *
+èp
+ = (¢gisdn_èp_t*Ë
+•™
+->
+sig«l_d©a
+;
+
+2823 
+·dm_°©us_t
+ 
+ªt
+ = 
+FTDM_SUCCESS
+;
+
+2824 
+uöt8_t
+ 
+logiˇl_•™_id
+ = 0;
+
+2825 *
+•™m≠
+ = 
+NULL
+;
+
+2826 *
+«me
+ = 
+NULL
+;
+
+2827 *
+vÆ
+ = 
+NULL
+;
+
+2828 
+idx
+ = 0;
+
+2830 
+•™m≠
+ = 
+	`·dm_°rdup
+(
+_•™m≠
+);
+
+2833 
+vÆ
+ = 
+	`°πok
+(
+•™m≠
+, ","); vÆ; vÆ = såtok(
+NULL
+, ",")) {
+
+2834 *
+vÆ
+ == ' ') {
+
+2835 
+vÆ
+++;
+
+2838 
+idx
+++) {
+
+2840 
+«me
+ = 
+	`·dm_°rdup
+(
+vÆ
+);
+
+2843 
+logiˇl_•™_id
+ = 
+	`©oi
+(
+vÆ
+);
+
+2851 i‡(!
+«me
+) {
+
+2852 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆidÅ≠ s∑nm≠ sy¡ax %s\n", 
+_•™m≠
+);
+
+2853 
+ªt
+ = 
+FTDM_FAIL
+;
+
+2854 
+d⁄e
+;
+
+2857 
+idx
+ = 0; idx < 
+g_¢gisdn_èp_d©a
+.
+num_nÁs
+; idx++) {
+
+2858 i‡(!
+	`·dm_°æí_zîo
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+«me
+) &&
+
+2859 !
+	`°rˇ£cmp
+(
+g_¢gisdn_èp_d©a
+.
+nÁs
+[
+idx
+].
+«me
+,Çame)) {
+
+2860 
+èp
+->
+nÁs
+.
+åunk
+ = &
+g_¢gisdn_èp_d©a
+.nÁs[
+idx
+];
+
+2865 i‡(!
+èp
+->
+nÁs
+.
+åunk
+) {
+
+2866 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "CouldÇŸ födÅrunkgrou∞wôhÇamê%s\n", 
+«me
+);
+
+2867 
+ªt
+ = 
+FTDM_FAIL
+;
+
+2868 
+d⁄e
+;
+
+2872 i‡(
+èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+logiˇl_•™_id
+]) {
+
+2873 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "åunkgroup:%†Æªady hadá s∑¿wôhÜogiˇ»•™ id:%d f‹ s∑¿%s\n", 
+«me
+, 
+logiˇl_•™_id
+, 
+èp
+->
+•™
+->name);
+
+2875 
+èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+logiˇl_•™_id
+] = 
+•™
+;
+
+2876 
+èp
+->
+nÁs
+.
+öãrÁ˚_id
+ = 
+logiˇl_•™_id
+;
+
+2879 
+èp
+->
+nÁs
+.
+sigch™
+ = 
+SNGISDN_NFAS_DCHAN_NONE
+;
+
+2881 i‡(!
+	`°rˇ£cmp
+(
+èp
+->
+•™
+->
+«me
+,Å≠->
+nÁs
+.
+åunk
+->
+dch™_•™_«me
+)) {
+
+2882 
+èp
+->
+nÁs
+.
+sigch™
+ = 
+SNGISDN_NFAS_DCHAN_PRIMARY
+;
+
+2883 
+èp
+->
+nÁs
+.
+åunk
+->
+dch™
+ =Åap;
+
+2886 i‡(!
+	`°rˇ£cmp
+(
+èp
+->
+•™
+->
+«me
+,Å≠->
+nÁs
+.
+åunk
+->
+backup_•™_«me
+)) {
+
+2887 
+èp
+->
+nÁs
+.
+sigch™
+ = 
+SNGISDN_NFAS_DCHAN_BACKUP
+;
+
+2888 
+èp
+->
+nÁs
+.
+åunk
+->
+backup
+ =Åap;
+
+2891 
+èp
+->
+nÁs
+.
+åunk
+->
+num_•™s_c⁄figuªd
+++;
+
+2892 
+d⁄e
+:
+
+2893 
+	`·dm_ß„_‰ì
+(
+•™m≠
+);
+
+2894 
+	`·dm_ß„_‰ì
+(
+«me
+);
+
+2895  
+ªt
+;
+
+2896 
+	}
+}
+
+2905 
+·dm_°©us_t
+ 
+	$·dm_ßngoma_isdn_èp_°¨t
+(
+·dm_•™_t
+ *
+•™
+)
+
+2907 
+·dm_°©us_t
+ 
+ªt
+;
+
+2908 
+¢gisdn_èp_t
+ *
+èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+2909 
+¢gisdn_èp_t
+ *
+≥î_èp
+ = 
+èp
+->
+≥î•™
+->
+sig«l_d©a
+;
+
+2911 i‡((
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+Ë&& (èp->
+dch™
+)) {
+
+2912 
+	`·dm_ch™√l_£t_„©uª
+(
+èp
+->
+dch™
+, 
+FTDM_CHANNEL_FEATURE_IO_STATS
+);
+
+2913 
+	`·dm_ßngoma_isdn_èp_dch™_£t_queue_size
+(
+èp
+->
+dch™
+);
+
+2917 i‡(
+	`·dm_ã°_Êag
+(
+èp
+, 
+ISDN_TAP_RUNNING
+)) {
+
+2918  
+FTDM_FAIL
+;
+
+2921 
+	`·dm_muãx_¸óã
+(&
+èp
+->
+pˇŒs_lock
+);
+
+2923 
+	`·dm_˛ór_Êag
+(
+•™
+, 
+FTDM_SPAN_STOP_THREAD
+);
+
+2924 
+	`·dm_˛ór_Êag
+(
+•™
+, 
+FTDM_SPAN_IN_THREAD
+);
+
+2926 
+	`·dm_£t_Êag
+(
+èp
+, 
+ISDN_TAP_RUNNING
+);
+
+2927 i‡(
+≥î_èp
+ && 
+	`·dm_ã°_Êag
+’ìr_èp, 
+ISDN_TAP_RUNNING
+)) {
+
+2929 
+	`·dm_£t_Êag
+(
+èp
+, 
+ISDN_TAP_MASTER
+);
+
+2932 i‡((!
+èp
+->
+nÁs
+.
+åunk
+Ë|| (èp->nÁs.
+sigch™
+ !
+SNGISDN_NFAS_DCHAN_NONE
+)) {
+
+2933 
+ªt
+ = 
+	`·dm_thªad_¸óã_dëached
+(
+·dm_ßngoma_isdn_èp_run
+, 
+•™
+);
+
+2935 
+ªt
+ = 
+	`·dm_thªad_¸óã_dëached
+(
+·dm_ßngoma_isdn_èp_voi˚_•™_run
+, 
+•™
+);
+
+2938 i‡(
+ªt
+ !
+FTDM_SUCCESS
+) {
+
+2939  
+ªt
+;
+
+2942  
+ªt
+;
+
+2943 
+	}
+}
+
+2953 
+	$FIO_CONFIGURE_SPAN_SIGNALING_FUNCTION
+(
+·dm_ßngoma_isdn_èp_c⁄figuª_•™
+)
+
+2955 
+¢gisdn_èp_audio_mix_mode_t
+ 
+mixaudio
+ = 
+ISDN_TAP_AUDIO_MIX_NULL
+;
+
+2956 
+¢gisdn_èp_iÁ˚_t
+ 
+iÁ˚
+ = 
+ISDN_TAP_IFACE_UNKNOWN
+;
+
+2957 
+¢gisd_èp_mode_t
+ 
+èpmode
+ = 
+ISDN_TAP_NORMAL
+;
+
+2958 
+·dm_boﬁ_t
+ 
+evít_öd
+ = 
+FTDM_FALSE
+;
+
+2959 
+·dm_ch™√l_t
+ *
+dch™
+ = 
+NULL
+;
+
+2960 
+·dm_•™_t
+ *
+≥î•™
+ = 
+NULL
+;
+
+2961 
+¢gisdn_èp_t
+ *
+èp
+ = 
+NULL
+;
+
+2962 c⁄° *
+debug
+ = 
+NULL
+;
+
+2963 
+swtch_typ
+ = 
+SW_ETSI
+;
+
+2964 
+∑ømödex
+ = 0;
+
+2965 c⁄° *
+v¨
+, *
+vÆ
+;
+
+2966 
+ötf
+ = 
+NETWORK
+;
+
+2967 
+uöt32_t
+ 
+idx
+ = 0;
+
+2969 
+èp
+ = 
+	`·dm_ˇŒoc
+(1, (*tap));
+
+2970 i‡(!
+èp
+) {
+
+2971  
+FTDM_FAIL
+;
+
+2974 
+•™
+->
+sig«l_d©a
+ = 
+èp
+;
+
+2976 
+èp
+->
+nÁs
+.
+åunk
+ = 
+NULL
+;
+
+2977 
+èp
+->
+•™
+ = span;
+
+2979 i‡(
+•™
+->
+åunk_ty≥
+ >
+FTDM_TRUNK_NONE
+) {
+
+2980 
+	`·dm_log
+(
+FTDM_LOG_WARNING
+, "InvÆidÅrunkÅy≥ '%s' deÁu…ögÅÿT1.\n", 
+	`·dm_åunk_ty≥2°r
+(
+•™
+->
+åunk_ty≥
+));
+
+2981 
+•™
+->
+åunk_ty≥
+ = 
+FTDM_TRUNK_T1
+;
+
+2985 
+∑ømödex
+ = 0; 
+·dm_∑ømëîs
+[∑ømödex].
+v¨
+;Öaramindex++) {
+
+2986 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "S™gom®ISDN T≠pög key = vÆue, %†%s\n", 
+·dm_∑ømëîs
+[
+∑ømödex
+].
+v¨
+, ftdm_∑ømëîs[∑ømödex].
+vÆ
+);
+
+2987 
+v¨
+ = 
+·dm_∑ømëîs
+[
+∑ømödex
+].var;
+
+2988 
+vÆ
+ = 
+·dm_∑ømëîs
+[
+∑ømödex
+].val;
+
+2990 i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "trunkgroup")) {
+
+2991 i‡(
+	`ßngoma_isdn_èp_∑r£_åunkgroup
+(
+vÆ
+Ë!
+FTDM_SUCCESS
+) {
+
+2992 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆidÅ≠pögÅrunkgou∞%†öfÿf‹ s∑¿%s!\n", 
+vÆ
+, 
+•™
+->
+«me
+);
+
+2993  
+FTDM_FAIL
+;
+
+2998 
+∑ømödex
+ = 0; 
+·dm_∑ømëîs
+[∑ømödex].
+v¨
+;Öaramindex++) {
+
+2999 
+v¨
+ = 
+·dm_∑ømëîs
+[
+∑ømödex
+].var;
+
+3000 
+vÆ
+ = 
+·dm_∑ømëîs
+[
+∑ømödex
+].val;
+
+3001 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "S™gom®ISDN T≠pög key=vÆue, %s=%s\n", 
+v¨
+, 
+vÆ
+);
+
+3003 i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "debug")) {
+
+3004 
+debug
+ = 
+vÆ
+;
+
+3005 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "mixaudio")) {
+
+3006 i‡(
+	`·dm_åue
+(
+vÆ
+Ë|| !
+	`°rˇ£cmp
+(val, "both")) {
+
+3007 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög mixáudiÿmodêtÿ'bŸh' f‹ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+3008 
+mixaudio
+ = 
+ISDN_TAP_AUDIO_MIX_BOTH
+;
+
+3009 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "peer")) {
+
+3010 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög mixáudiÿmodêtÿ'≥î' f‹ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+3011 
+mixaudio
+ = 
+ISDN_TAP_AUDIO_MIX_PEER
+;
+
+3012 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "stereo")) {
+
+3013 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög mixáudiÿmodêtÿ'°îeo' f‹ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+3014 
+mixaudio
+ = 
+ISDN_TAP_AUDIO_MIX_STEREO
+;
+
+3016 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög mixáudiÿmodêtÿ'£lf' f‹ s∑¿%s\n", 
+•™
+->
+«me
+);
+
+3017 
+mixaudio
+ = 
+ISDN_TAP_AUDIO_MIX_SELF
+;
+
+3019 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "interface")) {
+
+3020 i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "cpe")) {
+
+3021 
+iÁ˚
+ = 
+ISDN_TAP_IFACE_CPE
+;
+
+3022 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "net")) {
+
+3023 
+iÁ˚
+ = 
+ISDN_TAP_IFACE_NET
+;
+
+3025 
+	`·dm_log
+(
+FTDM_LOG_WARNING
+, "Ign‹ög invÆidÅ≠pög i¡îÁ˚Åy≥ %s\n", 
+vÆ
+);
+
+3027 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "peerspan")) {
+
+3028 i‡(
+	`·dm_•™_föd_by_«me
+(
+vÆ
+, &
+≥î•™
+Ë!
+FTDM_SUCCESS
+) {
+
+3029 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆidÅ≠pögÖì∏•™ %s\n", 
+vÆ
+);
+
+3032 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "tapmode")) {
+
+3033 i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "bi-dir")) {
+
+3034 
+èpmode
+ = 
+ISDN_TAP_BI_DIRECTION
+;
+
+3035 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "fs")) {
+
+3036 
+èpmode
+ = 
+ISDN_TAP_FS
+;
+
+3038 
+èpmode
+ = 
+ISDN_TAP_NORMAL
+;
+
+3040 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "ISDN T≠pög i†ru¬ög i¿%†mode\n", 
+	`SNG_DECODE_ISDN_TAP_MODE
+(
+èpmode
+));
+
+3041 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "interface_type")) {
+
+3042 i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "network")) {
+
+3043 
+ötf
+ = 
+NETWORK
+;
+
+3044 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "user")) {
+
+3045 
+ötf
+ = 
+USER
+;
+
+3047 
+	`·dm_log
+(
+FTDM_LOG_WARNING
+, "Ign‹ög invÆidÅ≠pög i¡îÁ˚Åy≥ %s\n", 
+vÆ
+);
+
+3049 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "switch_type")) {
+
+3050 
+swtch_typ
+ = 
+	`·dm_ßngoma_isdn_gë_swôch_ty≥
+(
+vÆ
+);
+
+3051 i‡(
+swtch_typ
+ == -1) {
+
+3052 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆid swôchÅy≥ '%s' f‹ s∑¿'%s'\n", 
+vÆ
+, 
+•™
+->
+«me
+);
+
+3053  
+FTDM_FAIL
+;
+
+3055 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "queue-size")) {
+
+3056 
+èp_dch™_queue_size
+ = 
+	`©oi
+(
+vÆ
+);
+
+3057 i‡(
+èp_dch™_queue_size
+) {
+
+3058 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆid TX/RX Queuêsizê'%s' f‹ s∑¿'%s'\n", 
+vÆ
+, 
+•™
+->
+«me
+);
+
+3060 
+èp_dch™_queue_size
+ = 
+ISDN_TAP_DCHAN_QUEUE_LEN
+;
+
+3062 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "TX/RX Queuêsizê'%d' i†ª˚ived by u£∏c⁄figuøti⁄ f‹ s∑¿'%s'\n", 
+èp_dch™_queue_size
+, 
+•™
+->
+«me
+);
+
+3063 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "spanmap")) {
+
+3064 i‡(
+	`ßngoma_isdn_èp_∑r£_•™m≠
+(
+vÆ
+, 
+•™
+Ë!
+FTDM_SUCCESS
+) {
+
+3065 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "InvÆidÅ≠ NFAS c⁄figuøti⁄ s∑n_m≠ '%s' f‹ s∑¿'%s'\n", 
+vÆ
+, 
+•™
+->
+«me
+);
+
+3066  
+FTDM_FAIL
+;
+
+3068 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "trunkgroup")) {
+
+3070 } i‡(!
+	`°rˇ£cmp
+(
+v¨
+, "call_info_indication")) {
+
+3071 i‡(
+	`·dm_åue
+(
+vÆ
+)) {
+
+3072 
+evít_öd
+ = 
+FTDM_TRUE
+;
+
+3073 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög cÆ»öfom©i⁄ indiˇti⁄ÅÿTRUE f‹ s∑¿'%s'\n", 
+•™
+->
+«me
+);
+
+3075 
+evít_öd
+ = 
+FTDM_FALSE
+;
+
+3076 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög cÆ»öfom©i⁄ indiˇti⁄ÅÿFALSE f‹ s∑¿'%s'\n", 
+•™
+->
+«me
+);
+
+3079 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "Unknow¿isd¿èµögÖ¨amëî [%s]\n", 
+v¨
+);
+
+3084 i‡((!
+èp
+->
+nÁs
+.
+åunk
+Ë|| (èp->nÁs.
+sigch™
+ !
+SNGISDN_NFAS_DCHAN_NONE
+)) {
+
+3085 
+idx
+ = 1; idx <
+•™
+->
+ch™_cou¡
+; idx++) {
+
+3086 i‡(
+•™
+->
+ch™√ls
+[
+idx
+]->
+ty≥
+ =
+FTDM_CHAN_TYPE_DQ921
+) {
+
+3087 
+dch™
+ = 
+•™
+->
+ch™√ls
+[
+idx
+];
+
+3092 i‡(!
+dch™
+) {
+
+3093 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "No d-channel specified in freetdm.conf!\n");
+
+3094  
+FTDM_FAIL
+;
+
+3097 
+èp
+->
+dch™
+ = dchan;
+
+3101 i‡(!
+≥î•™
+) {
+
+3102 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "No validÖeerspan was specified!\n");
+
+3103  
+FTDM_FAIL
+;
+
+3107 
+èp
+->
+≥nd_ˇŒ_l°
+ = 
+	`¸óã_hashèbÀ
+(
+FTDM_MAX_CHANNELS_PHYSICAL_SPAN
+, 
+·dm_hash_hash‰om°rög
+, 
+·dm_hash_equÆkeys
+);
+
+3109 
+èp
+->
+ödiˇã_evít
+ = 
+evít_öd
+;
+
+3110 
+èp
+->
+debug
+ = 
+	`∑r£_debug
+(debug);
+
+3111 
+èp
+->
+≥î•™
+ =Öeerspan;
+
+3112 
+èp
+->
+mixaudio
+ = mixaudio;
+
+3113 
+èp
+->
+iÁ˚
+ = iface;
+
+3114 
+èp
+->
+swôch_ty≥
+ = 
+swtch_typ
+;
+
+3115 
+èp
+->
+èp_mode
+ = 
+èpmode
+;
+
+3118 
+èp
+->
+decCb
+ = 
+	`¢g_q931_decodî_gëcb
+();
+
+3119 i‡(
+NULL
+ =
+èp
+->
+decCb
+) {
+
+3120 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, " FailedÅo get memory for q931 decoder control block \n");
+
+3121  
+FTDM_FAIL
+;
+
+3125 i‡(
+	`q931_decodî_öô
+(
+ötf
+, 
+èp
+->
+decCb
+)) {
+
+3127 i‡(
+èp
+->
+decCb
+) {
+
+3128 
+	`¢g_q931_decodî_‰ìcb
+(
+èp
+->
+decCb
+);
+
+3131 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, " FailedÅo initialize q931 decoder control block \n");
+
+3132  
+FTDM_FAIL
+;
+
+3136 
+•™
+->
+°¨t
+ = 
+·dm_ßngoma_isdn_èp_°¨t
+;
+
+3137 
+•™
+->
+°›
+ = 
+·dm_ßngoma_isdn_èp_°›
+;
+
+3139 i‡(
+èp
+->
+mixaudio
+ =
+ISDN_TAP_AUDIO_MIX_NULL
+) {
+
+3140 
+•™
+->
+sig_ªad
+ = 
+NULL
+;
+
+3142 
+•™
+->
+sig_ªad
+ = 
+·dm_ßngoma_isdn_èp_medü_ªad
+;
+
+3145 
+•™
+->
+sig«l_cb
+ = 
+sig_cb
+;
+
+3147 
+•™
+->
+sig«l_ty≥
+ = 
+FTDM_SIGTYPE_ISDN
+;
+
+3148 
+•™
+->
+outgoög_ˇŒ
+ = 
+ßngoma_isdn_èp_outgoög_ˇŒ
+;
+
+3150 
+•™
+->
+gë_ch™√l_sig_°©us
+ = 
+ßngoma_isdn_èp_gë_ch™√l_sig_°©us
+;
+
+3151 
+•™
+->
+gë_•™_sig_°©us
+ = 
+ßngoma_isdn_èp_gë_•™_sig_°©us
+;
+
+3153 
+•™
+->
+°©e_m≠
+ = &
+¢gisdn_èp_°©e_m≠
+;
+
+3154 
+•™
+->
+°©e_¥o˚ss‹
+ = 
+°©e_adv™˚
+;
+
+3156 i‡(
+èp
+->
+èp_mode
+ =
+ISDN_TAP_BI_DIRECTION
+) {
+
+3157 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "Sëtög SKIP sèã fœg f‹ s∑¿%d\n", 
+•™
+->
+•™_id
+);
+
+3160 
+	`·dm_£t_Êag
+(
+•™
+, 
+FTDM_SPAN_USE_SKIP_STATES
+);
+
+3164 i‡(!
+g_decodî_lib_öô
+) {
+
+3166 
+¢g_evít
+.
+¢g_log
+ = 
+h™dÀ_isdn_èµög_log
+;
+
+3169 i‡(
+	`¢g_decodî_lib_öô
+(&
+¢g_evít
+)) {
+
+3170 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, " FailedÅo initialize decoderÜib \n");
+
+3171  
+FTDM_FAIL
+;
+
+3174 
+g_decodî_lib_öô
+ = 0x01;
+
+3178 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+NULL
+, 
+•™
+, "enable");
+
+3181 
+g_¢gisdn_èp_d©a
+.
+èp_•™s
+[g_¢gisdn_èp_d©a.
+num_•™s_c⁄figuªd
+++] = 
+èp
+;
+
+3183 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "C⁄figuªdÅ≠ f‹ s∑¿[%d]!\n", 
+•™
+->
+•™_id
+);
+
+3184  
+FTDM_SUCCESS
+;
+
+3185 
+	}
+}
+
+3194 
+¢gisdn_t
+ *
+	$ßngoma_isdn_√w_cb
+(
+·dm_sockë_t
+ 
+fd
+, 
+nodëy≥
+, 
+swôchty≥
+, *
+u£rd©a
+)
+
+3196 
+¢gisdn_t
+ *
+p
+;
+
+3198 i‡(!(
+p
+ = 
+	`·dm_ˇŒoc
+(1, (*p))))
+
+3199  
+NULL
+;
+
+3201 
+p
+->
+fd
+ = fd;
+
+3202 
+p
+->
+u£rd©a
+ = userdata;
+
+3203 
+p
+->
+loˇ…y≥
+ = 
+nodëy≥
+;
+
+3204 
+p
+->
+swôchty≥
+ = switchtype;
+
+3205 
+p
+->
+¸ef
+ = 1;
+
+3207  
+p
+;
+
+3208 
+	}
+}
+
+3217 *
+	$ßngoma_isdn_gë_u£rd©a
+(
+¢gisdn_t
+ *
+¥i
+)
+
+3219  
+¥i
+ ?Öri->
+u£rd©a
+ : 
+NULL
+;
+
+3220 
+	}
+}
+
+3229 
+	$h™dÀ_isdn_èµög_log
+(
+uöt8_t
+ 
+Àvñ
+, *
+fmt
+,...)
+
+3231 *
+d©a
+;
+
+3232 
+ªt
+;
+
+3233 
+va_li°
+ 
+≠
+;
+
+3235 
+	`va_°¨t
+(
+≠
+, 
+fmt
+);
+
+3236 
+ªt
+ = 
+	`·dm_va•rötf
+(&
+d©a
+, 
+fmt
+, 
+≠
+);
+
+3237 i‡(
+ªt
+ == -1) {
+
+3238 
+íd
+;
+
+3241 
+Àvñ
+) {
+
+3243 
+SNG_LOGLEVEL_DEBUG
+:
+
+3244 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "¢g_decodî_lib->%s", 
+d©a
+);
+
+3247 
+SNG_LOGLEVEL_WARN
+:
+
+3248 
+	`·dm_log
+(
+FTDM_LOG_WARNING
+, "¢g_decodî_lib->%s", 
+d©a
+);
+
+3251 
+SNG_LOGLEVEL_INFO
+:
+
+3252 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "¢g_decodî_lib->%s", 
+d©a
+);
+
+3255 
+SNG_LOGLEVEL_ERROR
+:
+
+3256 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "¢g_decodî_lib->%s", 
+d©a
+);
+
+3259 
+SNG_LOGLEVEL_CRIT
+:
+
+3261 
+	`·dm_log
+(
+FTDM_LOG_CRIT
+, "¢g_decodî_lib->%s", 
+d©a
+);
+
+3265 
+	`·dm_log
+(
+FTDM_LOG_INFO
+, "¢g_decodî_lib->%s", 
+d©a
+);
+
+3270 
+íd
+:
+
+3271 
+	`·dm_ß„_‰ì
+(
+d©a
+);
+
+3272 
+	`va_íd
+(
+≠
+);
+
+3274 
+	}
+}
+
+3283 
+	$ßngoma_isdn_èp_£t_debug
+(
+¢gisdn_t
+ *
+¥i
+, 
+debug
+)
+
+3285 i‡(!
+¥i
+)
+
+3287 
+¥i
+->
+debug
+ = debug;
+
+3288 
+	}
+}
+
+3298 
+·dm_°©us_t
+ 
+	$ßngoma_isdn_èp_£t_èp_msg_öfo
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+)
+
+3300 i‡(!
+èp
+) {
+
+3301 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "sangoma_isdn_tap_set_tap_msg_info failed. InvalidÅap structure\n");
+
+3302  
+FTDM_FAIL
+;
+
+3305 i‡(!
+ötfCb
+) {
+
+3306 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "sangoma_isdn_tap_set_tap_msg_info failed. Invalid intreface structure\n");
+
+3307  
+FTDM_FAIL
+;
+
+3311 
+pˇŒ
+->
+èp_msg
+.
+•™_id
+ = 
+èp
+->
+•™
+->span_id;
+
+3312 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög ch™√»ID[%d] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+•™_id
+);
+
+3315 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_ªf
+ = 
+ötfCb
+->call_ref;
+
+3316 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆ»ª„ª˚[%d] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_ªf
+);
+
+3319 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_c⁄
+ = 0;
+
+3321 i‡(
+msgTy≥
+ =
+Q931_SETUP
+) {
+
+3323 
+pˇŒ
+->
+èp_msg
+.
+ch™_id
+ = 
+ötfCb
+->chan_id;
+
+3324 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög ch™√»ID[%d] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ch™_id
+);
+
+3327 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_dú
+ = 
+CALL_DIRECTION_INBOUND
+;
+
+3330 i‡(!
+	`·dm_°æí_zîo
+(
+ötfCb
+->
+˛d_num
+)) {
+
+3331 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+, 
+ötfCb
+->
+˛d_num
+);
+
+3332 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆÀd Numbî[%s] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒed_num
+);
+
+3336 i‡(!
+	`·dm_°æí_zîo
+(
+ötfCb
+->
+˛g_num
+)) {
+
+3337 
+	`·dm_£t_°rög
+(
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+, 
+ötfCb
+->
+˛g_num
+);
+
+3338 
+	`·dm_log
+(
+FTDM_LOG_DEBUG
+, "Sëtög CÆlög Numbî[%s] i¿è∞mesßgê°ru˘uª\n", 
+pˇŒ
+->
+èp_msg
+.
+ˇŒög_num
+);
+
+3340 } i‡(
+msgTy≥
+ =
+Q931_CONNECT
+) {
+
+3342 
+pˇŒ
+->
+èp_msg
+.
+ˇŒ_dú
+ = 
+CALL_DIRECTION_OUTBOUND
+;
+
+3345  
+FTDM_SUCCESS
+;
+
+3346 
+	}
+}
+
+3355 
+	$·dm_ßngoma_isdn_gë_swôch_ty≥
+(c⁄° *
+vÆ
+)
+
+3357 
+swôch_ty≥
+;
+
+3359 i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "test")) {
+
+3360 
+swôch_ty≥
+ = 
+SW_TST
+;
+
+3361 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ccitt")) {
+
+3362 
+swôch_ty≥
+ = 
+SW_CCITT
+;
+
+3363 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "att5eb")) {
+
+3364 
+swôch_ty≥
+ = 
+SW_ATT5EB
+;
+
+3365 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "att5ep")) {
+
+3366 
+swôch_ty≥
+ = 
+SW_ATT5EP
+;
+
+3367 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "att4e")) {
+
+3368 
+swôch_ty≥
+ = 
+SW_ATT4E
+;
+
+3369 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ntdms100b")) {
+
+3370 
+swôch_ty≥
+ = 
+SW_NTDMS100B
+;
+
+3371 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ntdms100p")) {
+
+3372 
+swôch_ty≥
+ = 
+SW_NTDMS100P
+;
+
+3373 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "vn2")) {
+
+3374 
+swôch_ty≥
+ = 
+SW_VN2
+;
+
+3375 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "vn3")) {
+
+3376 
+swôch_ty≥
+ = 
+SW_VN3
+;
+
+3377 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "insnet")) {
+
+3378 
+swôch_ty≥
+ = 
+SW_INSNET
+;
+
+3379 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "tr6mpc")) {
+
+3380 
+swôch_ty≥
+ = 
+SW_TR6MPC
+;
+
+3381 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "tr6pbx")) {
+
+3382 
+swôch_ty≥
+ = 
+SW_TR6PBX
+;
+
+3383 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ausb")) {
+
+3384 
+swôch_ty≥
+ = 
+SW_AUSB
+;
+
+3385 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ausp")) {
+
+3386 
+swôch_ty≥
+ = 
+SW_AUSP
+;
+
+3387 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ni1")) {
+
+3388 
+swôch_ty≥
+ = 
+SW_NI1
+;
+
+3389 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "etsi")) {
+
+3390 
+swôch_ty≥
+ = 
+SW_ETSI
+;
+
+3391 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "bc303tmc")) {
+
+3392 
+swôch_ty≥
+ = 
+SW_BC303TMC
+;
+
+3393 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "bc303csc")) {
+
+3394 
+swôch_ty≥
+ = 
+SW_BC303CSC
+;
+
+3395 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ntdms250")) {
+
+3396 
+swôch_ty≥
+ = 
+SW_NTDMS250
+;
+
+3397 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ni2")) {
+
+3398 
+swôch_ty≥
+ = 
+SW_NI2
+;
+
+3399 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "qsig")) {
+
+3400 
+swôch_ty≥
+ = 
+SW_QSIG
+;
+
+3401 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ntmci")) {
+
+3402 
+swôch_ty≥
+ = 
+SW_NTMCI
+;
+
+3403 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "ntni")) {
+
+3404 
+swôch_ty≥
+ = 
+SW_NTNI
+;
+
+3405 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "bellcore")) {
+
+3406 
+swôch_ty≥
+ = 
+SW_BELLCORE
+;
+
+3407 } i‡(!
+	`°rˇ£cmp
+(
+vÆ
+, "gsm")) {
+
+3408 
+swôch_ty≥
+ = 
+SW_GSM
+;
+
+3410 
+swôch_ty≥
+ = -1;
+
+3413  
+swôch_ty≥
+;
+
+3414 
+	}
+}
+
+3423 
+EX_DECLARE_DATA
+ 
+·dm_moduÀ_t
+ 
+	g·dm_moduÀ
+ = {
+
+3425 
+·dm_ßngoma_isdn_èp_io_öô
+,
+
+3426 
+·dm_ßngoma_isdn_èp_u∆ﬂd
+,
+
+3427 
+·dm_ßngoma_isdn_èp_öô
+,
+
+3428 
+NULL
+,
+
+3429 
+NULL
+,
+
+3430 
+·dm_ßngoma_isdn_èp_c⁄figuª_•™
+,
+
+3446 
+	$COMMAND_HANDLER
+(
+°©i°ics
+)
+
+3448 i‡(
+¨gc
+) {
+
+3449 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ sèti°ic†comm™d\n", 
+¨gv
+[1]);
+
+3450  
+FTDM_FAIL
+;
+
+3453 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "**********************************************************\n");
+
+3454 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, " Calls Statistics \n");
+
+3455 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "**********************************************************\n");
+
+3456 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Sëu∞Re˚ived = %d\n", 
+£tup_ªcv
+);
+
+3457 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Sëu∞Re˚ived wôh invÆid ch™√l = %d\n", 
+£tup_ªcv_övÆid_ch™Id
+);
+
+3458 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Sëu∞nŸ Re˚ived = %d\n", 
+£tup_nŸ_ªcv
+);
+
+3459 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡CÆ»Pro˚ed Re˚ived = %d\n", 
+ˇŒ_¥o˚ed_ªcv
+);
+
+3460 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡C⁄¬e˘ Re˚ived = %d\n", 
+c⁄√˘_ªcv
+);
+
+3461 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡E¨ly C⁄¬e˘ Re˚ived = %d\n", 
+óæy_c⁄√˘_ªcv
+);
+
+3462 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡L©êInvôêRe˚ived = %d\n", 
+œã_övôe_ªcv
+);
+
+3463 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡C⁄¬e˘ Re˚ived wôh ch™√l = %d\n", 
+c⁄√˘_ªcv_wôh_ch™Id
+);
+
+3464 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Mesßgêª˚ivedá·î %d sec⁄ds = %d\n", 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+, 
+msg_ªcv_a·_time
+);
+
+3465 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Disc⁄√˘ Re˚ived = %d\n", 
+disc⁄√˘_ªcv
+);
+
+3466 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Rñó£ Re˚ived = %d\n", 
+ªÀa£_ªcv
+);
+
+3467 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡T≠≥d fûe†gíî©ed = %d\n", 
+ˇŒ_èµed
+);
+
+3468 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡C⁄√˘ Re˚ived whîêCh™√»wa†In-U£ = %d\n", 
+ªu£_ch™_c⁄_ªcv
+);
+
+3470  
+FTDM_SUCCESS
+;
+
+3471 
+	}
+}
+
+3480 
+·dm_°©us_t
+ 
+	$·dm_ßngoma_isdn_èp_show_•™_°©us
+(
+·dm_°ªam_h™dÀ_t
+ *
+°ªam
+, 
+·dm_•™_t
+ *
+•™
+)
+
+3482 
+·dm_Æ¨m_Êag_t
+ 
+Æ¨mbôs
+ = 
+FTDM_ALARM_NONE
+;
+
+3483 
+·dm_sig«lög_°©us_t
+ 
+sig°©us
+;
+
+3484 
+·dm_ch™√l_t
+ *
+sig_ch™
+ = 
+NULL
+;
+
+3485 
+·dm_ch™√l_t
+ *
+fch™
+ = 
+NULL
+;
+
+3486 
+uöt32_t
+ 
+ch™_idx
+ = 0;
+
+3488 
+sig_ch™
+ = ((
+¢gisdn_èp_t
+ *)
+•™
+->
+sig«l_d©a
+)->
+dch™
+;
+
+3490 i‡(
+sig_ch™
+) {
+
+3491 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "SIGNALLING SPAN %†°©u†->\n", 
+•™
+->
+«me
+);
+
+3493 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "PURE VOICE SPAN %†°©u†->\n", 
+•™
+->
+«me
+);
+
+3496 
+ch™_idx
+ = 1; ch™_idx <
+•™
+->
+ch™_cou¡
+; chan_idx++) {
+
+3497 
+fch™
+ = 
+•™
+->
+ch™√ls
+[
+ch™_idx
+];
+
+3498 
+Æ¨mbôs
+ = 
+FTDM_ALARM_NONE
+;
+
+3500 i‡(
+fch™
+) {
+
+3501 
+	`·dm_ch™√l_gë_Æ¨ms
+(
+fch™
+, &
+Æ¨mbôs
+);
+
+3503 
+	`·dm_ch™√l_gë_sig_°©us
+(
+fch™
+, &
+sig°©us
+);
+
+3505 i‡((
+sig_ch™
+Ë&& (sig_ch™->
+•™_id
+ =
+fch™
+->•™_idË&& (sig_ch™->
+ch™_id
+ == fchan->chan_id)) {
+
+3506 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "span = %2d|chan = %2d|phy_status = %4s|SIGNALLING LINK|state = %s|\n",
+
+3507 
+•™
+->
+•™_id
+, 
+fch™
+->
+physiˇl_ch™_id
+, 
+Æ¨mbôs
+ ? "ALARMED" : "OK",
+
+3508 
+	`·dm_ch™√l_°©e2°r
+(
+fch™
+->
+°©e
+));
+
+3510 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "span = %2d|chan = %2d|phy_status = %4s|sig_status = %4s|state = %s|\n",
+
+3511 
+•™
+->
+•™_id
+, 
+fch™
+->
+physiˇl_ch™_id
+, 
+Æ¨mbôs
+ ? "ALARMED" : "OK",
+
+3512 
+	`·dm_sig«lög_°©us2°r
+(
+sig°©us
+),
+
+3513 
+	`·dm_ch™√l_°©e2°r
+(
+fch™
+->
+°©e
+));
+
+3518 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "***********************************************************************\n");
+
+3520  
+FTDM_SUCCESS
+;
+
+3521 
+	}
+}
+
+3530 
+·dm_°©us_t
+ 
+	$·dm_ßngoma_isdn_èp_show_nÁs_c⁄fig
+(
+·dm_°ªam_h™dÀ_t
+ *
+°ªam
+, 
+¢gisdn_èp_t
+ *
+èp
+)
+
+3532 
+¢gisdn_èp_t
+ *
+nÁs_èp
+ = 
+NULL
+;
+
+3533 
+·dm_•™_t
+ *
+•™
+ = 
+NULL
+;
+
+3534 
+idx
+ = 0;
+
+3536 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "***********************************************************************\n");
+
+3537 i‡(!
+èp
+->
+nÁs
+.
+åunk
+) {
+
+3538 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "S∑¿%†i†nŸ c⁄figuªdá†NFAS s∑n\n", 
+èp
+->
+•™
+->
+«me
+);
+
+3539  
+FTDM_FAIL
+;
+
+3542 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "NFAS Group: %s\n", 
+èp
+->
+nÁs
+.
+åunk
+->
+«me
+);
+
+3544 
+idx
+ = 0; idx < 
+èp
+->
+nÁs
+.
+åunk
+->
+num_èp_•™s
+; idx++) {
+
+3545 i‡(!
+èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+idx
+]) {
+
+3546 
+	`·dm_log
+(
+FTDM_LOG_ERROR
+, "No ISDN NFAS Tap span foundát index %d for span %s\n",
+
+3547 
+idx
+, 
+èp
+->
+•™
+->
+«me
+);
+
+3548  
+FTDM_FAIL
+;
+
+3551 
+•™
+ = 
+èp
+->
+nÁs
+.
+åunk
+->
+èp_•™s
+[
+idx
+];
+
+3552 
+nÁs_èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+3554 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "Span = %s|Üogical span ID = %d| Span Type = %s|\n",
+
+3555 
+nÁs_èp
+->
+•™
+->
+«me
+, 
+idx
+, 
+	`SNG_ISDN_TAP_GET_NFAS_SPAN_TYPE
+“Ás_èp->
+nÁs
+.
+sigch™
+));
+
+3558  
+FTDM_SUCCESS
+;
+
+3560 
+	}
+}
+
+3569 
+·dm_°©us_t
+ 
+	$·dm_ßngoma_isdn_èp_io_°©s
+(
+·dm_°ªam_h™dÀ_t
+ *
+°ªam
+, 
+·dm_•™_t
+ *
+•™
+, c⁄° * 
+cmd
+)
+
+3571 
+·dm_ôî©‹_t
+ *
+ch™ôî
+ = 
+NULL
+;
+
+3572 
+·dm_ch™√l_t
+ *
+·dmch™
+ = 
+NULL
+;
+
+3573 
+·dm_ôî©‹_t
+ *
+cuº
+ = 
+NULL
+;
+
+3574 
+·dm_ch™√l_io°©s_t
+ 
+°©s
+;
+
+3575 
+íabÀ
+ = 0;
+
+3577 i‡((
+NULL
+ =
+cmd
+Ë|| (NULL =
+•™
+)) {
+
+3578 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "Error Enabling IO Stats..invalid span \n");
+
+3579  
+FTDM_FAIL
+;
+
+3582 i‡(
+°ªam
+) {
+
+3583 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "***********************************************************************\n");
+
+3586 
+ch™ôî
+ = 
+	`·dm_•™_gë_ch™_ôî©‹
+(
+•™
+, 
+NULL
+);
+
+3587 
+cuº
+ = 
+ch™ôî
+; cuº; cuº = 
+	`·dm_ôî©‹_√xt
+(curr)) {
+
+3588 
+·dmch™
+ = (
+·dm_ch™√l_t
+*)
+	`·dm_ôî©‹_cuºít
+(
+cuº
+);
+
+3590 i‡(!
+·dmch™
+ || !
+cmd
+) {
+
+3591 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-- InvÆid ch™√l/comm™d '%s' found!", 
+cmd
+);
+
+3592  
+FTDM_FAIL
+;
+
+3595 i‡(!
+	`°rˇ£cmp
+("íabÀ", 
+cmd
+)) {
+
+3596 
+íabÀ
+ = 1;
+
+3597 
+	`·dm_ch™√l_comm™d
+(
+·dmch™
+, 
+FTDM_COMMAND_SWITCH_IOSTATS
+, &
+íabÀ
+);
+
+3598 i‡(
+°ªam
+) {
+
+3599 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "IO STATS E«bÀ suc˚ssfuŒy f‹ s∑¿%d ch™ %d\n", 
+·dmch™
+->
+•™_id
+, ftdmch™->
+ch™_id
+);
+
+3601 } i‡(!
+	`°rˇ£cmp
+("dißbÀ", 
+cmd
+)) {
+
+3602 
+íabÀ
+ = 0;
+
+3603 
+	`·dm_ch™√l_comm™d
+(
+·dmch™
+, 
+FTDM_COMMAND_SWITCH_IOSTATS
+, &
+íabÀ
+);
+
+3604 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "IO STATS DißbÀ suc˚ssfuŒy f‹ s∑¿%d ch™ %d\n", 
+·dmch™
+->
+•™_id
+, ftdmch™->
+ch™_id
+);
+
+3605 } i‡(!
+	`°rˇ£cmp
+("Êush", 
+cmd
+)) {
+
+3606 
+	`·dm_ch™√l_comm™d
+(
+·dmch™
+, 
+FTDM_COMMAND_FLUSH_IOSTATS
+, 
+NULL
+);
+
+3607 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "IO STATS Flushed suc˚ssfuŒy f‹ s∑¿%d ch™ %d\n", 
+·dmch™
+->
+•™_id
+, ftdmch™->
+ch™_id
+);
+
+3608 } i‡(!
+	`°rˇ£cmp
+("show", 
+cmd
+)) {
+
+3609 
+	`·dm_ch™√l_comm™d
+(
+·dmch™
+, 
+FTDM_COMMAND_GET_IOSTATS
+, &
+°©s
+);
+
+3611 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-- IO sèti°ic†f‹ ch™√»%d:%d --\n", 
+	`·dm_ch™√l_gë_•™_id
+(
+·dmch™
+), 
+	`·dm_ch™√l_gë_id
+(ftdmchan));
+
+3612 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "RxÉº‹s: %u\n", 
+°©s
+.
+rx
+.
+îr‹s
+);
+
+3613 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Rx queuêsize: %u\n", 
+°©s
+.
+rx
+.
+queue_size
+);
+
+3614 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Rx queuêÀn: %u\n", 
+°©s
+.
+rx
+.
+queue_Àn
+);
+
+3615 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Rx cou¡: %lu\n", 
+°©s
+.
+rx
+.
+∑ckës
+);
+
+3616 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "TxÉº‹s: %u\n", 
+°©s
+.
+tx
+.
+îr‹s
+);
+
+3617 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Tx queuêsize: %u\n", 
+°©s
+.
+tx
+.
+queue_size
+);
+
+3618 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Tx queuêÀn: %u\n", 
+°©s
+.
+tx
+.
+queue_Àn
+);
+
+3619 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Tx cou¡: %lu\n", 
+°©s
+.
+tx
+.
+∑ckës
+);
+
+3620 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "Tx idÀ: %lu\n", 
+°©s
+.
+tx
+.
+idÀ_∑ckës
+);
+
+3623 
+	`·dm_ôî©‹_‰ì
+(
+ch™ôî
+);
+
+3625 i‡(
+°ªam
+) {
+
+3626 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "***********************************************************************\n");
+
+3629  
+FTDM_SUCCESS
+;
+
+3630 
+	}
+}
+
+3639 
+	$COMMAND_HANDLER
+(
+show
+)
+
+3641 
+¢gisdn_èp_t
+ *
+èp
+ = 
+NULL
+;
+
+3642 
+·dm_•™_t
+ *
+•™
+ = 
+NULL
+;
+
+3643 
+•™_id
+ = 0;
+
+3645 i‡(
+¨gc
+ != 2) {
+
+3646 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ show comm™d\n", 
+¨gv
+[1]);
+
+3647  
+FTDM_FAIL
+;
+
+3650 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "span")) {
+
+3651 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[1], "all")) {
+
+3652 
+•™_id
+ = 0; s∑n_id <
+g_¢gisdn_èp_d©a
+.
+num_•™s_c⁄figuªd
+; span_id++) {
+
+3653 
+èp
+ = 
+g_¢gisdn_èp_d©a
+.
+èp_•™s
+[
+•™_id
+];
+
+3655 i‡(
+èp
+) {
+
+3656 
+	`·dm_ßngoma_isdn_èp_show_•™_°©us
+(
+°ªam
+, 
+èp
+->
+•™
+);
+
+3660 
+•™_id
+ = 
+	`©oi
+(
+¨gv
+[1]);
+
+3662 i‡(
+	`·dm_•™_föd_by_«me
+(
+¨gv
+[0], &
+•™
+Ë!
+FTDM_SUCCESS
+ && 
+	`·dm_•™_föd
+(
+•™_id
+, &span) != FTDM_SUCCESS) {
+
+3663 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR FaûedÅÿföd TAP s∑¿'%s'\n", 
+¨gv
+[1]);
+
+3664  
+FTDM_FAIL
+;
+
+3667 i‡(!
+•™
+ || !•™->
+sig«l_d©a
+) {
+
+3668 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR '%s' i†nŸá vÆid TAP s∑n\n", 
+¨gv
+[1]);
+
+3669  
+FTDM_FAIL
+;
+
+3672 
+	`·dm_ßngoma_isdn_èp_show_•™_°©us
+(
+°ªam
+, 
+•™
+);
+
+3674 } i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "nfas")) {
+
+3675 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[1], "config")) {
+
+3676 
+•™_id
+ = 0; s∑n_id <
+g_¢gisdn_èp_d©a
+.
+num_•™s_c⁄figuªd
+; span_id++) {
+
+3677 
+èp
+ = 
+g_¢gisdn_èp_d©a
+.
+èp_•™s
+[
+•™_id
+];
+
+3679 i‡((
+èp
+Ë&& (èp->
+dch™
+)) {
+
+3680 
+	`·dm_ßngoma_isdn_èp_show_nÁs_c⁄fig
+(
+°ªam
+, 
+èp
+);
+
+3684 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR '%s' i†nŸá vÆid TAP s∑n\n", 
+¨gv
+[1]);
+
+3685 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-U£: ftdm isdn_è∞showÇÁ†c⁄fig\n", 
+¨gv
+[1]);
+
+3686  
+FTDM_FAIL
+;
+
+3689 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ comm™d\n", 
+¨gv
+[1]);
+
+3690  
+FTDM_FAIL
+;
+
+3693  
+FTDM_SUCCESS
+;
+
+3694 
+	}
+}
+
+3703 
+	$COMMAND_HANDLER
+(
+io_°©s
+)
+
+3705 
+¢gisdn_èp_t
+ *
+èp
+ = 
+NULL
+;
+
+3706 
+·dm_•™_t
+ *
+•™
+ = 
+NULL
+;
+
+3707 
+•™_id
+ = 0;
+
+3709 i‡(
+¨gc
+ != 3) {
+
+3710 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ io_°©†comm™d\n", 
+¨gv
+[1]);
+
+3711  
+FTDM_FAIL
+;
+
+3714 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "show")) {
+
+3715 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[1], "span")) {
+
+3716 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[2], "all")) {
+
+3717 
+•™_id
+ = 0; s∑n_id <
+g_¢gisdn_èp_d©a
+.
+num_•™s_c⁄figuªd
+; span_id++) {
+
+3718 
+èp
+ = 
+g_¢gisdn_èp_d©a
+.
+èp_•™s
+[
+•™_id
+];
+
+3720 i‡(
+èp
+) {
+
+3721 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+èp
+->
+•™
+, "show");
+
+3725 
+•™_id
+ = 
+	`©oi
+(
+¨gv
+[2]);
+
+3727 i‡(
+	`·dm_•™_föd_by_«me
+(
+¨gv
+[2], &
+•™
+Ë!
+FTDM_SUCCESS
+ && 
+	`·dm_•™_föd
+(
+•™_id
+, &span) != FTDM_SUCCESS) {
+
+3728 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR FaûedÅÿföd TAP s∑¿'%s'\n", 
+¨gv
+[1]);
+
+3729  
+FTDM_FAIL
+;
+
+3732 i‡(!
+•™
+ || !•™->
+sig«l_d©a
+) {
+
+3733 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR '%s' i†nŸá vÆid TAP s∑n\n", 
+¨gv
+[1]);
+
+3734  
+FTDM_FAIL
+;
+
+3737 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+•™
+, "show");
+
+3740 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ io_°©†show comm™d '%s'\n", 
+¨gv
+[1]);
+
+3741 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "USAGE -> ftdm sangoma_isdn_tap io_stats show span <all/span_id>\n");
+
+3742  
+FTDM_FAIL
+;
+
+3744 } i‡(!(
+	`°rˇ£cmp
+(
+¨gv
+[0], "enable")) || !(strcasecmp(argv[0], "disable")) || !(strcasecmp(argv[0], "flush"))) {
+
+3745 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[1], "span")) {
+
+3746 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[2], "all")) {
+
+3747 
+•™_id
+ = 0; s∑n_id <
+g_¢gisdn_èp_d©a
+.
+num_•™s_c⁄figuªd
+; span_id++) {
+
+3748 
+èp
+ = 
+g_¢gisdn_èp_d©a
+.
+èp_•™s
+[
+•™_id
+];
+
+3750 i‡(
+èp
+) {
+
+3751 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "enable")) {
+
+3752 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+èp
+->
+•™
+, "enable");
+
+3753 } i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "disable")) {
+
+3754 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+èp
+->
+•™
+, "disable");
+
+3755 } i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "flush")) {
+
+3756 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+èp
+->
+•™
+, "flush");
+
+3758 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ io_°©†íabÀ/dißbÀ/Êush comm™d\n", 
+¨gv
+[1]);
+
+3759 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "USAGE -> ftdm sangoma_isdn_tap io_stats <enable/disable/flush> span <all/span_id>\n");
+
+3760  
+FTDM_FAIL
+;
+
+3765 
+•™_id
+ = 
+	`©oi
+(
+¨gv
+[2]);
+
+3767 i‡(
+	`·dm_•™_föd_by_«me
+(
+¨gv
+[2], &
+•™
+Ë!
+FTDM_SUCCESS
+ && 
+	`·dm_•™_föd
+(
+•™_id
+, &span) != FTDM_SUCCESS) {
+
+3768 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR FaûedÅÿföd TAP s∑¿'%s'\n", 
+¨gv
+[1]);
+
+3769  
+FTDM_FAIL
+;
+
+3772 i‡(!
+•™
+ || !•™->
+sig«l_d©a
+) {
+
+3773 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR '%s' i†nŸá vÆid TAP s∑n\n", 
+¨gv
+[2]);
+
+3774  
+FTDM_FAIL
+;
+
+3777 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "enable")) {
+
+3778 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+•™
+, "enable");
+
+3779 } i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "disable")) {
+
+3780 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+•™
+, "disable");
+
+3781 } i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "flush")) {
+
+3782 
+	`·dm_ßngoma_isdn_èp_io_°©s
+(
+°ªam
+, 
+•™
+, "flush");
+
+3784 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ io_°©†íabÀ/dißbÀ/Êush comm™d\n", 
+¨gv
+[1]);
+
+3785 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "USAGE -> ftdm sangoma_isdn_tap io_stats <enable/disable/flush> span <all/span_id>\n");
+
+3786  
+FTDM_FAIL
+;
+
+3790 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ io_°©†íabÀ/dißbÀ/Êush comm™d\n", 
+¨gv
+[1]);
+
+3791 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "USAGE -> ftdm sangoma_isdn_tap io_stats <enable/disable/flush> span <all/span_id>\n");
+
+3792  
+FTDM_FAIL
+;
+
+3795 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ comm™d\n", 
+¨gv
+[1]);
+
+3796  
+FTDM_FAIL
+;
+
+3799  
+FTDM_SUCCESS
+;
+
+3800 
+	}
+}
+
+3810 
+	$COMMAND_HANDLER
+(
+ª£t
+)
+
+3812 i‡(!
+¨gc
+) {
+
+3813 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠Ñe£àcomm™d\n", 
+¨gv
+[1]);
+
+3814  
+FTDM_FAIL
+;
+
+3817 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "counters")) {
+
+3818 
+£tup_ªcv
+ = 0;
+
+3819 
+£tup_ªcv_övÆid_ch™Id
+ = 0;
+
+3820 
+£tup_nŸ_ªcv
+ = 0;
+
+3821 
+ˇŒ_¥o˚ed_ªcv
+ = 0;
+
+3822 
+c⁄√˘_ªcv
+ = 0;
+
+3823 
+óæy_c⁄√˘_ªcv
+ = 0;
+
+3824 
+œã_övôe_ªcv
+ = 0;
+
+3825 
+c⁄√˘_ªcv_wôh_ch™Id
+ = 0;
+
+3826 
+msg_ªcv_a·_time
+ = 0;
+
+3827 
+disc⁄√˘_ªcv
+ = 0;
+
+3828 
+ªÀa£_ªcv
+ = 0;
+
+3829 
+ˇŒ_èµed
+ = 0;
+
+3830 
+ªu£_ch™_c⁄_ªcv
+ =0;
+
+3831 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "**********************************************************\n");
+
+3832 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, " Tap Counetrs Reset successfully \n");
+
+3833 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(stream, "**********************************************************\n");
+
+3834 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Sëu∞Re˚ived = %d\n", 
+£tup_ªcv
+);
+
+3835 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Sëu∞Re˚ived wôh invÆid ch™√l = %d\n", 
+£tup_ªcv_övÆid_ch™Id
+);
+
+3836 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Sëu∞nŸ Re˚ived = %d\n", 
+£tup_nŸ_ªcv
+);
+
+3837 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡CÆ»Pro˚ed Re˚ived = %d\n", 
+ˇŒ_¥o˚ed_ªcv
+);
+
+3838 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡C⁄¬e˘ Re˚ived = %d\n", 
+c⁄√˘_ªcv
+);
+
+3839 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡E¨ly C⁄¬e˘ Re˚ived = %d\n", 
+óæy_c⁄√˘_ªcv
+);
+
+3840 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡L©êInvôêRe˚ived = %d\n", 
+œã_övôe_ªcv
+);
+
+3841 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡C⁄¬e˘ Re˚ived wôh ch™√l = %d\n", 
+c⁄√˘_ªcv_wôh_ch™Id
+);
+
+3842 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Mesßgêª˚ivedá·î %d sec⁄ds = %d\n", 
+SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+, 
+msg_ªcv_a·_time
+);
+
+3843 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Disc⁄√˘ Re˚ived = %d\n", 
+disc⁄√˘_ªcv
+);
+
+3844 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡Rñó£ Re˚ived = %d\n", 
+ªÀa£_ªcv
+);
+
+3845 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡T≠≥d fûe†gíî©ed = %d\n", 
+ˇŒ_èµed
+);
+
+3846 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, " TŸÆ Numbî o‡C⁄√˘ Re˚ived whîêCh™√»wa†In-U£ = %d\n", 
+ªu£_ch™_c⁄_ªcv
+);
+
+3848 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "-ERR InvÆid T≠ comm™d\n", 
+¨gv
+[1]);
+
+3849  
+FTDM_FAIL
+;
+
+3852  
+FTDM_SUCCESS
+;
+
+3853 
+	}
+}
+
+3863 c⁄° *
+	mCMD
+;
+
+3864 
+	mArgc
+;
+
+3865 
+fCMD
+ 
+	mH™dÀr
+;
+
+3867 
+	gISDN_TAP_COMMANDS
+[] = {
+
+3868 
+COMMAND
+(
+°©i°ics
+, 0),
+
+3869 
+COMMAND
+(
+show
+, 1),
+
+3870 
+COMMAND
+(
+io_°©s
+, 2),
+
+3871 
+COMMAND
+(
+ª£t
+, 1),
+
+3882 
+	$FIO_API_FUNCTION
+(
+·dm_ßngoma_isdn_èp_≠i
+)
+
+3884 *
+mycmd
+ = 
+NULL
+, *
+¨gv
+[10] = { 0 };
+
+3885 
+¨gc
+ = 0;
+
+3886 
+i
+;
+
+3887 
+·dm_°©us_t
+ 
+°©us
+ = 
+FTDM_FAIL
+;
+
+3888 
+·dm_°©us_t
+ 
+sy¡ax
+ = 
+FTDM_FAIL
+;
+
+3890 i‡(
+d©a
+) {
+
+3891 
+mycmd
+ = 
+	`·dm_°rdup
+(
+d©a
+);
+
+3892 
+¨gc
+ = 
+	`·dm_£∑øã_°rög
+(
+mycmd
+, ' ', 
+¨gv
+, ((argv) / (argv[0])));
+
+3895 if(
+¨gc
+ > 0) {
+
+3896 
+i
+=0;i<(
+ISDN_TAP_COMMANDS
+)/(ISDN_TAP_COMMANDS[0]);i++) {
+
+3897 if(
+	`°rˇ£cmp
+(
+¨gv
+[0],
+ISDN_TAP_COMMANDS
+[
+i
+].
+CMD
+)==0) {
+
+3898 if(
+¨gc
+ -1 >
+ISDN_TAP_COMMANDS
+[
+i
+].
+Argc
+) {
+
+3899 
+sy¡ax
+ = 
+FTDM_SUCCESS
+;
+
+3900 
+°©us
+ = 
+ISDN_TAP_COMMANDS
+[
+i
+].
+	`H™dÀr
+(
+°ªam
+, &
+¨gv
+[1], 
+¨gc
+-1);
+
+3907 if(
+FTDM_SUCCESS
+ !
+sy¡ax
+) {
+
+3908 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "%s", 
+FT_SYNTAX
+);
+
+3911 if(
+FTDM_SUCCESS
+ !
+°©us
+) {
+
+3912 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "%†Comm™d Faûed\r\n", 
+ISDN_TAP_COMMANDS
+[
+i
+].
+CMD
+);
+
+3914 
+	`·dm_ß„_‰ì
+(
+mycmd
+);
+
+3916  
+FTDM_SUCCESS
+;
+
+3918 *
+mycmd
+ = 
+NULL
+, *
+¨gv
+[10] = { 0 };
+
+3919 
+¨gc
+ = 0;
+
+3921 i‡(
+d©a
+) {
+
+3922 
+mycmd
+ = 
+	`·dm_°rdup
+(
+d©a
+);
+
+3923 
+¨gc
+ = 
+	`·dm_£∑øã_°rög
+(
+mycmd
+, ' ', 
+¨gv
+, ((argv) / (argv[0])));
+
+3926 i‡(
+¨gc
+ > 2) {
+
+3927 i‡(!
+	`°rˇ£cmp
+(
+¨gv
+[0], "debug")) {
+
+3928 
+·dm_•™_t
+ *
+•™
+ = 
+NULL
+;
+
+3930 i‡(
+	`·dm_•™_föd_by_«me
+(
+¨gv
+[1], &
+•™
+Ë=
+FTDM_SUCCESS
+) {
+
+3931 
+¢gisdn_èp_t
+ *
+èp
+ = 
+•™
+->
+sig«l_d©a
+;
+
+3932 i‡(
+•™
+->
+°¨t
+ !
+·dm_ßngoma_isdn_èp_°¨t
+) {
+
+3933 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "%s: -ERR invÆid s∑n.\n", 
+__FILE__
+);
+
+3934 
+d⁄e
+;
+
+3938 
+	`ßngoma_isdn_èp_£t_debug
+(
+èp
+->
+¥i
+, 
+	`∑r£_debug
+(
+¨gv
+[2]));
+
+3939 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "%s: +OK debug së.\n", 
+__FILE__
+);
+
+3940 
+d⁄e
+;
+
+3942 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "%s: -ERR invÆid s∑n.\n", 
+__FILE__
+);
+
+3943 
+d⁄e
+;
+
+3949 
+°ªam
+->
+	`wrôe_fun˘i⁄
+(°ªam, "%s: -ERR invÆid comm™d.\n", 
+__FILE__
+);
+
+3951 
+d⁄e
+:
+
+3952 
+	`·dm_ß„_‰ì
+(
+mycmd
+);
+
+3953  
+FTDM_SUCCESS
+;
+
+3955 
+	}
+}
+
+	@ftmod_sangoma_isdn_tap.h
+
+38 #i‚de‡
+__SNG_ISDN_TAP_H__
+
+
+39 
+	#__SNG_ISDN_TAP_H__
+
+
+	)
+
+46 
+	#_GNU_SOURCE
+
+
+	)
+
+47 #i‚de‡
+WIN32
+
+
+48 
+	~<pﬁl.h
+>
+
+51 
+	~"¥iv©e/·dm_c‹e.h
+"
+
+52 
+	~<°d¨g.h
+>
+
+53 
+	~<˘y≥.h
+>
+
+54 
+	~<time.h
+>
+
+55 #ifde‡
+WIN32
+
+
+56 
+	~<io.h
+>
+
+58 
+	~"¢g_decodî.h
+"
+
+66 
+	#FT_SYNTAX
+ "USAGE:\n" \
+
+72 "--------------------------------------------------------------------------------\n"
+
+	)
+
+75 
+	#COMMAND_HANDLER
+(
+«me
+) \
+
+76 
+·dm_°©us_t
+ 
+fCMD_
+##
+	`«me
+(
+·dm_°ªam_h™dÀ_t
+ *
+°ªam
+, *
+¨gv
+[], 
+¨gc
+); \
+
+77 
+·dm_°©us_t
+ 
+fCMD_
+##
+	`«me
+(
+·dm_°ªam_h™dÀ_t
+ *
+°ªam
+, *
+¨gv
+[], 
+¨gc
+)
+
+	)
+
+80 
+	#COMMAND
+(
+«me
+, 
+¨gc
+Ë{#«me,árgc, 
+fCMD_
+##«me}
+
+	)
+
+82 
+	#MAX_PCALLS
+ 120
+
+	)
+
+83 
+	#ISDN_TAP_DCHAN_QUEUE_LEN
+ 900
+
+	)
+
+84 
+	#MAX_TAP_SPANS
+ 50
+
+	)
+
+87 
+	#MAX_NFAS_GROUPS
+ 16
+
+	)
+
+88 
+	#MAX_NFAS_GROUP_NAME
+ 50
+
+	)
+
+91 
+	#MAX_SPANS_PER_NFAS_LINK
+ 16
+
+	)
+
+94 
+	$·dm_°©us_t
+ (*
+	tfCMD
+)(
+	t·dm_°ªam_h™dÀ_t
+ *
+	t°ªam
+, *
+	t¨gv
+[], 
+	t¨gc
+);
+
+102 
+	s¢gisdn_t
+ {
+
+103 
+·dm_sockë_t
+ 
+fd
+;
+
+104 *
+u£rd©a
+;
+
+105 
+debug
+;
+
+106 
+°©e
+;
+
+107 
+swôchty≥
+;
+
+108 
+loˇ…y≥
+;
+
+109 
+¸ef
+;
+
+110 } 
+¢gisdn_t
+;
+
+113 
+ISDN_TAP_RUNNING
+ = (1 << 0),
+
+114 
+ISDN_TAP_MASTER
+ = (1 << 1),
+
+115 } 
+	t¢gisdn_èp_Êags_t
+;
+
+118 
+PCALL_RING
+ = 0,
+
+119 
+PCALL_CONN
+ = 1,
+
+120 } 
+	t¢gisdn_èp_c⁄n_°©e_t
+;
+
+123 
+ISDN_TAP_AUDIO_MIX_BOTH
+ = 0,
+
+124 
+ISDN_TAP_AUDIO_MIX_PEER
+,
+
+125 
+ISDN_TAP_AUDIO_MIX_SELF
+,
+
+126 
+ISDN_TAP_AUDIO_MIX_STEREO
+,
+
+127 
+ISDN_TAP_AUDIO_MIX_NULL
+,
+
+128 } 
+	t¢gisdn_èp_audio_mix_mode_t
+;
+
+131 
+CALL_DIRECTION_INBOUND
+,
+
+132 
+CALL_DIRECTION_OUTBOUND
+,
+
+133 
+CALL_DIRECTION_NONE
+
+
+134 } 
+	tèp_ˇŒ_dúe˘i⁄_t
+;
+
+137 
+uöt32_t
+ 
+ch™_id
+;
+
+138 
+uöt32_t
+ 
+•™_id
+;
+
+139 
+èp_ˇŒ_dúe˘i⁄_t
+ 
+ˇŒ_dú
+;
+
+140 
+ˇŒ_ªf
+;
+
+141 
+uöt8_t
+ 
+ˇŒ_c⁄
+;
+
+142 
+ˇŒög_num
+[
+FTDM_DIGITS_LIMIT
+];
+
+143 
+ˇŒed_num
+[
+FTDM_DIGITS_LIMIT
+];
+
+144 } 
+	tisdn_èp_msg_öfo_t
+;
+
+147 
+·dm_numbî_t
+ 
+ˇŒögnum
+;
+
+148 
+·dm_numbî_t
+ 
+ˇŒednum
+;
+
+149 
+·dm_ch™√l_t
+ *
+fch™
+;
+
+150 
+öu£
+;
+
+151 
+ˇŒªf_vÆ
+;
+
+152 
+ch™Id
+;
+
+153 
+time_t
+ 
+t_£tup_ªcv
+;
+
+154 
+time_t
+ 
+t_c⁄_ªcv
+;
+
+155 
+time_t
+ 
+t_msg_ªcv
+;
+
+156 
+·dm_boﬁ_t
+ 
+ªcv_£tup
+;
+
+157 
+·dm_boﬁ_t
+ 
+ªcv_c⁄n
+;
+
+158 
+·dm_boﬁ_t
+ 
+ªcv_Ÿhî_msg
+;
+
+159 
+·dm_boﬁ_t
+ 
+rög_evít_£¡
+;
+
+160 
+isdn_èp_msg_öfo_t
+ 
+èp_msg
+;
+
+161 
+·dm_boﬁ_t
+ 
+ch™_¥es
+;
+
+162 } 
+	t∑ssive_ˇŒ_t
+;
+
+164 
+	e¢gisdn_èp_iÁ˚
+ {
+
+165 
+ISDN_TAP_IFACE_UNKNOWN
+ = 0,
+
+166 
+ISDN_TAP_IFACE_CPE
+ = 1,
+
+167 
+ISDN_TAP_IFACE_NET
+ = 2,
+
+168 } 
+	t¢gisdn_èp_iÁ˚_t
+;
+
+171 
+ISDN_TAP_NORMAL
+ = 0,
+
+172 
+ISDN_TAP_BI_DIRECTION
+ = 1,
+
+173 
+ISDN_TAP_FS
+ = 2,
+
+174 } 
+	t¢gisd_èp_mode_t
+;
+
+177 
+SNGISDN_NFAS_DCHAN_NONE
+,
+
+178 
+SNGISDN_NFAS_DCHAN_PRIMARY
+,
+
+179 
+SNGISDN_NFAS_DCHAN_BACKUP
+,
+
+180 } 
+	t¢gisdn_èp_nÁs_sigch™_t
+;
+
+182 
+¢gisdn_èp_nÁs_d©a
+;
+
+183 
+¢gisdn_èp_nÁs_d©a
+ 
+	t¢gisdn_èp_nÁs_d©a_t
+;
+
+185 
+	sisdn_èp
+ {
+
+186 
+öt32_t
+ 
+Êags
+;
+
+187 
+¢gisdn_t
+ *
+¥i
+;
+
+188 
+debug
+;
+
+189 
+swôch_ty≥
+;
+
+190 
+¢gisdn_èp_audio_mix_mode_t
+ 
+mixaudio
+;
+
+191 
+¢gisd_èp_mode_t
+ 
+èp_mode
+;
+
+192 
+·dm_ch™√l_t
+ *
+dch™
+;
+
+193 
+·dm_•™_t
+ *
+•™
+;
+
+194 
+·dm_•™_t
+ *
+≥î•™
+;
+
+195 
+·dm_muãx_t
+ *
+pˇŒs_lock
+;
+
+196 
+∑ssive_ˇŒ_t
+ 
+pˇŒs
+[
+MAX_PCALLS
+];
+
+197 
+¢gisdn_èp_iÁ˚_t
+ 
+iÁ˚
+;
+
+198 *
+decCb
+;
+
+199 
+·dm_hash_t
+ *
+≥nd_ˇŒ_l°
+;
+
+201 
+	snÁs_öfo
+ {
+
+202 
+¢gisdn_èp_nÁs_sigch™_t
+ 
+sigch™
+;
+
+203 
+¢gisdn_èp_nÁs_d©a_t
+ *
+åunk
+;
+
+204 
+uöt8_t
+ 
+öãrÁ˚_id
+;
+
+205 } 
+nÁs
+;
+
+206 
+·dm_boﬁ_t
+ 
+ödiˇã_evít
+;
+
+207 } 
+	t¢gisdn_èp_t
+;
+
+209 
+	s¢gisdn_èp_nÁs_d©a
+ {
+
+210 
+«me
+[
+MAX_NFAS_GROUP_NAME
+];
+
+211 
+backup_•™_«me
+[20];
+
+212 
+dch™_•™_«me
+[20];
+
+213 
+¢gisdn_èp_t
+ *
+dch™
+;
+
+214 
+¢gisdn_èp_t
+ *
+backup
+;
+
+215 
+uöt8_t
+ 
+num_èp_•™s
+;
+
+216 
+uöt8_t
+ 
+num_•™s_c⁄figuªd
+;
+
+217 
+·dm_•™_t
+ *
+èp_•™s
+[
+MAX_SPANS_PER_NFAS_LINK
+ + 1];
+
+220 
+	sc⁄_ˇŒ_öfo
+ {
+
+221 
+ˇŒªf_vÆ
+;
+
+222 
+time_t
+ 
+c⁄ªcv_time
+;
+
+223 
+msgTy≥
+;
+
+224 
+·dm_boﬁ_t
+ 
+ªcv_£tup
+;
+
+225 
+·dm_boﬁ_t
+ 
+ªcv_c⁄
+;
+
+226 
+·dm_boﬁ_t
+ 
+èp_¥o˚ed
+;
+
+227 } 
+	tc⁄_ˇŒ_öfo_t
+;
+
+230 
+	s·dm_¢gisdn_èp_d©a
+ {
+
+231 
+¢gisdn_èp_nÁs_d©a_t
+ 
+nÁs
+[
+MAX_NFAS_GROUPS
+ + 1];
+
+232 
+¢gisdn_èp_t
+ *
+èp_•™s
+[
+MAX_TAP_SPANS
+];
+
+233 
+uöt8_t
+ 
+num_nÁs
+;
+
+234 
+uöt8_t
+ 
+num_•™s_c⁄figuªd
+;
+
+235 }
+	t·dm_¢gisdn_èp_d©a_t
+;
+
+244 
+·dm_°©us_t
+ 
+	`ßngoma_isdn_èp_£t_èp_msg_öfo
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+);
+
+245 
+·dm_°©us_t
+ 
+	`ßngoma_isdn_èp_ª£t_pˇŒ
+(
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+);
+
+248 
+∑ssive_ˇŒ_t
+ *
+	`ßngoma_isdn_èp_¸óã_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+);
+
+251 
+¢gisdn_t
+ *
+	`ßngoma_isdn_√w_cb
+(
+·dm_sockë_t
+ 
+fd
+, 
+nodëy≥
+, 
+swôchty≥
+, *
+u£rd©a
+);
+
+254 
+	`ßngoma_isdn_£t_mesßge
+((*
+__¥i_îr‹
+)(
+¢gisdn_t
+ *
+¥i
+, *));
+
+255 
+	`ßngoma_isdn_£t_îr‹
+((*
+__¥i_îr‹
+)(
+¢gisdn_t
+ *
+¥i
+, *));
+
+256 *
+	`ßngoma_isdn_gë_u£rd©a
+(
+¢gisdn_t
+ *
+¥i
+);
+
+259 
+·dm_°©us_t
+ 
+	`ßngoma_isdn_èp_is_c⁄_ªcv
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¸v
+, 
+uöt8_t
+ 
+msgTy≥
+);
+
+262 
+·dm_ch™√l_t
+* 
+	`ßngoma_isdn_èp_gë_fch™_by_ch™id
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+ch™√l
+);
+
+265 
+·dm_°©us_t
+ 
+	`·mod_isdn_¥o˚ss_evít
+(
+·dm_•™_t
+ *
+•™
+, 
+·dm_evít_t
+ *
+evít
+);
+
+266 
+·dm_°©us_t
+ 
+	`°©e_adv™˚
+(
+·dm_ch™√l_t
+ *
+·dmch™
+);
+
+269 
+∑ssive_ˇŒ_t
+ *
+	`ßngoma_isdn_èp_gë_pˇŒ_by¸v
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+¸v
+);
+
+270 
+∑ssive_ˇŒ_t
+ *
+	`ßngoma_isdn_èp_gë_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, *
+ˇŒªf
+);
+
+273 
+	`ßngoma_isdn_èp_¥öt_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+);
+
+276 
+	`ßngoma_isdn_èp_check_°©e
+(
+·dm_•™_t
+ *
+•™
+);
+
+279 
+	`ßngoma_isdn_èp_put_pˇŒ
+(
+¢gisdn_èp_t
+ *
+èp
+, *
+ˇŒªf
+);
+
+283 
+	`£nd_¥Ÿocﬁ_øw_d©a
+(
+isdn_èp_msg_öfo_t
+ *
+d©a
+, 
+·dm_ch™√l_t
+ *
+·dmch™
+);
+
+287 
+·dm_°©us_t
+ 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_c⁄
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¢g_decodî_öãrÁ˚_t
+ *
+ötfCb
+, 
+¸v
+);
+
+288 
+·dm_°©us_t
+ 
+	`ßngoma_isdn_bidú_èp_gíî©e_övôe
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+¸v
+);
+
+289 
+·dm_°©us_t
+ 
+	`ßngoma_isdn_bidú_èp_h™dÀ_evít_ªl
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+uöt8_t
+ 
+msgTy≥
+, 
+¸v
+);
+
+292 
+·dm_ch™√l_t
+ *
+	`ßngoma_isdn_bidú_èp_gë_fch™
+(
+¢gisdn_èp_t
+ *
+èp
+, 
+∑ssive_ˇŒ_t
+ *
+pˇŒ
+, 
+ch™√l
+, 
+f‹˚_˛ór_ch™
+, 
+èp_ˇŒ_dúe˘i⁄_t
+ 
+ˇŒ_dú
+, 
+·dm_boﬁ_t
+ 
+to_›í
+);
+
+300 
+	#PRI_NETWORK
+ 1
+
+	)
+
+301 
+	#PRI_CPE
+ 2
+
+	)
+
+303 
+	#SNG_ISDN_SPAN
+(
+p
+Ë((’Ë>> 8Ë& 0xff)
+
+	)
+
+304 
+	#SNG_ISDN_CHANNEL
+(
+p
+Ë(’Ë& 0xff)
+
+	)
+
+306 
+	#ISDN_TAP_NETWORK_ANSWER
+ 0x1
+
+	)
+
+309 
+	#SNG_TAP_STALE_TME_DURATION
+ 60
+
+	)
+
+311 
+	#SNG_TAP_SUBEQUENT_MSG_TME_DURATION
+ 5
+
+	)
+
+314 
+	#DEBUG_Q921_RAW
+ (1 << 0Ë
+
+	)
+
+315 
+	#DEBUG_ALL
+ (0xffffË
+
+	)
+
+318 
+	#TRANS_CAP_SPEECH
+ 0x0
+
+	)
+
+319 
+	#TRANS_CAP_DIGITAL
+ 0x08
+
+	)
+
+320 
+	#TRANS_CAP_RESTRICTED_DIGITAL
+ 0x09
+
+	)
+
+321 
+	#TRANS_CAP_3_1K_AUDIO
+ 0x10
+
+	)
+
+322 
+	#TRANS_CAP_7K_AUDIO
+ 0x11
+
+	)
+
+323 
+	#TRANS_CAP_DIGITAL_W_TONES
+ 0x11
+
+	)
+
+324 
+	#TRANS_CAP_VIDEO
+ 0x18
+
+	)
+
+325 
+	#LAYER_1_ITU_RATE_ADAPT
+ 0x21
+
+	)
+
+326 
+	#LAYER_1_ULAW
+ 0x22
+
+	)
+
+327 
+	#LAYER_1_ALAW
+ 0x23
+
+	)
+
+328 
+	#LAYER_1_G721
+ 0x24
+
+	)
+
+329 
+	#LAYER_1_G722_G725
+ 0x25
+
+	)
+
+330 
+	#LAYER_1_H223_H245
+ 0x26
+
+	)
+
+331 
+	#LAYER_1_NON_ITU_ADAPT
+ 0x27
+
+	)
+
+332 
+	#LAYER_1_V120_RATE_ADAPT
+ 0x28
+
+	)
+
+333 
+	#LAYER_1_X31_RATE_ADAPT
+ 0x29
+
+	)
+
+336 
+	#SNG_DECODE_ISDN_EVENT
+(
+msgTy≥
+) \
+
+337 ((
+msgTy≥
+Ë=
+Q931_ALERTING
+) ?"ALERT" : \
+
+338 ((
+msgTy≥
+Ë=
+Q931_PROCEEDING
+) ?"CALL PROCEED" : \
+
+339 ((
+msgTy≥
+Ë=
+Q931_PROGRESS
+) ?"PROGRESS" : \
+
+340 ((
+msgTy≥
+Ë=
+Q931_SETUP
+) ?"SETUP" : \
+
+341 ((
+msgTy≥
+Ë=
+Q931_CONNECT
+) ?"CONNECT" : \
+
+342 ((
+msgTy≥
+Ë=
+Q931_SETUP_ACK
+) ?"SETUP ACK" : \
+
+343 ((
+msgTy≥
+Ë=
+Q931_CONNECT_ACK
+) ?"CONNECT ACK" : \
+
+344 ((
+msgTy≥
+Ë=
+Q931_USER_INFO
+) ?"USER INFO" : \
+
+345 ((
+msgTy≥
+Ë=
+Q931_SUSPEND_REJ
+) ?"SUSPEND REJECT" : \
+
+346 ((
+msgTy≥
+Ë=
+Q931_RESUME_REJ
+) ?"RESUME REJECT" : \
+
+347 ((
+msgTy≥
+Ë=
+Q931_SUSPEND
+) ?"SUSPEND" : \
+
+348 ((
+msgTy≥
+Ë=
+Q931_RESUME
+) ?"RESUME" : \
+
+349 ((
+msgTy≥
+Ë=
+Q931_SUSPEND_ACK
+) ?"SUSPEND ACK" : \
+
+350 ((
+msgTy≥
+Ë=
+Q931_RESUME_ACK
+) ?"RESUME ACK" : \
+
+351 ((
+msgTy≥
+Ë=
+Q931_DISCONNECT
+) ?"DISCONNECT" : \
+
+352 ((
+msgTy≥
+Ë=
+Q931_RESTART
+) ?"RESTART" : \
+
+353 ((
+msgTy≥
+Ë=
+Q931_RELEASE
+) ?"RELEASE" : \
+
+354 ((
+msgTy≥
+Ë=
+Q931_RESTART_ACK
+) ?"RESTART ACK" : \
+
+355 ((
+msgTy≥
+Ë=
+Q931_RELEASE_COMPLETE
+)?"RELEASE COMPLETE" : \
+
+356 ((
+msgTy≥
+Ë=
+Q931_SEGMENT
+) ?"SEGMENT" : \
+
+357 ((
+msgTy≥
+Ë=
+Q931_FACILITY
+) ?"FACILITY" : \
+
+358 ((
+msgTy≥
+Ë=
+Q931_NOTIFY
+) ?"NOTIFY" : \
+
+359 ((
+msgTy≥
+Ë=
+Q931_STATUS_ENQUIRY
+) ?"STATUS ENQUIRY" : \
+
+360 ((
+msgTy≥
+Ë=
+Q931_CONGESTION_CNTRL
+)?"CONGESTION CONTROL" : \
+
+361 ((
+msgTy≥
+Ë=
+Q931_INFORMATION
+) ?"INFORMATION" : \
+
+362 ((
+msgTy≥
+Ë=
+Q931_STATUS
+) ?"STATUS" : \
+
+363 "Unknow¿ISDNÉvít"
+
+	)
+
+366 
+	#SNG_DECODE_ISDN_TAP_MODE
+(
+èpmode
+) \
+
+367 ((
+èpmode
+Ë=
+ISDN_TAP_NORMAL
+) ?"NORMAL (E1 T1 Tapping)" : \
+
+368 ((
+èpmode
+Ë=
+ISDN_TAP_BI_DIRECTION
+) ?"BI DIRECTIONAL" : \
+
+369 ((
+èpmode
+Ë=
+ISDN_TAP_FS
+) ?"Freeswitch (E1 T1 Tapping)" : \
+
+370 "Unknow¿ISDN T≠pög Mode"
+
+	)
+
+373 
+	#SNG_ISDN_TAP_GET_INTERFACE
+(
+iÁ˚
+) \
+
+374 ((
+iÁ˚
+Ë=
+ISDN_TAP_IFACE_CPE
+) ? "CPE" : \
+
+375 ((
+iÁ˚
+Ë=
+ISDN_TAP_IFACE_NET
+) ? "NET" : \
+
+376 "Unknow¿öãrÁ˚"
+
+	)
+
+379 
+	#SNG_ISDN_TAP_GET_NFAS_SPAN_TYPE
+(
+sigch™
+) \
+
+380 ((
+sigch™
+Ë=
+SNGISDN_NFAS_DCHAN_NONE
+) ? "VOICE" : \
+
+381 ((
+sigch™
+Ë=
+SNGISDN_NFAS_DCHAN_PRIMARY
+) ? "PRIMARY SIGNALLING" : \
+
+382 ((
+sigch™
+Ë=
+SNGISDN_NFAS_DCHAN_BACKUP
+) ? "BACKUP SIGNALLING" : \
+
+383 "Unknow¿NFAS s∑¿ty≥"
+
+	)
+
+390 
+¢g_decodî_evít_öãrÁ˚_t
+ 
+¢g_evít
+;
+
+391 
+·dm_io_öãrÁ˚_t
+ 
+·dm_¢gisdn_èp_öãrÁ˚
+;
+
+394 
+uöt64_t
+ 
+£tup_ªcv
+;
+
+395 
+uöt64_t
+ 
+ªu£_ch™_c⁄_ªcv
+;
+
+396 
+uöt64_t
+ 
+£tup_ªcv_övÆid_ch™Id
+;
+
+397 
+uöt64_t
+ 
+£tup_nŸ_ªcv
+;
+
+398 
+uöt64_t
+ 
+c⁄√˘_ªcv_wôh_ch™Id
+;
+
+399 
+uöt64_t
+ 
+c⁄√˘_ªcv
+;
+
+400 
+uöt64_t
+ 
+óæy_c⁄√˘_ªcv
+;
+
+401 
+uöt64_t
+ 
+œã_övôe_ªcv
+;
+
+402 
+uöt64_t
+ 
+ˇŒ_¥o˚ed_ªcv
+;
+
+403 
+uöt64_t
+ 
+ªÀa£_ªcv
+;
+
+404 
+uöt64_t
+ 
+disc⁄√˘_ªcv
+;
+
+405 
+uöt64_t
+ 
+ˇŒ_èµed
+;
+
+406 
+uöt64_t
+ 
+msg_ªcv_a·_time
+;
+
+	@/usr/include/ctype.h
+
+24 #i‚def 
+_CTYPE_H
+
+
+25 
+	#_CTYPE_H
+ 1
+
+	)
+
+27 
+	~<„©uªs.h
+>
+
+28 
+	~<bôs/ty≥s.h
+>
+
+30 
+	g__BEGIN_DECLS
+
+
+32 #i‚de‡
+_ISbô
+
+
+41 
+	~<ídün.h
+>
+
+42 #i‡
+__BYTE_ORDER
+ =
+__BIG_ENDIAN
+
+
+43 
+	#_ISbô
+(
+bô
+Ë(1 << (bô))
+
+	)
+
+45 
+	#_ISbô
+(
+bô
+Ë((bôË< 8 ? ((1 << (bô)Ë<< 8Ë: ((1 << (bô)Ë>> 8))
+
+	)
+
+50 
+	m_ISuµî
+ = 
+_ISbô
+ (0),
+
+51 
+	m_ISlowî
+ = 
+_ISbô
+ (1),
+
+52 
+	m_ISÆpha
+ = 
+_ISbô
+ (2),
+
+53 
+	m_ISdigô
+ = 
+_ISbô
+ (3),
+
+54 
+	m_ISxdigô
+ = 
+_ISbô
+ (4),
+
+55 
+	m_IS•a˚
+ = 
+_ISbô
+ (5),
+
+56 
+	m_IS¥öt
+ = 
+_ISbô
+ (6),
+
+57 
+	m_ISgøph
+ = 
+_ISbô
+ (7),
+
+58 
+	m_ISbœnk
+ = 
+_ISbô
+ (8),
+
+59 
+	m_IS˙ål
+ = 
+_ISbô
+ (9),
+
+60 
+	m_ISpun˘
+ = 
+_ISbô
+ (10),
+
+61 
+	m_ISÆnum
+ = 
+_ISbô
+ (11)
+
+81 
+__c⁄°
+ **
+	$__˘y≥_b_loc
+ ()
+
+82 
+__THROW
+ 
+	`__©åibuã__
+ ((
+__c⁄°
+));
+
+83 
+__c⁄°
+ 
+__öt32_t
+ **
+	$__˘y≥_tﬁowî_loc
+ ()
+
+84 
+__THROW
+ 
+	`__©åibuã__
+ ((
+__c⁄°
+));
+
+85 
+__c⁄°
+ 
+__öt32_t
+ **
+	$__˘y≥_touµî_loc
+ ()
+
+86 
+__THROW
+ 
+	`__©åibuã__
+ ((
+__c⁄°
+));
+
+88 
+	#__is˘y≥
+(
+c
+, 
+ty≥
+) \
+
+89 ((*
+	`__˘y≥_b_loc
+ ())[(Ë(
+c
+)] & (Ë
+ty≥
+)
+
+	)
+
+91 
+	#__ißscii
+(
+c
+Ë(((cË& ~0x7fË=0Ë
+
+	)
+
+92 
+	#__tﬂscii
+(
+c
+Ë((cË& 0x7fË
+
+	)
+
+94 
+	#__ex˘y≥
+(
+«me
+Ë
+	`«me
+ (Ë
+__THROW
+
+
+	)
+
+96 
+__BEGIN_NAMESPACE_STD
+
+
+102 
+	`__ex˘y≥
+ (
+iß um
+);
+
+103 
+	`__ex˘y≥
+ (
+ißÕha
+);
+
+104 
+	`__ex˘y≥
+ (
+is˙ål
+);
+
+105 
+	`__ex˘y≥
+ (
+isdigô
+);
+
+106 
+	`__ex˘y≥
+ (
+i¶owî
+);
+
+107 
+	`__ex˘y≥
+ (
+isgøph
+);
+
+108 
+	`__ex˘y≥
+ (
+i•röt
+);
+
+109 
+	`__ex˘y≥
+ (
+i•un˘
+);
+
+110 
+	`__ex˘y≥
+ (
+is•a˚
+);
+
+111 
+	`__ex˘y≥
+ (
+isuµî
+);
+
+112 
+	`__ex˘y≥
+ (
+isxdigô
+);
+
+116 
+	$tﬁowî
+ (
+__c
+Ë
+__THROW
+;
+
+119 
+	$touµî
+ (
+__c
+Ë
+__THROW
+;
+
+121 
+__END_NAMESPACE_STD
+
+
+125 #ifdef 
+__USE_ISOC99
+
+
+126 
+__BEGIN_NAMESPACE_C99
+
+
+128 
+	`__ex˘y≥
+ (
+isbœnk
+);
+
+130 
+__END_NAMESPACE_C99
+
+
+133 #ifde‡
+__USE_GNU
+
+
+135 
+	$is˘y≥
+ (
+__c
+, 
+__mask
+Ë
+__THROW
+;
+
+138 #i‡
+deföed
+ 
+__USE_SVID
+ || deföed 
+__USE_MISC
+ || deföed 
+__USE_XOPEN
+
+
+142 
+	$ißscii
+ (
+__c
+Ë
+__THROW
+;
+
+146 
+	$tﬂscii
+ (
+__c
+Ë
+__THROW
+;
+
+150 
+	`__ex˘y≥
+ (
+_touµî
+);
+
+151 
+	`__ex˘y≥
+ (
+_tﬁowî
+);
+
+155 
+	#__tobody
+(
+c
+, 
+f
+, 
+a
+, 
+¨gs
+) \
+
+156 (
+__exãnsi⁄__
+ \
+
+157 ({ 
+__ªs
+; \
+
+158 i‡( (
+c
+) > 1) \
+
+160 i‡(
+	`__buûtö_c⁄°™t_p
+ (
+c
+)) \
+
+162 
+__c
+ = (
+c
+); \
+
+163 
+__ªs
+ = 
+__c
+ < -128 || __¯> 255 ? __¯: (
+a
+)[__c]; \
+
+166 
+__ªs
+ = 
+f
+ 
+¨gs
+; \
+
+169 
+__ªs
+ = (
+a
+)[(Ë(
+c
+)]; \
+
+170 
+__ªs
+; 
+	}
+}))
+
+	)
+
+172 #i‡!
+deföed
+ 
+__NO_CTYPE
+ && !deföed 
+__˝lu•lus
+
+
+173 
+	#iß um
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISÆnum
+)
+
+	)
+
+174 
+	#ißÕha
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISÆpha
+)
+
+	)
+
+175 
+	#is˙ål
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_IS˙ål
+)
+
+	)
+
+176 
+	#isdigô
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISdigô
+)
+
+	)
+
+177 
+	#i¶owî
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISlowî
+)
+
+	)
+
+178 
+	#isgøph
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISgøph
+)
+
+	)
+
+179 
+	#i•röt
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_IS¥öt
+)
+
+	)
+
+180 
+	#i•un˘
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISpun˘
+)
+
+	)
+
+181 
+	#is•a˚
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_IS•a˚
+)
+
+	)
+
+182 
+	#isuµî
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISuµî
+)
+
+	)
+
+183 
+	#isxdigô
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISxdigô
+)
+
+	)
+
+185 #ifde‡
+__USE_ISOC99
+
+
+186 
+	#isbœnk
+(
+c
+Ë
+	`__is˘y≥
+((c), 
+_ISbœnk
+)
+
+	)
+
+189 #ifde‡
+__USE_EXTERN_INLINES
+
+
+190 
+__exã∫_ölöe
+ 
+
+191 
+__NTH
+ (
+	$tﬁowî
+ (
+__c
+))
+
+193  
+__c
+ >-128 && __¯< 256 ? (*
+	`__˘y≥_tﬁowî_loc
+ ())[__c] : __c;
+
+194 
+	}
+}
+
+196 
+__exã∫_ölöe
+ 
+
+197 
+__NTH
+ (
+	$touµî
+ (
+__c
+))
+
+199  
+__c
+ >-128 && __¯< 256 ? (*
+	`__˘y≥_touµî_loc
+ ())[__c] : __c;
+
+200 
+	}
+}
+
+203 #i‡
+__GNUC__
+ >2 && 
+deföed
+ 
+__OPTIMIZE__
+ && !deföed 
+__˝lu•lus
+
+
+204 
+	#tﬁowî
+(
+c
+Ë
+	`__tobody
+ (c, 
+tﬁowî
+, *
+	`__˘y≥_tﬁowî_loc
+ (), (c))
+
+	)
+
+205 
+	#touµî
+(
+c
+Ë
+	`__tobody
+ (c, 
+touµî
+, *
+	`__˘y≥_touµî_loc
+ (), (c))
+
+	)
+
+208 #i‡
+deföed
+ 
+__USE_SVID
+ || deföed 
+__USE_MISC
+ || deföed 
+__USE_XOPEN
+
+
+209 
+	#ißscii
+(
+c
+Ë
+	`__ißscii
+ (c)
+
+	)
+
+210 
+	#tﬂscii
+(
+c
+Ë
+	`__tﬂscii
+ (c)
+
+	)
+
+212 
+	#_tﬁowî
+(
+c
+Ë((Ë(*
+	`__˘y≥_tﬁowî_loc
+ ())[(Ë(c)])
+
+	)
+
+213 
+	#_touµî
+(
+c
+Ë((Ë(*
+	`__˘y≥_touµî_loc
+ ())[(Ë(c)])
+
+	)
+
+219 #ifde‡
+__USE_XOPEN2K8
+
+
+233 
+	~<xloˇÀ.h
+>
+
+237 
+	#__is˘y≥_l
+(
+c
+, 
+ty≥
+, 
+loˇÀ
+) \
+
+238 ((
+loˇÀ
+)->
+__˘y≥_b
+[(Ë(
+c
+)] & (Ë
+ty≥
+)
+
+	)
+
+240 
+	#__ex˘y≥_l
+(
+«me
+) \
+
+241 
+	`«me
+ (, 
+__loˇÀ_t
+Ë
+__THROW
+
+
+	)
+
+247 
+__ex˘y≥_l
+ (
+iß um_l
+);
+
+248 
+__ex˘y≥_l
+ (
+ißÕha_l
+);
+
+249 
+__ex˘y≥_l
+ (
+is˙ål_l
+);
+
+250 
+__ex˘y≥_l
+ (
+isdigô_l
+);
+
+251 
+__ex˘y≥_l
+ (
+i¶owî_l
+);
+
+252 
+__ex˘y≥_l
+ (
+isgøph_l
+);
+
+253 
+__ex˘y≥_l
+ (
+i•röt_l
+);
+
+254 
+__ex˘y≥_l
+ (
+i•un˘_l
+);
+
+255 
+__ex˘y≥_l
+ (
+is•a˚_l
+);
+
+256 
+__ex˘y≥_l
+ (
+isuµî_l
+);
+
+257 
+__ex˘y≥_l
+ (
+isxdigô_l
+);
+
+259 
+__ex˘y≥_l
+ (
+isbœnk_l
+);
+
+263 
+	$__tﬁowî_l
+ (
+__c
+, 
+__loˇÀ_t
+ 
+__l
+Ë
+__THROW
+;
+
+264 
+	$tﬁowî_l
+ (
+__c
+, 
+__loˇÀ_t
+ 
+__l
+Ë
+__THROW
+;
+
+267 
+	$__touµî_l
+ (
+__c
+, 
+__loˇÀ_t
+ 
+__l
+Ë
+__THROW
+;
+
+268 
+	$touµî_l
+ (
+__c
+, 
+__loˇÀ_t
+ 
+__l
+Ë
+__THROW
+;
+
+270 #i‡
+__GNUC__
+ >2 && 
+deföed
+ 
+__OPTIMIZE__
+ && !deföed 
+__˝lu•lus
+
+
+271 
+	#__tﬁowî_l
+(
+c
+, 
+loˇÀ
+) \
+
+272 
+	`__tobody
+ (
+c
+, 
+__tﬁowî_l
+, (
+loˇÀ
+)->
+__˘y≥_tﬁowî
+, (c,ÜoˇÀ))
+
+	)
+
+273 
+	#__touµî_l
+(
+c
+, 
+loˇÀ
+) \
+
+274 
+	`__tobody
+ (
+c
+, 
+__touµî_l
+, (
+loˇÀ
+)->
+__˘y≥_touµî
+, (c,ÜoˇÀ))
+
+	)
+
+275 
+	#tﬁowî_l
+(
+c
+, 
+loˇÀ
+Ë
+	`__tﬁowî_l
+ ((c), (loˇÀ))
+
+	)
+
+276 
+	#touµî_l
+(
+c
+, 
+loˇÀ
+Ë
+	`__touµî_l
+ ((c), (loˇÀ))
+
+	)
+
+280 #i‚de‡
+__NO_CTYPE
+
+
+281 
+	#__iß um_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISÆnum
+, (l))
+
+	)
+
+282 
+	#__ißÕha_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISÆpha
+, (l))
+
+	)
+
+283 
+	#__is˙ål_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_IS˙ål
+, (l))
+
+	)
+
+284 
+	#__isdigô_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISdigô
+, (l))
+
+	)
+
+285 
+	#__i¶owî_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISlowî
+, (l))
+
+	)
+
+286 
+	#__isgøph_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISgøph
+, (l))
+
+	)
+
+287 
+	#__i•röt_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_IS¥öt
+, (l))
+
+	)
+
+288 
+	#__i•un˘_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISpun˘
+, (l))
+
+	)
+
+289 
+	#__is•a˚_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_IS•a˚
+, (l))
+
+	)
+
+290 
+	#__isuµî_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISuµî
+, (l))
+
+	)
+
+291 
+	#__isxdigô_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISxdigô
+, (l))
+
+	)
+
+293 
+	#__isbœnk_l
+(
+c
+,
+l
+Ë
+	`__is˘y≥_l
+((c), 
+_ISbœnk
+, (l))
+
+	)
+
+295 #i‡
+deföed
+ 
+__USE_SVID
+ || deföed 
+__USE_MISC
+
+
+296 
+	#__ißscii_l
+(
+c
+,
+l
+Ë(÷), 
+	`__ißscii
+ (c))
+
+	)
+
+297 
+	#__tﬂscii_l
+(
+c
+,
+l
+Ë(÷), 
+	`__tﬂscii
+ (c))
+
+	)
+
+300 
+	#iß um_l
+(
+c
+,
+l
+Ë
+	`__iß um_l
+ ((c), (l))
+
+	)
+
+301 
+	#ißÕha_l
+(
+c
+,
+l
+Ë
+	`__ißÕha_l
+ ((c), (l))
+
+	)
+
+302 
+	#is˙ål_l
+(
+c
+,
+l
+Ë
+	`__is˙ål_l
+ ((c), (l))
+
+	)
+
+303 
+	#isdigô_l
+(
+c
+,
+l
+Ë
+	`__isdigô_l
+ ((c), (l))
+
+	)
+
+304 
+	#i¶owî_l
+(
+c
+,
+l
+Ë
+	`__i¶owî_l
+ ((c), (l))
+
+	)
+
+305 
+	#isgøph_l
+(
+c
+,
+l
+Ë
+	`__isgøph_l
+ ((c), (l))
+
+	)
+
+306 
+	#i•röt_l
+(
+c
+,
+l
+Ë
+	`__i•röt_l
+ ((c), (l))
+
+	)
+
+307 
+	#i•un˘_l
+(
+c
+,
+l
+Ë
+	`__i•un˘_l
+ ((c), (l))
+
+	)
+
+308 
+	#is•a˚_l
+(
+c
+,
+l
+Ë
+	`__is•a˚_l
+ ((c), (l))
+
+	)
+
+309 
+	#isuµî_l
+(
+c
+,
+l
+Ë
+	`__isuµî_l
+ ((c), (l))
+
+	)
+
+310 
+	#isxdigô_l
+(
+c
+,
+l
+Ë
+	`__isxdigô_l
+ ((c), (l))
+
+	)
+
+312 
+	#isbœnk_l
+(
+c
+,
+l
+Ë
+	`__isbœnk_l
+ ((c), (l))
+
+	)
+
+314 #i‡
+deföed
+ 
+__USE_SVID
+ || deföed 
+__USE_MISC
+
+
+315 
+	#ißscii_l
+(
+c
+,
+l
+Ë
+	`__ißscii_l
+ ((c), (l))
+
+	)
+
+316 
+	#tﬂscii_l
+(
+c
+,
+l
+Ë
+	`__tﬂscii_l
+ ((c), (l))
+
+	)
+
+323 
+__END_DECLS
+
+
+	@/usr/include/poll.h
+
+1 
+	~<sys/pﬁl.h
+>
+
+	@/usr/include/time.h
+
+23 #i‚def 
+_TIME_H
+
+
+25 #i‡(! 
+deföed
+ 
+__√ed_time_t
+ && !deföed 
+__√ed_˛ock_t
+ && \
+
+26 ! 
+deföed
+ 
+	g__√ed_time•ec
+)
+
+27 
+	#_TIME_H
+ 1
+
+	)
+
+28 
+	~<„©uªs.h
+>
+
+30 
+	g__BEGIN_DECLS
+
+
+34 #ifdef 
+_TIME_H
+
+
+36 
+	#__√ed_size_t
+
+
+	)
+
+37 
+	#__√ed_NULL
+
+
+	)
+
+38 
+	~<°ddef.h
+>
+
+42 
+	~<bôs/time.h
+>
+
+45 #i‡!
+deföed
+ 
+__STRICT_ANSI__
+ && !deföed 
+__USE_XOPEN2K
+
+
+46 #i‚de‡
+CLK_TCK
+
+
+47 
+	#CLK_TCK
+ 
+CLOCKS_PER_SEC
+
+
+	)
+
+53 #i‡!
+deföed
+ 
+__˛ock_t_deföed
+ && (deföed 
+_TIME_H
+ || deföed 
+__√ed_˛ock_t
+)
+
+54 
+	#__˛ock_t_deföed
+ 1
+
+	)
+
+56 
+	~<bôs/ty≥s.h
+>
+
+58 
+__BEGIN_NAMESPACE_STD
+
+
+60 
+__˛ock_t
+ 
+	t˛ock_t
+;
+
+61 
+	g__END_NAMESPACE_STD
+
+
+62 #i‡
+deföed
+ 
+__USE_XOPEN
+ || deföed 
+__USE_POSIX
+ || deföed 
+__USE_MISC
+
+
+63 
+	$__USING_NAMESPACE_STD
+(
+˛ock_t
+)
+
+67 #unde‡
+__√ed_˛ock_t
+
+
+69 #i‡!
+deföed
+ 
+__time_t_deföed
+ && (deföed 
+_TIME_H
+ || deföed 
+__√ed_time_t
+)
+
+70 
+	#__time_t_deföed
+ 1
+
+	)
+
+72 
+	~<bôs/ty≥s.h
+>
+
+74 
+__BEGIN_NAMESPACE_STD
+
+
+76 
+__time_t
+ 
+	ttime_t
+;
+
+77 
+__END_NAMESPACE_STD
+
+
+78 #i‡
+deföed
+ 
+__USE_POSIX
+ || deföed 
+__USE_MISC
+ || deföed 
+__USE_SVID
+
+
+79 
+	$__USING_NAMESPACE_STD
+(
+time_t
+)
+
+83 #unde‡
+__√ed_time_t
+
+
+85 #i‡!
+deföed
+ 
+__˛ockid_t_deföed
+ && \
+
+86 ((
+deföed
+ 
+_TIME_H
+ && deföed 
+__USE_POSIX199309
+Ë|| deföed 
+__√ed_˛ockid_t
+)
+
+87 
+	#__˛ockid_t_deföed
+ 1
+
+	)
+
+89 
+	~<bôs/ty≥s.h
+>
+
+92 
+__˛ockid_t
+ 
+	t˛ockid_t
+;
+
+95 #unde‡
+__˛ockid_time_t
+
+
+97 #i‡!
+deföed
+ 
+__timî_t_deföed
+ && \
+
+98 ((
+deföed
+ 
+_TIME_H
+ && deföed 
+__USE_POSIX199309
+Ë|| deföed 
+__√ed_timî_t
+)
+
+99 
+	#__timî_t_deföed
+ 1
+
+	)
+
+101 
+	~<bôs/ty≥s.h
+>
+
+104 
+__timî_t
+ 
+	ttimî_t
+;
+
+107 #unde‡
+__√ed_timî_t
+
+
+110 #i‡!
+deföed
+ 
+__time•ec_deföed
+ && \
+
+111 ((
+deföed
+ 
+_TIME_H
+ && \
+
+112 (
+deföed
+ 
+__USE_POSIX199309
+ || deföed 
+__USE_MISC
+)) || \
+
+113 
+deföed
+ 
+__√ed_time•ec
+)
+
+114 
+	#__time•ec_deföed
+ 1
+
+	)
+
+116 
+	~<bôs/ty≥s.h
+>
+
+120 
+	stime•ec
+
+
+122 
+__time_t
+ 
+tv_£c
+;
+
+123 
+tv_n£c
+;
+
+127 #unde‡
+__√ed_time•ec
+
+
+130 #ifdef 
+_TIME_H
+
+
+131 
+__BEGIN_NAMESPACE_STD
+
+
+133 
+	stm
+
+
+135 
+tm_£c
+;
+
+136 
+tm_mö
+;
+
+137 
+tm_hour
+;
+
+138 
+tm_mday
+;
+
+139 
+tm_m⁄
+;
+
+140 
+tm_yór
+;
+
+141 
+tm_wday
+;
+
+142 
+tm_yday
+;
+
+143 
+tm_isd°
+;
+
+145 #ifdef 
+__USE_BSD
+
+
+146 
+tm_gmtoff
+;
+
+147 
+__c⁄°
+ *
+tm_z⁄e
+;
+
+149 
+__tm_gmtoff
+;
+
+150 
+__c⁄°
+ *
+__tm_z⁄e
+;
+
+153 
+__END_NAMESPACE_STD
+
+
+154 #i‡
+deföed
+ 
+__USE_XOPEN
+ || deföed 
+__USE_POSIX
+ || deföed 
+__USE_MISC
+
+
+155 
+	$__USING_NAMESPACE_STD
+(
+tm
+)
+
+159 #ifde‡
+__USE_POSIX199309
+
+
+161 
+	sôimî•ec
+
+
+163 
+time•ec
+ 
+ô_öãrvÆ
+;
+
+164 
+time•ec
+ 
+ô_vÆue
+;
+
+168 
+sigevít
+;
+
+172 #ifde‡
+__USE_XOPEN2K
+
+
+173 #i‚de‡
+__pid_t_deföed
+
+
+174 
+__pid_t
+ 
+	tpid_t
+;
+
+175 
+	#__pid_t_deföed
+
+
+	)
+
+180 
+__BEGIN_NAMESPACE_STD
+
+
+183 
+˛ock_t
+ 
+	$˛ock
+ (Ë
+__THROW
+;
+
+186 
+time_t
+ 
+	$time
+ (
+time_t
+ *
+__timî
+Ë
+__THROW
+;
+
+189 
+	$dif·ime
+ (
+time_t
+ 
+__time1
+,Åime_à
+__time0
+)
+
+190 
+__THROW
+ 
+	`__©åibuã__
+ ((
+__c⁄°__
+));
+
+193 
+time_t
+ 
+	$mktime
+ (
+tm
+ *
+__ç
+Ë
+__THROW
+;
+
+199 
+size_t
+ 
+	$°r·ime
+ (*
+__ª°ri˘
+ 
+__s
+, 
+size_t
+ 
+__maxsize
+,
+
+200 
+__c⁄°
+ *
+__ª°ri˘
+ 
+__f‹m©
+,
+
+201 
+__c⁄°
+ 
+tm
+ *
+__ª°ri˘
+ 
+__ç
+Ë
+__THROW
+;
+
+202 
+__END_NAMESPACE_STD
+
+
+204 #ifde‡
+__USE_XOPEN
+
+
+207 *
+	$°Ωtime
+ (
+__c⁄°
+ *
+__ª°ri˘
+ 
+__s
+,
+
+208 
+__c⁄°
+ *
+__ª°ri˘
+ 
+__fmt
+, 
+tm
+ *
+__ç
+)
+
+209 
+__THROW
+;
+
+212 #ifde‡
+__USE_XOPEN2K8
+
+
+215 
+	~<xloˇÀ.h
+>
+
+217 
+size_t
+ 
+	$°r·ime_l
+ (*
+__ª°ri˘
+ 
+__s
+, 
+size_t
+ 
+__maxsize
+,
+
+218 
+__c⁄°
+ *
+__ª°ri˘
+ 
+__f‹m©
+,
+
+219 
+__c⁄°
+ 
+tm
+ *
+__ª°ri˘
+ 
+__ç
+,
+
+220 
+__loˇÀ_t
+ 
+__loc
+Ë
+__THROW
+;
+
+223 #ifde‡
+__USE_GNU
+
+
+224 *
+	$°Ωtime_l
+ (
+__c⁄°
+ *
+__ª°ri˘
+ 
+__s
+,
+
+225 
+__c⁄°
+ *
+__ª°ri˘
+ 
+__fmt
+, 
+tm
+ *
+__ç
+,
+
+226 
+__loˇÀ_t
+ 
+__loc
+Ë
+__THROW
+;
+
+230 
+__BEGIN_NAMESPACE_STD
+
+
+233 
+tm
+ *
+	$gmtime
+ (
+__c⁄°
+ 
+time_t
+ *
+__timî
+Ë
+__THROW
+;
+
+237 
+tm
+ *
+	$loˇ…ime
+ (
+__c⁄°
+ 
+time_t
+ *
+__timî
+Ë
+__THROW
+;
+
+238 
+__END_NAMESPACE_STD
+
+
+240 #i‡
+deföed
+ 
+__USE_POSIX
+ || deföed 
+__USE_MISC
+
+
+243 
+tm
+ *
+	$gmtime_r
+ (
+__c⁄°
+ 
+time_t
+ *
+__ª°ri˘
+ 
+__timî
+,
+
+244 
+tm
+ *
+__ª°ri˘
+ 
+__ç
+Ë
+__THROW
+;
+
+248 
+tm
+ *
+	$loˇ…ime_r
+ (
+__c⁄°
+ 
+time_t
+ *
+__ª°ri˘
+ 
+__timî
+,
+
+249 
+tm
+ *
+__ª°ri˘
+ 
+__ç
+Ë
+__THROW
+;
+
+252 
+__BEGIN_NAMESPACE_STD
+
+
+255 *
+	$as˘ime
+ (
+__c⁄°
+ 
+tm
+ *
+__ç
+Ë
+__THROW
+;
+
+258 *
+	$˘ime
+ (
+__c⁄°
+ 
+time_t
+ *
+__timî
+Ë
+__THROW
+;
+
+259 
+__END_NAMESPACE_STD
+
+
+261 #i‡
+deföed
+ 
+__USE_POSIX
+ || deföed 
+__USE_MISC
+
+
+266 *
+	$as˘ime_r
+ (
+__c⁄°
+ 
+tm
+ *
+__ª°ri˘
+ 
+__ç
+,
+
+267 *
+__ª°ri˘
+ 
+__buf
+Ë
+__THROW
+;
+
+270 *
+	$˘ime_r
+ (
+__c⁄°
+ 
+time_t
+ *
+__ª°ri˘
+ 
+__timî
+,
+
+271 *
+__ª°ri˘
+ 
+__buf
+Ë
+__THROW
+;
+
+276 *
+__tz«me
+[2];
+
+277 
+__daylight
+;
+
+278 
+__timez⁄e
+;
+
+281 #ifdef 
+__USE_POSIX
+
+
+283 *
+tz«me
+[2];
+
+287 
+	$tz£t
+ (Ë
+__THROW
+;
+
+290 #i‡
+deföed
+ 
+__USE_SVID
+ || deföed 
+__USE_XOPEN
+
+
+291 
+daylight
+;
+
+292 
+timez⁄e
+;
+
+295 #ifde‡
+__USE_SVID
+
+
+298 
+	$°ime
+ (
+__c⁄°
+ 
+time_t
+ *
+__whí
+Ë
+__THROW
+;
+
+304 
+	#__i¶óp
+(
+yór
+) \
+
+305 ((
+yór
+Ë% 4 =0 && ((yórË% 100 !0 || (yórË% 400 =0))
+
+	)
+
+308 #ifde‡
+__USE_MISC
+
+
+313 
+time_t
+ 
+	$timegm
+ (
+tm
+ *
+__ç
+Ë
+__THROW
+;
+
+316 
+time_t
+ 
+	$timñoˇl
+ (
+tm
+ *
+__ç
+Ë
+__THROW
+;
+
+319 
+	$dysize
+ (
+__yór
+Ë
+__THROW
+ 
+	`__©åibuã__
+ ((
+__c⁄°__
+));
+
+323 #ifde‡
+__USE_POSIX199309
+
+
+328 
+	`«no¶ìp
+ (
+__c⁄°
+ 
+time•ec
+ *
+__ªque°ed_time
+,
+
+329 
+time•ec
+ *
+__ªmaöög
+);
+
+333 
+	$˛ock_gëªs
+ (
+˛ockid_t
+ 
+__˛ock_id
+, 
+time•ec
+ *
+__ªs
+Ë
+__THROW
+;
+
+336 
+	$˛ock_gëtime
+ (
+˛ockid_t
+ 
+__˛ock_id
+, 
+time•ec
+ *
+__ç
+Ë
+__THROW
+;
+
+339 
+	$˛ock_£âime
+ (
+˛ockid_t
+ 
+__˛ock_id
+, 
+__c⁄°
+ 
+time•ec
+ *
+__ç
+)
+
+340 
+__THROW
+;
+
+342 #ifde‡
+__USE_XOPEN2K
+
+
+347 
+	`˛ock_«no¶ìp
+ (
+˛ockid_t
+ 
+__˛ock_id
+, 
+__Êags
+,
+
+348 
+__c⁄°
+ 
+time•ec
+ *
+__ªq
+,
+
+349 
+time•ec
+ *
+__ªm
+);
+
+352 
+	$˛ock_gë˝u˛ockid
+ (
+pid_t
+ 
+__pid
+, 
+˛ockid_t
+ *
+__˛ock_id
+Ë
+__THROW
+;
+
+357 
+	$timî_¸óã
+ (
+˛ockid_t
+ 
+__˛ock_id
+,
+
+358 
+sigevít
+ *
+__ª°ri˘
+ 
+__evp
+,
+
+359 
+timî_t
+ *
+__ª°ri˘
+ 
+__timîid
+Ë
+__THROW
+;
+
+362 
+	$timî_dñëe
+ (
+timî_t
+ 
+__timîid
+Ë
+__THROW
+;
+
+365 
+	$timî_£âime
+ (
+timî_t
+ 
+__timîid
+, 
+__Êags
+,
+
+366 
+__c⁄°
+ 
+ôimî•ec
+ *
+__ª°ri˘
+ 
+__vÆue
+,
+
+367 
+ôimî•ec
+ *
+__ª°ri˘
+ 
+__ovÆue
+Ë
+__THROW
+;
+
+370 
+	$timî_gëtime
+ (
+timî_t
+ 
+__timîid
+, 
+ôimî•ec
+ *
+__vÆue
+)
+
+371 
+__THROW
+;
+
+374 
+	$timî_gëovîrun
+ (
+timî_t
+ 
+__timîid
+Ë
+__THROW
+;
+
+378 #ifde‡
+__USE_XOPEN_EXTENDED
+
+
+390 
+gëd©e_îr
+;
+
+399 
+tm
+ *
+	`gëd©e
+ (
+__c⁄°
+ *
+__°rög
+);
+
+402 #ifde‡
+__USE_GNU
+
+
+413 
+	`gëd©e_r
+ (
+__c⁄°
+ *
+__ª°ri˘
+ 
+__°rög
+,
+
+414 
+tm
+ *
+__ª°ri˘
+ 
+__ªsbuÂ
+);
+
+417 
+__END_DECLS
+
+
+	@/usr/include/bits/time.h
+
+24 #i‚de‡
+__√ed_timevÆ
+
+
+25 #i‚de‡
+_BITS_TIME_H
+
+
+26 
+	#_BITS_TIME_H
+ 1
+
+	)
+
+34 
+	#CLOCKS_PER_SEC
+ 1000000l
+
+	)
+
+36 #i‡!
+deföed
+ 
+__STRICT_ANSI__
+ && !deföed 
+__USE_XOPEN2K
+
+
+39 
+	~<bôs/ty≥s.h
+>
+
+40 
+__sysc⁄f
+ ();
+
+41 
+	#CLK_TCK
+ ((
+__˛ock_t
+Ë
+	`__sysc⁄f
+ (2)Ë
+
+	)
+
+44 #ifde‡
+__USE_POSIX199309
+
+
+46 
+	#CLOCK_REALTIME
+ 0
+
+	)
+
+48 
+	#CLOCK_MONOTONIC
+ 1
+
+	)
+
+50 
+	#CLOCK_PROCESS_CPUTIME_ID
+ 2
+
+	)
+
+52 
+	#CLOCK_THREAD_CPUTIME_ID
+ 3
+
+	)
+
+54 
+	#CLOCK_MONOTONIC_RAW
+ 4
+
+	)
+
+56 
+	#CLOCK_REALTIME_COARSE
+ 5
+
+	)
+
+58 
+	#CLOCK_MONOTONIC_COARSE
+ 6
+
+	)
+
+61 
+	#TIMER_ABSTIME
+ 1
+
+	)
+
+67 #ifde‡
+__√ed_timevÆ
+
+
+68 #unde‡
+__√ed_timevÆ
+
+
+69 #i‚de‡
+_STRUCT_TIMEVAL
+
+
+70 
+	#_STRUCT_TIMEVAL
+ 1
+
+	)
+
+71 
+	~<bôs/ty≥s.h
+>
+
+75 
+	stimevÆ
+
+
+77 
+__time_t
+ 
+	mtv_£c
+;
+
+78 
+__su£c⁄ds_t
+ 
+	mtv_u£c
+;
+
+	@/usr/include/bits/types.h
+
+24 #i‚def 
+_BITS_TYPES_H
+
+
+25 
+	#_BITS_TYPES_H
+ 1
+
+	)
+
+27 
+	~<„©uªs.h
+>
+
+28 
+	~<bôs/w‹dsize.h
+>
+
+31 
+	t__u_ch¨
+;
+
+32 
+	t__u_sh‹t
+;
+
+33 
+	t__u_öt
+;
+
+34 
+	t__u_l⁄g
+;
+
+37 sig√d 
+	t__öt8_t
+;
+
+38 
+	t__uöt8_t
+;
+
+39 sig√d 
+	t__öt16_t
+;
+
+40 
+	t__uöt16_t
+;
+
+41 sig√d 
+	t__öt32_t
+;
+
+42 
+	t__uöt32_t
+;
+
+43 #i‡
+__WORDSIZE
+ == 64
+
+44 sig√d 
+	t__öt64_t
+;
+
+45 
+	t__uöt64_t
+;
+
+46 #ñi‡
+deföed
+ 
+__GLIBC_HAVE_LONG_LONG
+
+
+47 
+__exãnsi⁄__
+ sig√d 
+	t__öt64_t
+;
+
+48 
+__exãnsi⁄__
+ 
+	t__uöt64_t
+;
+
+52 #i‡
+__WORDSIZE
+ == 64
+
+53 
+	t__quad_t
+;
+
+54 
+	t__u_quad_t
+;
+
+55 #ñi‡
+deföed
+ 
+__GLIBC_HAVE_LONG_LONG
+
+
+56 
+__exãnsi⁄__
+ 
+	t__quad_t
+;
+
+57 
+__exãnsi⁄__
+ 
+	t__u_quad_t
+;
+
+61 
+	m__vÆ
+[2];
+
+62 } 
+	t__quad_t
+;
+
+65 
+__u_l⁄g
+ 
+	m__vÆ
+[2];
+
+66 } 
+	t__u_quad_t
+;
+
+99 
+	#__S16_TYPE
+ 
+
+	)
+
+100 
+	#__U16_TYPE
+ 
+
+	)
+
+101 
+	#__S32_TYPE
+ 
+
+	)
+
+102 
+	#__U32_TYPE
+ 
+
+	)
+
+103 
+	#__SLONGWORD_TYPE
+ 
+
+	)
+
+104 
+	#__ULONGWORD_TYPE
+ 
+
+	)
+
+105 #i‡
+__WORDSIZE
+ == 32
+
+106 
+	#__SQUAD_TYPE
+ 
+__quad_t
+
+
+	)
+
+107 
+	#__UQUAD_TYPE
+ 
+__u_quad_t
+
+
+	)
+
+108 
+	#__SWORD_TYPE
+ 
+
+	)
+
+109 
+	#__UWORD_TYPE
+ 
+
+	)
+
+110 
+	#__SLONG32_TYPE
+ 
+
+	)
+
+111 
+	#__ULONG32_TYPE
+ 
+
+	)
+
+112 
+	#__S64_TYPE
+ 
+__quad_t
+
+
+	)
+
+113 
+	#__U64_TYPE
+ 
+__u_quad_t
+
+
+	)
+
+116 
+	#__STD_TYPE
+ 
+__exãnsi⁄__
+ 
+
+	)
+
+117 #ñi‡
+__WORDSIZE
+ == 64
+
+118 
+	t__SQUAD_TYPE
+ 
+
+	)
+
+119 
+	t__UQUAD_TYPE
+ 
+
+	)
+
+120 
+	t__SWORD_TYPE
+ 
+
+	)
+
+121 
+	t__UWORD_TYPE
+ 
+
+	)
+
+122 
+	t__SLONG32_TYPE
+ 
+
+	)
+
+123 
+	t__ULONG32_TYPE
+ 
+
+	)
+
+124 
+	t__S64_TYPE
+ 
+
+	)
+
+125 
+	t__U64_TYPE
+ 
+
+	)
+
+127 
+	t__STD_TYPE
+ 
+
+	)
+
+131 
+	~<bôs/ty≥sizes.h
+>
+
+134 
+__STD_TYPE
+ 
+	t__DEV_T_TYPE
+ 
+	t__dev_t
+;
+
+135 
+__STD_TYPE
+ 
+__UID_T_TYPE
+ 
+	g__uid_t
+;
+
+136 
+__STD_TYPE
+ 
+__GID_T_TYPE
+ 
+	g__gid_t
+;
+
+137 
+__STD_TYPE
+ 
+__INO_T_TYPE
+ 
+	g__öo_t
+;
+
+138 
+__STD_TYPE
+ 
+__INO64_T_TYPE
+ 
+	g__öo64_t
+;
+
+139 
+__STD_TYPE
+ 
+__MODE_T_TYPE
+ 
+	g__mode_t
+;
+
+140 
+__STD_TYPE
+ 
+__NLINK_T_TYPE
+ 
+	g__∆ök_t
+;
+
+141 
+__STD_TYPE
+ 
+__OFF_T_TYPE
+ 
+	g__off_t
+;
+
+142 
+__STD_TYPE
+ 
+__OFF64_T_TYPE
+ 
+	g__off64_t
+;
+
+143 
+__STD_TYPE
+ 
+__PID_T_TYPE
+ 
+	g__pid_t
+;
+
+144 
+__STD_TYPE
+ 
+__FSID_T_TYPE
+ 
+	g__fsid_t
+;
+
+145 
+__STD_TYPE
+ 
+__CLOCK_T_TYPE
+ 
+	g__˛ock_t
+;
+
+146 
+__STD_TYPE
+ 
+__RLIM_T_TYPE
+ 
+	g__æim_t
+;
+
+147 
+__STD_TYPE
+ 
+__RLIM64_T_TYPE
+ 
+	g__æim64_t
+;
+
+148 
+__STD_TYPE
+ 
+__ID_T_TYPE
+ 
+	g__id_t
+;
+
+149 
+__STD_TYPE
+ 
+__TIME_T_TYPE
+ 
+	g__time_t
+;
+
+150 
+__STD_TYPE
+ 
+__USECONDS_T_TYPE
+ 
+	g__u£c⁄ds_t
+;
+
+151 
+__STD_TYPE
+ 
+__SUSECONDS_T_TYPE
+ 
+	g__su£c⁄ds_t
+;
+
+153 
+__STD_TYPE
+ 
+__DADDR_T_TYPE
+ 
+	g__daddr_t
+;
+
+154 
+__STD_TYPE
+ 
+__SWBLK_T_TYPE
+ 
+	g__swblk_t
+;
+
+155 
+__STD_TYPE
+ 
+__KEY_T_TYPE
+ 
+	g__key_t
+;
+
+158 
+__STD_TYPE
+ 
+__CLOCKID_T_TYPE
+ 
+	g__˛ockid_t
+;
+
+161 
+__STD_TYPE
+ 
+__TIMER_T_TYPE
+ 
+	g__timî_t
+;
+
+164 
+__STD_TYPE
+ 
+__BLKSIZE_T_TYPE
+ 
+	g__blksize_t
+;
+
+169 
+__STD_TYPE
+ 
+__BLKCNT_T_TYPE
+ 
+	g__blk˙t_t
+;
+
+170 
+__STD_TYPE
+ 
+__BLKCNT64_T_TYPE
+ 
+	g__blk˙t64_t
+;
+
+173 
+__STD_TYPE
+ 
+__FSBLKCNT_T_TYPE
+ 
+	g__fsblk˙t_t
+;
+
+174 
+__STD_TYPE
+ 
+__FSBLKCNT64_T_TYPE
+ 
+	g__fsblk˙t64_t
+;
+
+177 
+__STD_TYPE
+ 
+__FSFILCNT_T_TYPE
+ 
+	g__fsfû˙t_t
+;
+
+178 
+__STD_TYPE
+ 
+__FSFILCNT64_T_TYPE
+ 
+	g__fsfû˙t64_t
+;
+
+180 
+__STD_TYPE
+ 
+__SSIZE_T_TYPE
+ 
+	g__ssize_t
+;
+
+184 
+__off64_t
+ 
+	t__loff_t
+;
+
+185 
+__quad_t
+ *
+	t__qaddr_t
+;
+
+186 *
+	t__ˇddr_t
+;
+
+189 
+__STD_TYPE
+ 
+__SWORD_TYPE
+ 
+	g__öçå_t
+;
+
+192 
+__STD_TYPE
+ 
+__U32_TYPE
+ 
+	g__sockÀn_t
+;
+
+195 #unde‡
+__STD_TYPE
+
+
+	@/usr/include/endian.h
+
+19 #i‚def 
+_ENDIAN_H
+
+
+20 
+	#_ENDIAN_H
+ 1
+
+	)
+
+22 
+	~<„©uªs.h
+>
+
+32 
+	#__LITTLE_ENDIAN
+ 1234
+
+	)
+
+33 
+	#__BIG_ENDIAN
+ 4321
+
+	)
+
+34 
+	#__PDP_ENDIAN
+ 3412
+
+	)
+
+37 
+	~<bôs/ídün.h
+>
+
+41 #i‚de‡
+__FLOAT_WORD_ORDER
+
+
+42 
+	#__FLOAT_WORD_ORDER
+ 
+__BYTE_ORDER
+
+
+	)
+
+45 #ifdef 
+__USE_BSD
+
+
+46 
+	#LITTLE_ENDIAN
+ 
+__LITTLE_ENDIAN
+
+
+	)
+
+47 
+	#BIG_ENDIAN
+ 
+__BIG_ENDIAN
+
+
+	)
+
+48 
+	#PDP_ENDIAN
+ 
+__PDP_ENDIAN
+
+
+	)
+
+49 
+	#BYTE_ORDER
+ 
+__BYTE_ORDER
+
+
+	)
+
+52 #i‡
+__BYTE_ORDER
+ =
+__LITTLE_ENDIAN
+
+
+53 
+	#__LONG_LONG_PAIR
+(
+HI
+, 
+LO
+ËLO, 
+	)
+HI
+
+54 #ñi‡
+__BYTE_ORDER
+ =
+__BIG_ENDIAN
+
+
+55 
+	#__LONG_LONG_PAIR
+(
+HI
+, 
+LO
+ËHI, 
+	)
+LO
+
+59 #ifde‡
+__USE_BSD
+
+
+61 
+	~<bôs/byãsw≠.h
+>
+
+63 #i‡
+__BYTE_ORDER
+ =
+__LITTLE_ENDIAN
+
+
+64 
+	#htobe16
+(
+x
+Ë
+	`__bsw≠_16
+ (x)
+
+	)
+
+65 
+	#htﬁe16
+(
+x
+Ë(x)
+
+	)
+
+66 
+	#be16toh
+(
+x
+Ë
+	`__bsw≠_16
+ (x)
+
+	)
+
+67 
+	#À16toh
+(
+x
+Ë(x)
+
+	)
+
+69 
+	#htobe32
+(
+x
+Ë
+	`__bsw≠_32
+ (x)
+
+	)
+
+70 
+	#htﬁe32
+(
+x
+Ë(x)
+
+	)
+
+71 
+	#be32toh
+(
+x
+Ë
+	`__bsw≠_32
+ (x)
+
+	)
+
+72 
+	#À32toh
+(
+x
+Ë(x)
+
+	)
+
+74 
+	#htobe64
+(
+x
+Ë
+	`__bsw≠_64
+ (x)
+
+	)
+
+75 
+	#htﬁe64
+(
+x
+Ë(x)
+
+	)
+
+76 
+	#be64toh
+(
+x
+Ë
+	`__bsw≠_64
+ (x)
+
+	)
+
+77 
+	#À64toh
+(
+x
+Ë(x)
+
+	)
+
+79 
+	#htobe16
+(
+x
+Ë(x)
+
+	)
+
+80 
+	#htﬁe16
+(
+x
+Ë
+	`__bsw≠_16
+ (x)
+
+	)
+
+81 
+	#be16toh
+(
+x
+Ë(x)
+
+	)
+
+82 
+	#À16toh
+(
+x
+Ë
+	`__bsw≠_16
+ (x)
+
+	)
+
+84 
+	#htobe32
+(
+x
+Ë(x)
+
+	)
+
+85 
+	#htﬁe32
+(
+x
+Ë
+	`__bsw≠_32
+ (x)
+
+	)
+
+86 
+	#be32toh
+(
+x
+Ë(x)
+
+	)
+
+87 
+	#À32toh
+(
+x
+Ë
+	`__bsw≠_32
+ (x)
+
+	)
+
+89 
+	#htobe64
+(
+x
+Ë(x)
+
+	)
+
+90 
+	#htﬁe64
+(
+x
+Ë
+	`__bsw≠_64
+ (x)
+
+	)
+
+91 
+	#be64toh
+(
+x
+Ë(x)
+
+	)
+
+92 
+	#À64toh
+(
+x
+Ë
+	`__bsw≠_64
+ (x)
+
+	)
+
+	@/usr/include/features.h
+
+19 #i‚def 
+_FEATURES_H
+
+
+20 
+	#_FEATURES_H
+ 1
+
+	)
+
+96 #unde‡
+__USE_ISOC99
+
+
+97 #unde‡
+__USE_ISOC95
+
+
+98 #unde‡
+__USE_POSIX
+
+
+99 #unde‡
+__USE_POSIX2
+
+
+100 #unde‡
+__USE_POSIX199309
+
+
+101 #unde‡
+__USE_POSIX199506
+
+
+102 #unde‡
+__USE_XOPEN
+
+
+103 #unde‡
+__USE_XOPEN_EXTENDED
+
+
+104 #unde‡
+__USE_UNIX98
+
+
+105 #unde‡
+__USE_XOPEN2K
+
+
+106 #unde‡
+__USE_XOPEN2KXSI
+
+
+107 #unde‡
+__USE_XOPEN2K8
+
+
+108 #unde‡
+__USE_XOPEN2K8XSI
+
+
+109 #unde‡
+__USE_LARGEFILE
+
+
+110 #unde‡
+__USE_LARGEFILE64
+
+
+111 #unde‡
+__USE_FILE_OFFSET64
+
+
+112 #unde‡
+__USE_BSD
+
+
+113 #unde‡
+__USE_SVID
+
+
+114 #unde‡
+__USE_MISC
+
+
+115 #unde‡
+__USE_ATFILE
+
+
+116 #unde‡
+__USE_GNU
+
+
+117 #unde‡
+__USE_REENTRANT
+
+
+118 #unde‡
+__USE_FORTIFY_LEVEL
+
+
+119 #unde‡
+__FAVOR_BSD
+
+
+120 #unde‡
+__KERNEL_STRICT_NAMES
+
+
+124 #i‚de‡
+_LOOSE_KERNEL_NAMES
+
+
+125 
+	#__KERNEL_STRICT_NAMES
+
+
+	)
+
+129 
+	#__USE_ANSI
+ 1
+
+	)
+
+138 #i‡
+deföed
+ 
+__GNUC__
+ && deföed 
+__GNUC_MINOR__
+
+
+139 
+	#__GNUC_PREREQ
+(
+maj
+, 
+mö
+) \
+
+140 ((
+__GNUC__
+ << 16Ë+ 
+__GNUC_MINOR__
+ >((
+maj
+Ë<< 16Ë+ (
+mö
+))
+
+	)
+
+142 
+	#__GNUC_PREREQ
+(
+maj
+, 
+mö
+Ë0
+
+	)
+
+147 #i‡
+deföed
+ 
+_BSD_SOURCE
+ && \
+
+148 !(
+deföed
+ 
+	g_POSIX_SOURCE
+ || deföed 
+	g_POSIX_C_SOURCE
+ || \
+
+149 
+deföed
+ 
+	g_XOPEN_SOURCE
+ || deföed 
+	g_GNU_SOURCE
+ || deföed 
+	g_SVID_SOURCE
+)
+
+150 
+	#__FAVOR_BSD
+ 1
+
+	)
+
+154 #ifde‡
+_GNU_SOURCE
+
+
+155 #unde‡
+_ISOC95_SOURCE
+
+
+156 
+	#_ISOC95_SOURCE
+ 1
+
+	)
+
+157 #unde‡
+_ISOC99_SOURCE
+
+
+158 
+	#_ISOC99_SOURCE
+ 1
+
+	)
+
+159 #unde‡
+_POSIX_SOURCE
+
+
+160 
+	#_POSIX_SOURCE
+ 1
+
+	)
+
+161 #unde‡
+_POSIX_C_SOURCE
+
+
+162 
+	#_POSIX_C_SOURCE
+ 200809L
+
+	)
+
+163 #unde‡
+_XOPEN_SOURCE
+
+
+164 
+	#_XOPEN_SOURCE
+ 700
+
+	)
+
+165 #unde‡
+_XOPEN_SOURCE_EXTENDED
+
+
+166 
+	#_XOPEN_SOURCE_EXTENDED
+ 1
+
+	)
+
+167 #unde‡
+_LARGEFILE64_SOURCE
+
+
+168 
+	#_LARGEFILE64_SOURCE
+ 1
+
+	)
+
+169 #unde‡
+_BSD_SOURCE
+
+
+170 
+	#_BSD_SOURCE
+ 1
+
+	)
+
+171 #unde‡
+_SVID_SOURCE
+
+
+172 
+	#_SVID_SOURCE
+ 1
+
+	)
+
+173 #unde‡
+_ATFILE_SOURCE
+
+
+174 
+	#_ATFILE_SOURCE
+ 1
+
+	)
+
+179 #i‡(!
+deföed
+ 
+__STRICT_ANSI__
+ && !deföed 
+_ISOC99_SOURCE
+ && \
+
+180 !
+deföed
+ 
+	g_POSIX_SOURCE
+ && !deföed 
+	g_POSIX_C_SOURCE
+ && \
+
+181 !
+deföed
+ 
+	g_XOPEN_SOURCE
+ && !deföed 
+	g_BSD_SOURCE
+ && !deföed 
+	g_SVID_SOURCE
+)
+
+182 
+	#_BSD_SOURCE
+ 1
+
+	)
+
+183 
+	#_SVID_SOURCE
+ 1
+
+	)
+
+190 #i‡(
+deföed
+ 
+_ISOC99_SOURCE
+ || deföed 
+_ISOC9X_SOURCE
+ \
+
+191 || (
+deföed
+ 
+	g__STDC_VERSION__
+ && __STDC_VERSION__ >= 199901L))
+
+192 
+	#__USE_ISOC99
+ 1
+
+	)
+
+196 #i‡(
+deföed
+ 
+_ISOC99_SOURCE
+ || deföed 
+_ISOC9X_SOURCE
+ \
+
+197 || (
+deföed
+ 
+__STDC_VERSION__
+ && __STDC_VERSION__ >= 199409L))
+
+198 
+	#__USE_ISOC95
+ 1
+
+	)
+
+203 #i‡((!
+deföed
+ 
+__STRICT_ANSI__
+ || (
+_XOPEN_SOURCE
+ - 0) >= 500) && \
+
+204 !
+deföed
+ 
+_POSIX_SOURCE
+ && !deföed 
+_POSIX_C_SOURCE
+)
+
+205 
+	#_POSIX_SOURCE
+ 1
+
+	)
+
+206 #i‡
+deföed
+ 
+_XOPEN_SOURCE
+ && (_XOPEN_SOURCE - 0) < 500
+
+207 
+	#_POSIX_C_SOURCE
+ 2
+
+	)
+
+208 #ñi‡
+deföed
+ 
+_XOPEN_SOURCE
+ && (_XOPEN_SOURCE - 0) < 600
+
+209 
+	#_POSIX_C_SOURCE
+ 199506L
+
+	)
+
+210 #ñi‡
+deföed
+ 
+_XOPEN_SOURCE
+ && (_XOPEN_SOURCE - 0) < 700
+
+211 
+	#_POSIX_C_SOURCE
+ 200112L
+
+	)
+
+213 
+	#_POSIX_C_SOURCE
+ 200809L
+
+	)
+
+215 
+	#__USE_POSIX_IMPLICITLY
+ 1
+
+	)
+
+218 #i‡
+deföed
+ 
+_POSIX_SOURCE
+ || 
+_POSIX_C_SOURCE
+ >1 || deföed 
+_XOPEN_SOURCE
+
+
+219 
+	#__USE_POSIX
+ 1
+
+	)
+
+222 #i‡
+deföed
+ 
+_POSIX_C_SOURCE
+ && _POSIX_C_SOURCE >2 || deföed 
+_XOPEN_SOURCE
+
+
+223 
+	#__USE_POSIX2
+ 1
+
+	)
+
+226 #i‡(
+_POSIX_C_SOURCE
+ - 0) >= 199309L
+
+227 
+	#__USE_POSIX199309
+ 1
+
+	)
+
+230 #i‡(
+_POSIX_C_SOURCE
+ - 0) >= 199506L
+
+231 
+	#__USE_POSIX199506
+ 1
+
+	)
+
+234 #i‡(
+_POSIX_C_SOURCE
+ - 0) >= 200112L
+
+235 
+	#__USE_XOPEN2K
+ 1
+
+	)
+
+236 #unde‡
+__USE_ISOC95
+
+
+237 
+	#__USE_ISOC95
+ 1
+
+	)
+
+238 #unde‡
+__USE_ISOC99
+
+
+239 
+	#__USE_ISOC99
+ 1
+
+	)
+
+242 #i‡(
+_POSIX_C_SOURCE
+ - 0) >= 200809L
+
+243 
+	#__USE_XOPEN2K8
+ 1
+
+	)
+
+244 #unde‡
+_ATFILE_SOURCE
+
+
+245 
+	#_ATFILE_SOURCE
+ 1
+
+	)
+
+248 #ifdef 
+_XOPEN_SOURCE
+
+
+249 
+	#__USE_XOPEN
+ 1
+
+	)
+
+250 #i‡(
+_XOPEN_SOURCE
+ - 0) >= 500
+
+251 
+	#__USE_XOPEN_EXTENDED
+ 1
+
+	)
+
+252 
+	#__USE_UNIX98
+ 1
+
+	)
+
+253 #unde‡
+_LARGEFILE_SOURCE
+
+
+254 
+	#_LARGEFILE_SOURCE
+ 1
+
+	)
+
+255 #i‡(
+_XOPEN_SOURCE
+ - 0) >= 600
+
+256 #i‡(
+_XOPEN_SOURCE
+ - 0) >= 700
+
+257 
+	#__USE_XOPEN2K8
+ 1
+
+	)
+
+258 
+	#__USE_XOPEN2K8XSI
+ 1
+
+	)
+
+260 
+	#__USE_XOPEN2K
+ 1
+
+	)
+
+261 
+	#__USE_XOPEN2KXSI
+ 1
+
+	)
+
+262 #unde‡
+__USE_ISOC95
+
+
+263 
+	#__USE_ISOC95
+ 1
+
+	)
+
+264 #unde‡
+__USE_ISOC99
+
+
+265 
+	#__USE_ISOC99
+ 1
+
+	)
+
+268 #ifde‡
+_XOPEN_SOURCE_EXTENDED
+
+
+269 
+	#__USE_XOPEN_EXTENDED
+ 1
+
+	)
+
+274 #ifde‡
+_LARGEFILE_SOURCE
+
+
+275 
+	#__USE_LARGEFILE
+ 1
+
+	)
+
+278 #ifde‡
+_LARGEFILE64_SOURCE
+
+
+279 
+	#__USE_LARGEFILE64
+ 1
+
+	)
+
+282 #i‡
+deföed
+ 
+_FILE_OFFSET_BITS
+ && _FILE_OFFSET_BITS == 64
+
+283 
+	#__USE_FILE_OFFSET64
+ 1
+
+	)
+
+286 #i‡
+deföed
+ 
+_BSD_SOURCE
+ || deföed 
+_SVID_SOURCE
+
+
+287 
+	#__USE_MISC
+ 1
+
+	)
+
+290 #ifdef 
+_BSD_SOURCE
+
+
+291 
+	#__USE_BSD
+ 1
+
+	)
+
+294 #ifdef 
+_SVID_SOURCE
+
+
+295 
+	#__USE_SVID
+ 1
+
+	)
+
+298 #ifdef 
+_ATFILE_SOURCE
+
+
+299 
+	#__USE_ATFILE
+ 1
+
+	)
+
+302 #ifdef 
+_GNU_SOURCE
+
+
+303 
+	#__USE_GNU
+ 1
+
+	)
+
+306 #i‡
+deföed
+ 
+_REENTRANT
+ || deföed 
+_THREAD_SAFE
+
+
+307 
+	#__USE_REENTRANT
+ 1
+
+	)
+
+310 #i‡
+deföed
+ 
+_FORTIFY_SOURCE
+ && _FORTIFY_SOURCE > 0 \
+
+311 && 
+deföed
+ 
+__OPTIMIZE__
+ && __OPTIMIZE__ > 0
+
+312 #i‡!
+__GNUC_PREREQ
+ (4, 1)
+
+313 #ifde‡
+__GNUC_RH_RELEASE__
+
+
+314 #w¨nög 
+_FORTIFY_SOURCE
+ 
+suµ‹ãd
+ 
+⁄ly
+ 
+wôh
+ 
+GCC
+ 4.1 
+™d
+ 
+œãr
+
+
+316 
+	#__USE_FORTIFY_LEVEL
+ 0
+
+	)
+
+317 #ñi‡
+_FORTIFY_SOURCE
+ > 1
+
+318 
+	#__USE_FORTIFY_LEVEL
+ 2
+
+	)
+
+320 
+	#__USE_FORTIFY_LEVEL
+ 1
+
+	)
+
+323 
+	#__USE_FORTIFY_LEVEL
+ 0
+
+	)
+
+327 
+	#__STDC_IEC_559__
+ 1
+
+	)
+
+328 
+	#__STDC_IEC_559_COMPLEX__
+ 1
+
+	)
+
+331 
+	#__STDC_ISO_10646__
+ 200009L
+
+	)
+
+339 #unde‡
+__GNU_LIBRARY__
+
+
+340 
+	#__GNU_LIBRARY__
+ 6
+
+	)
+
+344 
+	#__GLIBC__
+ 2
+
+	)
+
+345 
+	#__GLIBC_MINOR__
+ 12
+
+	)
+
+347 
+	#__GLIBC_PREREQ
+(
+maj
+, 
+mö
+) \
+
+348 ((
+__GLIBC__
+ << 16Ë+ 
+__GLIBC_MINOR__
+ >((
+maj
+Ë<< 16Ë+ (
+mö
+))
+
+	)
+
+351 #i‡
+deföed
+ 
+__GNUC__
+ \
+
+352 || (
+deföed
+ 
+	g__PGI
+ && deföed 
+	g__i386__
+ ) \
+
+353 || (
+deföed
+ 
+	g__INTEL_COMPILER
+ && (deföed 
+	g__i386__
+ || deföed 
+	g__ü64__
+)) \
+
+354 || (
+deföed
+ 
+	g__STDC_VERSION__
+ && __STDC_VERSION__ >= 199901L)
+
+355 
+	#__GLIBC_HAVE_LONG_LONG
+ 1
+
+	)
+
+359 #i‚de‡
+__ASSEMBLER__
+
+
+360 #i‚de‡
+_SYS_CDEFS_H
+
+
+361 
+	~<sys/cdefs.h
+>
+
+366 #i‡
+deföed
+ 
+__USE_FILE_OFFSET64
+ && !deföed 
+__REDIRECT
+
+
+367 
+	#__USE_LARGEFILE
+ 1
+
+	)
+
+368 
+	#__USE_LARGEFILE64
+ 1
+
+	)
+
+374 #i‡
+__GNUC_PREREQ
+ (2, 7Ë&& 
+deföed
+ 
+__OPTIMIZE__
+ \
+
+375 && !
+deföed
+ 
+	g__OPTIMIZE_SIZE__
+ && !deföed 
+	g__NO_INLINE__
+ \
+
+376 && 
+deföed
+ 
+	g__exã∫_ölöe
+
+
+377 
+	#__USE_EXTERN_INLINES
+ 1
+
+	)
+
+385 
+	~<gnu/°ubs.h
+>
+
+	@/usr/include/sys/poll.h
+
+20 #i‚def 
+_SYS_POLL_H
+
+
+21 
+	#_SYS_POLL_H
+ 1
+
+	)
+
+23 
+	~<„©uªs.h
+>
+
+26 
+	~<bôs/pﬁl.h
+>
+
+27 #ifde‡
+__USE_GNU
+
+
+29 
+	~<bôs/sig£t.h
+>
+
+31 
+	#__√ed_time•ec
+
+
+	)
+
+32 
+	~<time.h
+>
+
+37 
+	tnfds_t
+;
+
+40 
+	spﬁlfd
+
+
+42 
+	mfd
+;
+
+43 
+	mevíts
+;
+
+44 
+	mªvíts
+;
+
+48 
+__BEGIN_DECLS
+
+
+58 
+pﬁl
+ (
+pﬁlfd
+ *
+__fds
+, 
+nfds_t
+ 
+__nfds
+, 
+__timeout
+);
+
+60 #ifde‡
+__USE_GNU
+
+
+67 
+µﬁl
+ (
+pﬁlfd
+ *
+__fds
+, 
+nfds_t
+ 
+__nfds
+,
+
+68 
+__c⁄°
+ 
+time•ec
+ *
+__timeout
+,
+
+69 
+__c⁄°
+ 
+__sig£t_t
+ *
+__ss
+);
+
+72 
+	g__END_DECLS
+
+
+	@/usr/include/xlocale.h
+
+21 #i‚de‡
+_XLOCALE_H
+
+
+22 
+	#_XLOCALE_H
+ 1
+
+	)
+
+28 
+	s__loˇÀ_°ru˘
+
+
+31 
+__loˇÀ_d©a
+ *
+	m__loˇÀs
+[13];
+
+34 c⁄° *
+	m__˘y≥_b
+;
+
+35 c⁄° *
+	m__˘y≥_tﬁowî
+;
+
+36 c⁄° *
+	m__˘y≥_touµî
+;
+
+39 c⁄° *
+	m__«mes
+[13];
+
+40 } *
+	t__loˇÀ_t
+;
+
+43 
+__loˇÀ_t
+ 
+	tloˇÀ_t
+;
+
+	@/usr/include/bits/byteswap.h
+
+21 #i‡!
+deföed
+ 
+_BYTESWAP_H
+ && !deföed 
+_NETINET_IN_H
+ && !deföed 
+_ENDIAN_H
+
+
+25 #i‚de‡
+_BITS_BYTESWAP_H
+
+
+26 
+	#_BITS_BYTESWAP_H
+ 1
+
+	)
+
+28 
+	~<bôs/w‹dsize.h
+>
+
+31 
+	#__bsw≠_c⁄°™t_16
+(
+x
+) \
+
+32 ((Ë((((
+x
+Ë>> 8Ë& 0xffË| (((xË& 0xffË<< 8)))
+
+	)
+
+34 #i‡
+deföed
+ 
+__GNUC__
+ && __GNUC__ >= 2
+
+35 
+	#__bsw≠_16
+(
+x
+) \
+
+36 (
+__exãnsi⁄__
+ \
+
+37 ({ 
+__v
+, 
+__x
+ = (Ë(
+x
+); \
+
+38 i‡(
+	`__buûtö_c⁄°™t_p
+ (
+__x
+)) \
+
+39 
+__v
+ = 
+	`__bsw≠_c⁄°™t_16
+ (
+__x
+); \
+
+41 
+	`__asm__
+ ("rorw $8, %w0" \
+
+42 : "Ù" (
+__v
+) \
+
+43 : "0" (
+__x
+) \
+
+45 
+__v
+; }))
+
+	)
+
+48 
+	#__bsw≠_16
+(
+x
+) \
+
+49 (
+__exãnsi⁄__
+ \
+
+50 ({ 
+__x
+ = (Ë(
+x
+); \
+
+51 
+	`__bsw≠_c⁄°™t_16
+ (
+__x
+); }))
+
+	)
+
+56 
+	#__bsw≠_c⁄°™t_32
+(
+x
+) \
+
+57 ((((
+x
+) & 0xff000000) >> 24) | (((x) & 0x00ff0000) >> 8) | \
+
+58 (((
+x
+Ë& 0x0000ff00Ë<< 8Ë| (((xË& 0x000000ffË<< 24))
+
+	)
+
+60 #i‡
+deföed
+ 
+__GNUC__
+ && __GNUC__ >= 2
+
+61 #i‡
+__WORDSIZE
+ =64 || (
+deföed
+ 
+__i486__
+ || deföed 
+__≥¡ium__
+ \
+
+62 || 
+deföed
+ 
+	g__≥¡ium¥o__
+ || deföed 
+	g__≥¡ium4__
+ \
+
+63 || 
+deföed
+ 
+	g__k8__
+ || deföed 
+	g__©hl⁄__
+ \
+
+64 || 
+deföed
+ 
+	g__k6__
+ || deföed 
+	g__noc⁄a__
+ \
+
+65 || 
+deföed
+ 
+	g__c‹e2__
+ || deföed 
+	g__geode__
+ \
+
+66 || 
+deföed
+ 
+	g__amdÁm10__
+)
+
+69 
+	#__bsw≠_32
+(
+x
+) \
+
+70 (
+__exãnsi⁄__
+ \
+
+71 ({ 
+__v
+, 
+__x
+ = (
+x
+); \
+
+72 i‡(
+	`__buûtö_c⁄°™t_p
+ (
+__x
+)) \
+
+73 
+__v
+ = 
+	`__bsw≠_c⁄°™t_32
+ (
+__x
+); \
+
+75 
+	`__asm__
+ ("bsw≠ %0" : "Ù" (
+__v
+Ë: "0" (
+__x
+)); \
+
+76 
+__v
+; }))
+
+	)
+
+78 
+	#__bsw≠_32
+(
+x
+) \
+
+79 (
+__exãnsi⁄__
+ \
+
+80 ({ 
+__v
+, 
+__x
+ = (
+x
+); \
+
+81 i‡(
+	`__buûtö_c⁄°™t_p
+ (
+__x
+)) \
+
+82 
+__v
+ = 
+	`__bsw≠_c⁄°™t_32
+ (
+__x
+); \
+
+84 
+	`__asm__
+ ("rorw $8, %w0;" \
+
+87 : "Ù" (
+__v
+) \
+
+88 : "0" (
+__x
+) \
+
+90 
+__v
+; }))
+
+	)
+
+93 
+	#__bsw≠_32
+(
+x
+) \
+
+94 (
+__exãnsi⁄__
+ \
+
+95 ({ 
+__x
+ = (
+x
+); 
+	`__bsw≠_c⁄°™t_32
+ (__x); }))
+
+	)
+
+99 #i‡
+deföed
+ 
+__GNUC__
+ && __GNUC__ >= 2
+
+101 
+	#__bsw≠_c⁄°™t_64
+(
+x
+) \
+
+102 ((((
+x
+) & 0xff00000000000000ull) >> 56) \
+
+103 | (((
+x
+) & 0x00ff000000000000ull) >> 40) \
+
+104 | (((
+x
+) & 0x0000ff0000000000ull) >> 24) \
+
+105 | (((
+x
+) & 0x000000ff00000000ull) >> 8) \
+
+106 | (((
+x
+) & 0x00000000ff000000ull) << 8) \
+
+107 | (((
+x
+) & 0x0000000000ff0000ull) << 24) \
+
+108 | (((
+x
+) & 0x000000000000ff00ull) << 40) \
+
+109 | (((
+x
+Ë& 0x00000000000000ffuŒË<< 56))
+
+	)
+
+111 #i‡
+__WORDSIZE
+ == 64
+
+112 
+	#__bsw≠_64
+(
+x
+) \
+
+113 (
+__exãnsi⁄__
+ \
+
+114 ({ 
+__v
+, 
+__x
+ = (
+x
+); \
+
+115 i‡(
+	`__buûtö_c⁄°™t_p
+ (
+__x
+)) \
+
+116 
+__v
+ = 
+	`__bsw≠_c⁄°™t_64
+ (
+__x
+); \
+
+118 
+	`__asm__
+ ("bsw≠ %q0" : "Ù" (
+__v
+Ë: "0" (
+__x
+)); \
+
+119 
+__v
+; }))
+
+	)
+
+121 
+	#__bsw≠_64
+(
+x
+) \
+
+122 (
+__exãnsi⁄__
+ \
+
+123 ({ uni⁄ { 
+__exãnsi⁄__
+ 
+__Œ
+; \
+
+124 
+__l
+[2]; } 
+__w
+, 
+__r
+; \
+
+125 i‡(
+	`__buûtö_c⁄°™t_p
+ (
+x
+)) \
+
+126 
+__r
+.
+__Œ
+ = 
+	`__bsw≠_c⁄°™t_64
+ (
+x
+); \
+
+129 
+__w
+.
+__Œ
+ = (
+x
+); \
+
+130 
+__r
+.
+__l
+[0] = 
+	`__bsw≠_32
+ (
+__w
+.__l[1]); \
+
+131 
+__r
+.
+__l
+[1] = 
+	`__bsw≠_32
+ (
+__w
+.__l[0]); \
+
+133 
+__r
+.
+__Œ
+; }))
+
+	)
+
+	@/usr/include/bits/endian.h
+
+3 #i‚de‡
+_ENDIAN_H
+
+
+7 
+	#__BYTE_ORDER
+ 
+__LITTLE_ENDIAN
+
+
+	)
+
+	@/usr/include/bits/poll.h
+
+19 #i‚de‡
+_SYS_POLL_H
+
+
+26 
+	#POLLIN
+ 0x001
+
+	)
+
+27 
+	#POLLPRI
+ 0x002
+
+	)
+
+28 
+	#POLLOUT
+ 0x004
+
+	)
+
+30 #i‡
+deföed
+ 
+__USE_XOPEN
+ || deföed 
+__USE_XOPEN2K8
+
+
+32 
+	#POLLRDNORM
+ 0x040
+
+	)
+
+33 
+	#POLLRDBAND
+ 0x080
+
+	)
+
+34 
+	#POLLWRNORM
+ 0x100
+
+	)
+
+35 
+	#POLLWRBAND
+ 0x200
+
+	)
+
+38 #ifde‡
+__USE_GNU
+
+
+40 
+	#POLLMSG
+ 0x400
+
+	)
+
+41 
+	#POLLREMOVE
+ 0x1000
+
+	)
+
+42 
+	#POLLRDHUP
+ 0x2000
+
+	)
+
+48 
+	#POLLERR
+ 0x008
+
+	)
+
+49 
+	#POLLHUP
+ 0x010
+
+	)
+
+50 
+	#POLLNVAL
+ 0x020
+
+	)
+
+	@/usr/include/bits/sigset.h
+
+21 #i‚def 
+_SIGSET_H_ty≥s
+
+
+22 
+	#_SIGSET_H_ty≥s
+ 1
+
+	)
+
+24 
+	t__sig_©omic_t
+;
+
+28 
+	#_SIGSET_NWORDS
+ (1024 / (8 *  ()))
+
+	)
+
+31 
+	m__vÆ
+[
+_SIGSET_NWORDS
+];
+
+32 } 
+	t__sig£t_t
+;
+
+43 #i‡!
+deföed
+ 
+_SIGSET_H_‚s
+ && deföed 
+_SIGNAL_H
+
+
+44 
+	#_SIGSET_H_‚s
+ 1
+
+	)
+
+46 #i‚de‡
+_EXTERN_INLINE
+
+
+47 
+	#_EXTERN_INLINE
+ 
+__exã∫_ölöe
+
+
+	)
+
+51 
+	#__sigmask
+(
+sig
+) \
+
+52 (((Ë1Ë<< (((
+sig
+Ë- 1Ë% (8 *  ())))
+
+	)
+
+55 
+	#__sigw‹d
+(
+sig
+Ë(((sigË- 1Ë/ (8 *  ()))
+
+	)
+
+57 #i‡
+deföed
+ 
+__GNUC__
+ && __GNUC__ >= 2
+
+58 
+	#__sigem±y£t
+(
+£t
+) \
+
+59 (
+	`__exãnsi⁄__
+ ({ 
+__˙t
+ = 
+_SIGSET_NWORDS
+; \
+
+60 
+sig£t_t
+ *
+__£t
+ = (
+£t
+); \
+
+61 --
+__˙t
+ >0Ë
+__£t
+->
+__vÆ
+[__cnt] = 0; \
+
+62 0; }))
+
+	)
+
+63 
+	#__sigfûl£t
+(
+£t
+) \
+
+64 (
+	`__exãnsi⁄__
+ ({ 
+__˙t
+ = 
+_SIGSET_NWORDS
+; \
+
+65 
+sig£t_t
+ *
+__£t
+ = (
+£t
+); \
+
+66 --
+__˙t
+ >0Ë
+__£t
+->
+__vÆ
+[__cnt] = ~0UL; \
+
+67 0; }))
+
+	)
+
+69 #ifde‡
+__USE_GNU
+
+
+73 
+	#__sigi£m±y£t
+(
+£t
+) \
+
+74 (
+	`__exãnsi⁄__
+ ({ 
+__˙t
+ = 
+_SIGSET_NWORDS
+; \
+
+75 c⁄° 
+sig£t_t
+ *
+__£t
+ = (
+£t
+); \
+
+76 
+__ªt
+ = 
+__£t
+->
+__vÆ
+[--
+__˙t
+]; \
+
+77 !
+__ªt
+ && --
+__˙t
+ >= 0) \
+
+78 
+__ªt
+ = 
+__£t
+->
+__vÆ
+[
+__˙t
+]; \
+
+79 
+__ªt
+ =0; }))
+
+	)
+
+80 
+	#__sig™d£t
+(
+de°
+, 
+À·
+, 
+right
+) \
+
+81 (
+	`__exãnsi⁄__
+ ({ 
+__˙t
+ = 
+_SIGSET_NWORDS
+; \
+
+82 
+sig£t_t
+ *
+__de°
+ = (
+de°
+); \
+
+83 c⁄° 
+sig£t_t
+ *
+__À·
+ = (
+À·
+); \
+
+84 c⁄° 
+sig£t_t
+ *
+__right
+ = (
+right
+); \
+
+85 --
+__˙t
+ >= 0) \
+
+86 
+__de°
+->
+__vÆ
+[
+__˙t
+] = (
+__À·
+->__val[__cnt] \
+
+87 & 
+__right
+->
+__vÆ
+[
+__˙t
+]); \
+
+88 0; }))
+
+	)
+
+89 
+	#__sig‹£t
+(
+de°
+, 
+À·
+, 
+right
+) \
+
+90 (
+	`__exãnsi⁄__
+ ({ 
+__˙t
+ = 
+_SIGSET_NWORDS
+; \
+
+91 
+sig£t_t
+ *
+__de°
+ = (
+de°
+); \
+
+92 c⁄° 
+sig£t_t
+ *
+__À·
+ = (
+À·
+); \
+
+93 c⁄° 
+sig£t_t
+ *
+__right
+ = (
+right
+); \
+
+94 --
+__˙t
+ >= 0) \
+
+95 
+__de°
+->
+__vÆ
+[
+__˙t
+] = (
+__À·
+->__val[__cnt] \
+
+96 | 
+__right
+->
+__vÆ
+[
+__˙t
+]); \
+
+97 0; }))
+
+	)
+
+104 
+__sigismembî
+ (
+__c⁄°
+ 
+__sig£t_t
+ *, );
+
+105 
+__sigadd£t
+ (
+__sig£t_t
+ *, );
+
+106 
+__sigdñ£t
+ (
+__sig£t_t
+ *, );
+
+108 #ifde‡
+__USE_EXTERN_INLINES
+
+
+109 
+	#__SIGSETFN
+(
+NAME
+, 
+BODY
+, 
+CONST
+) \
+
+110 
+_EXTERN_INLINE
+ \
+
+111 
+	`NAME
+ (
+CONST
+ 
+__sig£t_t
+ *
+__£t
+, 
+__sig
+) \
+
+113 
+__mask
+ = 
+	`__sigmask
+ (
+__sig
+); \
+
+114 
+__w‹d
+ = 
+	`__sigw‹d
+ (
+__sig
+); \
+
+115  
+BODY
+; \
+
+116 }
+
+	)
+
+118 
+__SIGSETFN
+ (
+__sigismembî
+, (
+__£t
+->
+__vÆ
+[
+__w‹d
+] & 
+__mask
+Ë? 1 : 0, 
+__c⁄°
+)
+
+119 
+__SIGSETFN
+ (
+__sigadd£t
+, ((
+__£t
+->
+__vÆ
+[
+__w‹d
+] |
+__mask
+), 0), )
+
+120 
+__SIGSETFN
+ (
+__sigdñ£t
+, ((
+__£t
+->
+__vÆ
+[
+__w‹d
+] &~
+__mask
+), 0), )
+
+122 #unde‡
+__SIGSETFN
+
+
+	@/usr/include/bits/typesizes.h
+
+20 #i‚de‡
+_BITS_TYPES_H
+
+
+24 #i‚def 
+_BITS_TYPESIZES_H
+
+
+25 
+	#_BITS_TYPESIZES_H
+ 1
+
+	)
+
+30 
+	#__DEV_T_TYPE
+ 
+__UQUAD_TYPE
+
+
+	)
+
+31 
+	#__UID_T_TYPE
+ 
+__U32_TYPE
+
+
+	)
+
+32 
+	#__GID_T_TYPE
+ 
+__U32_TYPE
+
+
+	)
+
+33 
+	#__INO_T_TYPE
+ 
+__ULONGWORD_TYPE
+
+
+	)
+
+34 
+	#__INO64_T_TYPE
+ 
+__UQUAD_TYPE
+
+
+	)
+
+35 
+	#__MODE_T_TYPE
+ 
+__U32_TYPE
+
+
+	)
+
+36 
+	#__NLINK_T_TYPE
+ 
+__UWORD_TYPE
+
+
+	)
+
+37 
+	#__OFF_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+38 
+	#__OFF64_T_TYPE
+ 
+__SQUAD_TYPE
+
+
+	)
+
+39 
+	#__PID_T_TYPE
+ 
+__S32_TYPE
+
+
+	)
+
+40 
+	#__RLIM_T_TYPE
+ 
+__ULONGWORD_TYPE
+
+
+	)
+
+41 
+	#__RLIM64_T_TYPE
+ 
+__UQUAD_TYPE
+
+
+	)
+
+42 
+	#__BLKCNT_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+43 
+	#__BLKCNT64_T_TYPE
+ 
+__SQUAD_TYPE
+
+
+	)
+
+44 
+	#__FSBLKCNT_T_TYPE
+ 
+__ULONGWORD_TYPE
+
+
+	)
+
+45 
+	#__FSBLKCNT64_T_TYPE
+ 
+__UQUAD_TYPE
+
+
+	)
+
+46 
+	#__FSFILCNT_T_TYPE
+ 
+__ULONGWORD_TYPE
+
+
+	)
+
+47 
+	#__FSFILCNT64_T_TYPE
+ 
+__UQUAD_TYPE
+
+
+	)
+
+48 
+	#__ID_T_TYPE
+ 
+__U32_TYPE
+
+
+	)
+
+49 
+	#__CLOCK_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+50 
+	#__TIME_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+51 
+	#__USECONDS_T_TYPE
+ 
+__U32_TYPE
+
+
+	)
+
+52 
+	#__SUSECONDS_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+53 
+	#__DADDR_T_TYPE
+ 
+__S32_TYPE
+
+
+	)
+
+54 
+	#__SWBLK_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+55 
+	#__KEY_T_TYPE
+ 
+__S32_TYPE
+
+
+	)
+
+56 
+	#__CLOCKID_T_TYPE
+ 
+__S32_TYPE
+
+
+	)
+
+57 
+	#__TIMER_T_TYPE
+ *
+
+	)
+
+58 
+	#__BLKSIZE_T_TYPE
+ 
+__SLONGWORD_TYPE
+
+
+	)
+
+59 
+	#__FSID_T_TYPE
+ såu˘ { 
+__vÆ
+[2]; }
+
+	)
+
+60 
+	#__SSIZE_T_TYPE
+ 
+__SWORD_TYPE
+
+
+	)
+
+63 
+	#__FD_SETSIZE
+ 1024
+
+	)
+
+	@/usr/include/bits/wordsize.h
+
+3 #i‡
+deföed
+ 
+__x86_64__
+
+
+4 
+	#__WORDSIZE
+ 64
+
+	)
+
+5 
+	#__WORDSIZE_COMPAT32
+ 1
+
+	)
+
+7 
+	#__WORDSIZE
+ 32
+
+	)
+
+	@/usr/include/gnu/stubs.h
+
+4 
+	~<bôs/w‹dsize.h
+>
+
+6 #i‡
+__WORDSIZE
+ == 32
+
+7 
+	~<gnu/°ubs-32.h
+>
+
+8 #ñi‡
+__WORDSIZE
+ == 64
+
+9 
+	~<gnu/°ubs-64.h
+>
+
+	@/usr/include/sys/cdefs.h
+
+20 #i‚def 
+_SYS_CDEFS_H
+
+
+21 
+	#_SYS_CDEFS_H
+ 1
+
+	)
+
+24 #i‚de‡
+_FEATURES_H
+
+
+25 
+	~<„©uªs.h
+>
+
+31 #i‡
+deföed
+ 
+__GNUC__
+ && !deföed 
+__STDC__
+
+
+36 #unde‡
+__P
+
+
+37 #unde‡
+__PMT
+
+
+39 #ifde‡
+__GNUC__
+
+
+46 #i‡!
+deföed
+ 
+__˝lu•lus
+ && 
+__GNUC_PREREQ
+ (3, 3)
+
+47 
+	#__THROW
+ 
+	`__©åibuã__
+ ((
+__nŸhrow__
+))
+
+	)
+
+48 
+	#__NTH
+(
+f˘
+Ë
+	`__©åibuã__
+ ((
+__nŸhrow__
+)Ë
+	)
+fct
+
+50 #i‡
+deföed
+ 
+__˝lu•lus
+ && 
+__GNUC_PREREQ
+ (2,8)
+
+51 
+	#__THROW
+ 
+	`throw
+ ()
+
+	)
+
+52 
+	#__NTH
+(
+f˘
+Ëf˘ 
+	`throw
+ ()
+
+	)
+
+54 
+	#__THROW
+
+
+	)
+
+55 
+	#__NTH
+(
+f˘
+Ë
+	)
+fct
+
+61 
+	#__ölöe
+
+
+	)
+
+63 
+	#__THROW
+
+
+	)
+
+64 
+	#__NTH
+(
+f˘
+Ë
+	)
+fct
+
+66 
+	#__c⁄°
+ c⁄°
+
+	)
+
+67 
+	#__sig√d
+ sig√d
+
+	)
+
+68 
+	#__vﬁ©ûe
+ vﬁ©ûe
+
+	)
+
+74 
+	#__P
+(
+¨gs
+Ë
+	)
+args
+
+75 
+	#__PMT
+(
+¨gs
+Ë
+	)
+args
+
+80 
+	#__CONCAT
+(
+x
+,
+y
+Ëx ## 
+	)
+y
+
+81 
+	#__STRING
+(
+x
+Ë#x
+
+	)
+
+84 
+	#__±r_t
+ *
+
+	)
+
+85 
+	#__l⁄g_doubÀ_t
+ 
+
+	)
+
+89 #ifdef 
+__˝lu•lus
+
+
+90 
+	#__BEGIN_DECLS
+ "C" {
+
+	)
+
+91 
+	#__END_DECLS
+ }
+
+	)
+
+93 
+	#__BEGIN_DECLS
+
+
+	)
+
+94 
+	#__END_DECLS
+
+
+	)
+
+103 #i‡
+deföed
+ 
+__˝lu•lus
+ && deföed 
+_GLIBCPP_USE_NAMESPACES
+
+
+104 
+	#__BEGIN_NAMESPACE_STD
+ 
+«me•a˚
+ 
+°d
+ {
+
+	)
+
+105 
+	#__END_NAMESPACE_STD
+ }
+
+	)
+
+106 
+	#__USING_NAMESPACE_STD
+(
+«me
+Ë
+usög
+ 
+°d
+::«me;
+
+	)
+
+107 
+	#__BEGIN_NAMESPACE_C99
+ 
+«me•a˚
+ 
+__c99
+ {
+
+	)
+
+108 
+	#__END_NAMESPACE_C99
+ }
+
+	)
+
+109 
+	#__USING_NAMESPACE_C99
+(
+«me
+Ë
+usög
+ 
+__c99
+::«me;
+
+	)
+
+114 
+	#__BEGIN_NAMESPACE_STD
+
+
+	)
+
+115 
+	#__END_NAMESPACE_STD
+
+
+	)
+
+116 
+	#__USING_NAMESPACE_STD
+(
+«me
+)
+
+	)
+
+117 
+	#__BEGIN_NAMESPACE_C99
+
+
+	)
+
+118 
+	#__END_NAMESPACE_C99
+
+
+	)
+
+119 
+	#__USING_NAMESPACE_C99
+(
+«me
+)
+
+	)
+
+124 #i‚de‡
+__BOUNDED_POINTERS__
+
+
+125 
+	#__bounded
+
+
+	)
+
+126 
+	#__unbounded
+
+
+	)
+
+127 
+	#__±rvÆue
+
+
+	)
+
+132 
+	#__bos
+(
+±r
+Ë
+	`__buûtö_obje˘_size
+ (±r, 
+__USE_FORTIFY_LEVEL
+ > 1)
+
+	)
+
+133 
+	#__bos0
+(
+±r
+Ë
+	`__buûtö_obje˘_size
+ (±r, 0)
+
+	)
+
+135 #i‡
+__GNUC_PREREQ
+ (4,3) \
+
+136 || (
+deföed
+ 
+	g__GNUC_RH_RELEASE__
+ && 
+	g__GNUC__
+ == 4 \
+
+137 && 
+__GNUC_MINOR__
+ =1 && 
+__GNUC_PATCHLEVEL__
+ == 2 \
+
+138 && 
+__GNUC_RH_RELEASE__
+ >= 31)
+
+139 
+	#__w¨nde˛
+(
+«me
+, 
+msg
+) \
+
+140 
+	`«me
+ (Ë
+	`__©åibuã__
+((
+	`__w¨nög__
+ (
+msg
+)))
+
+	)
+
+141 
+	#__w¨«âr
+(
+msg
+Ë
+	`__©åibuã__
+((
+	`__w¨nög__
+ (msg)))
+
+	)
+
+142 
+	#__îr‹de˛
+(
+«me
+, 
+msg
+) \
+
+143 
+	`«me
+ (Ë
+	`__©åibuã__
+((
+	`__îr‹__
+ (
+msg
+)))
+
+	)
+
+145 
+	#__w¨nde˛
+(
+«me
+, 
+msg
+Ë
+	`«me
+ ()
+
+	)
+
+146 
+	#__w¨«âr
+(
+msg
+)
+
+	)
+
+147 
+	#__îr‹de˛
+(
+«me
+, 
+msg
+Ë
+	`«me
+ ()
+
+	)
+
+151 #i‡
+__GNUC_PREREQ
+ (2,97)
+
+153 
+	#__Êex¨r
+ []
+
+	)
+
+155 #ifde‡
+__GNUC__
+
+
+156 
+	#__Êex¨r
+ [0]
+
+	)
+
+158 #i‡
+deföed
+ 
+__STDC_VERSION__
+ && __STDC_VERSION__ >= 199901L
+
+159 
+	#__Êex¨r
+ []
+
+	)
+
+162 
+	#__Êex¨r
+ [1]
+
+	)
+
+178 #i‡
+deföed
+ 
+__GNUC__
+ && __GNUC__ >= 2
+
+180 
+	#__REDIRECT
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+Ë«mê¥Ÿÿ
+	`__asm__
+ (
+	`__ASMNAME
+ (#Æüs))
+
+	)
+
+181 #ifde‡
+__˝lu•lus
+
+
+182 
+	#__REDIRECT_NTH
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+) \
+
+183 
+«me
+ 
+¥Ÿo
+ 
+__THROW
+ 
+	`__asm__
+ (
+	`__ASMNAME
+ (#Æüs))
+
+	)
+
+185 
+	#__REDIRECT_NTH
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+) \
+
+186 
+«me
+ 
+¥Ÿo
+ 
+	`__asm__
+ (
+	`__ASMNAME
+ (#Æüs)Ë
+__THROW
+
+
+	)
+
+188 
+	#__ASMNAME
+(
+˙ame
+Ë
+	`__ASMNAME2
+ (
+__USER_LABEL_PREFIX__
+, c«me)
+
+	)
+
+189 
+	#__ASMNAME2
+(
+¥efix
+, 
+˙ame
+Ë
+	`__STRING
+ (¥efixË
+	)
+cname
+
+202 #i‡!
+deföed
+ 
+__GNUC__
+ || __GNUC__ < 2
+
+203 
+	#__©åibuã__
+(
+xyz
+Ë
+
+	)
+
+209 #i‡
+__GNUC_PREREQ
+ (2,96)
+
+210 
+	#__©åibuã_mÆloc__
+ 
+	`__©åibuã__
+ ((
+__mÆloc__
+))
+
+	)
+
+212 
+	#__©åibuã_mÆloc__
+
+
+	)
+
+218 #i‡
+__GNUC_PREREQ
+ (2,96)
+
+219 
+	#__©åibuã_puª__
+ 
+	`__©åibuã__
+ ((
+__puª__
+))
+
+	)
+
+221 
+	#__©åibuã_puª__
+
+
+	)
+
+227 #i‡
+__GNUC_PREREQ
+ (3,1)
+
+228 
+	#__©åibuã_u£d__
+ 
+	`__©åibuã__
+ ((
+__u£d__
+))
+
+	)
+
+229 
+	#__©åibuã_noölöe__
+ 
+	`__©åibuã__
+ ((
+__noölöe__
+))
+
+	)
+
+231 
+	#__©åibuã_u£d__
+ 
+	`__©åibuã__
+ ((
+__unu£d__
+))
+
+	)
+
+232 
+	#__©åibuã_noölöe__
+
+
+	)
+
+236 #i‡
+__GNUC_PREREQ
+ (3,2)
+
+237 
+	#__©åibuã_dïªˇãd__
+ 
+	`__©åibuã__
+ ((
+__dïªˇãd__
+))
+
+	)
+
+239 
+	#__©åibuã_dïªˇãd__
+
+
+	)
+
+248 #i‡
+__GNUC_PREREQ
+ (2,8)
+
+249 
+	#__©åibuã_f‹m©_¨g__
+(
+x
+Ë
+	`__©åibuã__
+ ((
+	`__f‹m©_¨g__
+ (x)))
+
+	)
+
+251 
+	#__©åibuã_f‹m©_¨g__
+(
+x
+Ë
+
+	)
+
+258 #i‡
+__GNUC_PREREQ
+ (2,97)
+
+259 
+	#__©åibuã_f‹m©_°rfm⁄__
+(
+a
+,
+b
+) \
+
+260 
+	`__©åibuã__
+ ((
+	`__f‹m©__
+ (
+__°rfm⁄__
+, 
+a
+, 
+b
+)))
+
+	)
+
+262 
+	#__©åibuã_f‹m©_°rfm⁄__
+(
+a
+,
+b
+Ë
+
+	)
+
+267 #i‡
+__GNUC_PREREQ
+ (3,3)
+
+268 
+	#__n⁄nuŒ
+(
+∑øms
+Ë
+	`__©åibuã__
+ ((
+__n⁄nuŒ__
+Ö¨ams))
+
+	)
+
+270 
+	#__n⁄nuŒ
+(
+∑øms
+)
+
+	)
+
+275 #i‡
+__GNUC_PREREQ
+ (3,4)
+
+276 
+	#__©åibuã_w¨n_unu£d_ªsu…__
+ \
+
+277 
+	`__©åibuã__
+ ((
+__w¨n_unu£d_ªsu…__
+))
+
+	)
+
+278 #i‡
+__USE_FORTIFY_LEVEL
+ > 0
+
+279 
+	#__wur
+ 
+__©åibuã_w¨n_unu£d_ªsu…__
+
+
+	)
+
+282 
+	#__©åibuã_w¨n_unu£d_ªsu…__
+
+
+	)
+
+284 #i‚de‡
+__wur
+
+
+285 
+	#__wur
+
+
+	)
+
+289 #i‡
+__GNUC_PREREQ
+ (3,2)
+
+290 
+	#__Æways_ölöe
+ 
+__ölöe
+ 
+	`__©åibuã__
+ ((
+__Æways_ölöe__
+))
+
+	)
+
+292 
+	#__Æways_ölöe
+ 
+__ölöe
+
+
+	)
+
+297 #i‡!
+deföed
+ 
+__˝lu•lus
+ || 
+__GNUC_PREREQ
+ (4,3) \
+
+298 || (
+deföed
+ 
+__GNUC_RH_RELEASE__
+ && 
+__GNUC__
+ == 4 \
+
+299 && 
+__GNUC_MINOR__
+ =1 && 
+__GNUC_PATCHLEVEL__
+ == 2 \
+
+300 && 
+__GNUC_RH_RELEASE__
+ >= 31)
+
+301 #i‡
+deföed
+ 
+__GNUC_STDC_INLINE__
+ || deföed 
+__˝lu•lus
+
+
+302 
+	#__exã∫_ölöe
+ 
+__ölöe
+ 
+	`__©åibuã__
+ ((
+__gnu_ölöe__
+))
+
+	)
+
+303 #i‡
+__GNUC_PREREQ
+ (4,3) \
+
+304 || (
+deföed
+ 
+__GNUC_RH_RELEASE__
+ && 
+__GNUC__
+ == 4 \
+
+305 && 
+__GNUC_MINOR__
+ =1 && 
+__GNUC_PATCHLEVEL__
+ == 2 \
+
+306 && 
+__GNUC_RH_RELEASE__
+ >= 31)
+
+307 
+	#__exã∫_Æways_ölöe
+ \
+
+308 
+__Æways_ölöe
+ 
+	`__©åibuã__
+ ((
+__gnu_ölöe__
+, 
+__¨tificül__
+))
+
+	)
+
+310 
+	#__exã∫_Æways_ölöe
+ \
+
+311 
+__Æways_ölöe
+ 
+	`__©åibuã__
+ ((
+__gnu_ölöe__
+))
+
+	)
+
+314 
+	#__exã∫_ölöe
+ 
+__ölöe
+
+
+	)
+
+315 #i‡
+__GNUC_PREREQ
+ (4,3)
+
+316 
+	#__exã∫_Æways_ölöe
+ \
+
+317 
+__Æways_ölöe
+ 
+	`__©åibuã__
+ ((
+__¨tificül__
+))
+
+	)
+
+319 
+	#__exã∫_Æways_ölöe
+ 
+__Æways_ölöe
+
+
+	)
+
+326 #i‡
+__GNUC_PREREQ
+ (4,3) \
+
+327 || (
+deföed
+ 
+__GNUC_RH_RELEASE__
+ && 
+__GNUC__
+ == 4 \
+
+328 && 
+__GNUC_MINOR__
+ =1 && 
+__GNUC_PATCHLEVEL__
+ == 2 \
+
+329 && 
+__GNUC_RH_RELEASE__
+ >= 31)
+
+330 
+	#__va_¨g_∑ck
+(Ë
+	`__buûtö_va_¨g_∑ck
+ ()
+
+	)
+
+331 
+	#__va_¨g_∑ck_Àn
+(Ë
+	`__buûtö_va_¨g_∑ck_Àn
+ ()
+
+	)
+
+338 #i‡!
+__GNUC_PREREQ
+ (2,8)
+
+339 
+	#__exãnsi⁄__
+
+
+	)
+
+343 #i‡!
+__GNUC_PREREQ
+ (2,92)
+
+344 
+	#__ª°ri˘
+
+
+	)
+
+350 #i‡
+__GNUC_PREREQ
+ (3,1Ë&& !
+deföed
+ 
+__GNUG__
+
+
+351 
+	#__ª°ri˘_¨r
+ 
+__ª°ri˘
+
+
+	)
+
+353 #ifde‡
+__GNUC__
+
+
+354 
+	#__ª°ri˘_¨r
+
+
+	)
+
+356 #i‡
+deföed
+ 
+__STDC_VERSION__
+ && __STDC_VERSION__ >= 199901L
+
+357 
+	#__ª°ri˘_¨r
+ 
+ª°ri˘
+
+
+	)
+
+360 
+	#__ª°ri˘_¨r
+
+
+	)
+
+365 
+	~<bôs/w‹dsize.h
+>
+
+367 #i‡
+deföed
+ 
+__LONG_DOUBLE_MATH_OPTIONAL
+ && deföed 
+__NO_LONG_DOUBLE_MATH
+
+
+368 
+	#__LDBL_COMPAT
+ 1
+
+	)
+
+369 #ifde‡
+__REDIRECT
+
+
+370 
+	#__LDBL_REDIR1
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+Ë
+	`__REDIRECT
+ («me,ÖrŸo,álüs)
+
+	)
+
+371 
+	#__LDBL_REDIR
+(
+«me
+, 
+¥Ÿo
+) \
+
+372 
+	`__LDBL_REDIR1
+ (
+«me
+, 
+¥Ÿo
+, 
+__∆dbl_
+##«me)
+
+	)
+
+373 
+	#__LDBL_REDIR1_NTH
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+Ë
+	`__REDIRECT_NTH
+ («me,ÖrŸo,álüs)
+
+	)
+
+374 
+	#__LDBL_REDIR_NTH
+(
+«me
+, 
+¥Ÿo
+) \
+
+375 
+	`__LDBL_REDIR1_NTH
+ (
+«me
+, 
+¥Ÿo
+, 
+__∆dbl_
+##«me)
+
+	)
+
+376 
+	#__LDBL_REDIR1_DECL
+(
+«me
+, 
+Æüs
+) \
+
+377 
+	`__ty≥of
+ (
+«me
+Ë«mê
+	`__asm
+ (
+	`__ASMNAME
+ (#Æüs));
+
+	)
+
+378 
+	#__LDBL_REDIR_DECL
+(
+«me
+) \
+
+379 
+	`__ty≥of
+ (
+«me
+Ë«mê
+	`__asm
+ (
+	`__ASMNAME
+ ("__∆dbl_" #«me));
+
+	)
+
+380 
+	#__REDIRECT_LDBL
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+) \
+
+381 
+	`__LDBL_REDIR1
+ (
+«me
+, 
+¥Ÿo
+, 
+__∆dbl_
+##
+Æüs
+)
+
+	)
+
+382 
+	#__REDIRECT_NTH_LDBL
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+) \
+
+383 
+	`__LDBL_REDIR1_NTH
+ (
+«me
+, 
+¥Ÿo
+, 
+__∆dbl_
+##
+Æüs
+)
+
+	)
+
+386 #i‡!
+deföed
+ 
+__LDBL_COMPAT
+ || !deföed 
+__REDIRECT
+
+
+387 
+	#__LDBL_REDIR1
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+Ë«mê
+	)
+proto
+
+388 
+	#__LDBL_REDIR
+(
+«me
+, 
+¥Ÿo
+Ë«mê
+	)
+proto
+
+389 
+	#__LDBL_REDIR1_NTH
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+Ë«mê¥Ÿÿ
+__THROW
+
+
+	)
+
+390 
+	#__LDBL_REDIR_NTH
+(
+«me
+, 
+¥Ÿo
+Ë«mê¥Ÿÿ
+__THROW
+
+
+	)
+
+391 
+	#__LDBL_REDIR_DECL
+(
+«me
+)
+
+	)
+
+392 #ifde‡
+__REDIRECT
+
+
+393 
+	#__REDIRECT_LDBL
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+Ë
+	`__REDIRECT
+ («me,ÖrŸo,álüs)
+
+	)
+
+394 
+	#__REDIRECT_NTH_LDBL
+(
+«me
+, 
+¥Ÿo
+, 
+Æüs
+) \
+
+395 
+	`__REDIRECT_NTH
+ (
+«me
+, 
+¥Ÿo
+, 
+Æüs
+)
+
+	)
+
+	@/usr/include/gnu/stubs-64.h
+
+6 #ifde‡
+_LIBC
+
+
+7 #îr‹ 
+Aµliˇti⁄s
+ 
+may
+ 
+nŸ
+ 
+deföe
+ 
+the
+ 
+ma¸o
+ 
+_LIBC
+
+
+10 
+	#__°ub_bdÊush
+
+
+	)
+
+11 
+	#__°ub_chÊags
+
+
+	)
+
+12 
+	#__°ub_Áâach
+
+
+	)
+
+13 
+	#__°ub_fchÊags
+
+
+	)
+
+14 
+	#__°ub_fdëach
+
+
+	)
+
+15 
+	#__°ub_gëmsg
+
+
+	)
+
+16 
+	#__°ub_gây
+
+
+	)
+
+17 
+	#__°ub_lchmod
+
+
+	)
+
+18 
+	#__°ub_putmsg
+
+
+	)
+
+19 
+	#__°ub_ªvoke
+
+
+	)
+
+20 
+	#__°ub_£éogö
+
+
+	)
+
+21 
+	#__°ub_sigªtu∫
+
+
+	)
+
+22 
+	#__°ub_s°k
+
+
+	)
+
+23 
+	#__°ub_°ty
+
+
+	)
+
+	@
+1
+.
+1
+/usr/include
+21
+531
+ftmod_sangoma_isdn_bidir_tap.c
+ftmod_sangoma_isdn_tap.c
+ftmod_sangoma_isdn_tap.h
+/usr/include/ctype.h
+/usr/include/poll.h
+/usr/include/time.h
+/usr/include/bits/time.h
+/usr/include/bits/types.h
+/usr/include/endian.h
+/usr/include/features.h
+/usr/include/sys/poll.h
+/usr/include/xlocale.h
+/usr/include/bits/byteswap.h
+/usr/include/bits/endian.h
+/usr/include/bits/poll.h
+/usr/include/bits/sigset.h
+/usr/include/bits/typesizes.h
+/usr/include/bits/wordsize.h
+/usr/include/gnu/stubs.h
+/usr/include/sys/cdefs.h
+/usr/include/gnu/stubs-64.h

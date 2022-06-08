@@ -30,7 +30,12 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * Contributors:
+ * 		Kapil Gupta <kgupta@sangoma.com>
+ * 		Pushkar Singh <psingh@sangoma.com>
  */
+
 #ifndef __FTMOD_SANGOMA_ISDN_USER_H__
 #define __FTMOD_SANGOMA_ISDN_USER_H__
 
@@ -104,14 +109,14 @@ SNGISDN_STR2ENUM_P(ftdm_str2ftdm_sngisdn_progind_loc, ftdm_sngisdn_progind_loc2s
 typedef enum {
 	/* User Specified */
 	SNGISDN_NETSPECFAC_TYPE_USER_SPEC,
-	/* National network identification */
-	SNGISDN_NETSPECFAC_TYPE_NATIONAL_NETWORK_IDENT,
 	/* International network identification */
 	SNGISDN_NETSPECFAC_TYPE_INTERNATIONAL_NETWORK_IDENT,
+	/* National network identification */
+	SNGISDN_NETSPECFAC_TYPE_NATIONAL_NETWORK_IDENT,
 	/* Invalid */
 	SNGISDN_NETSPECFAC_TYPE_INVALID,
 } ftdm_sngisdn_netspecfac_type_t;
-#define SNGISDN_NETSPECFAC_TYPE_STRINGS "user-specified", "national-network-identification", "national-network-identification", "invalid"
+#define SNGISDN_NETSPECFAC_TYPE_STRINGS "user-specified", "international-network-identification", "national-network-identification", "invalid"
 SNGISDN_STR2ENUM_P(ftdm_str2ftdm_sngisdn_netspecfac_type, ftdm_sngisdn_netspecfac_type2str, ftdm_sngisdn_netspecfac_type_t);
 
 typedef enum {
