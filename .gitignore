@@ -249,3 +249,8 @@ libs/PaxHeaders.1693/
 
 libs/lua-*/
 
+.DS_Store
+.idea/
+.vagrant/
+
+
