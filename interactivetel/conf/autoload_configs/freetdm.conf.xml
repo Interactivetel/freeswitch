@@ -1,0 +1,29 @@
+<configuration name="freetdm.conf" description="Freetdm Configuration">
+    <settings>
+        <param name="debug" value="1"/>
+    </settings>
+
+    <sangoma_isdn_tap_spans>
+
+        <span name="wp1">
+            <param name="peerspan" value="wp2"/>
+            <param name="interface" value="net"/>
+            <param name="tapmode" value="fs"/>
+            <param name="mixaudio" value="stereo"/>
+            <param name="debug" value="q931_dump"/>
+            <param name="dialplan" value="XML"/>
+            <param name="context" value="tapping"/>
+        </span>
+
+        <span name="wp2">
+            <param name="peerspan" value="wp1"/>
+            <param name="interface" value="cpe"/>
+            <param name="tapmode" value="fs"/>
+            <param name="mixaudio" value="stereo"/>
+            <param name="debug" value="q931_dump"/>
+            <param name="dialplan" value="XML"/>
+            <param name="context" value="tapping"/>
+        </span>
+
+    </sangoma_isdn_tap_spans>
+</configuration>

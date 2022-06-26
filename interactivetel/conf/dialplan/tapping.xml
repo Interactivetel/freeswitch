@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<include>
+    <context name="tapping">
+        <extension name="tap">
+            <condition field="destination_number" expression="^(.*)$">
+                <action application="log"
+                        data="info Recording conversation from channel ${freetdm_span_number}:${freetdm_chan_number} to channel ${freetdm_isdn_tap_peer_span}/${freetdm_isdn_tap_peer_chan}"/>
+                <action application="wait_for_answer"/>
+                <action application="set" data="RECORD_USE_TEMP=yes"/>
+                <action application="set" data="RECORD_STEREO=yes"/>
+                <action application="set" data="RECORD_STEREO_SWAP=false"/>
+                <action application="record_session" data="$${base_dir}/recordings/session_${uuid}.wav"/>
+                <action application="bridge"
+                        data="freetdm/${freetdm_isdn_tap_peer_span}/${freetdm_isdn_tap_peer_chan}/$1"/>
+            </condition>
+        </extension>
+    </context>
+</include>
