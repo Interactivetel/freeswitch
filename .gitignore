@@ -38,6 +38,7 @@
 *.bz2
 *.tbz2
 *.deb
+*.rpm
 *.swp
 *.serial
 aclocal.m4
