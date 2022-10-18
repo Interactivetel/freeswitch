@@ -1,0 +1,2 @@
+VERSION=$(cat ../build/next-release.txt)
+ITER=2
