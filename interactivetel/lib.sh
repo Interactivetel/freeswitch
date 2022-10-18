@@ -228,14 +228,14 @@ install-custom-repos() {
   elif [[ "$BASE_DIST" == "debian" ]]; then
     # totaltrack repository auth
     if [[ -d /etc/apt/auth.conf.d ]]; then
-      echo "machine packages.interactivetel.com/debian/11/totaltrack/binary-amd64/ login totaltrack password $TT_PASSWD" | sudo tee /etc/apt/auth.conf.d/totaltrack.conf >/dev/null 2>&1
+      echo "machine packages.interactivetel.com/debian/totaltrack login totaltrack password $TT_PASSWD" | sudo tee /etc/apt/auth.conf.d/totaltrack.conf >/dev/null 2>&1
     else
-      echo "machine packages.interactivetel.com/debian/11/totaltrack/binary-amd64/ login totaltrack password $TT_PASSWD" | sudo tee -a /etc/apt/auth.conf >/dev/null 2>&1
+      echo "machine packages.interactivetel.com/debian/totaltrack login totaltrack password $TT_PASSWD" | sudo tee -a /etc/apt/auth.conf >/dev/null 2>&1
     fi
 
     # totaltrack repository
     echo -e "\n\n## IAT" | sudo tee -a /etc/apt/sources.list >/dev/null 2>&1
-    echo "deb [trusted=yes] https://packages.interactivetel.com/debian/$VER/totaltrack/binary-amd64/ ./" | sudo tee -a /etc/apt/sources.list >/dev/null 2>&1
+    echo "deb [trusted=yes] https://packages.interactivetel.com/debian/totaltrack bullseye main" | sudo tee -a /etc/apt/sources.list >/dev/null 2>&1
 
     sudo apt-get -y update >/dev/null 2>&1
   fi
@@ -296,25 +296,5 @@ is-writable() {
   fi
 }
 
-
-### vagrant related stuff
-is-vm-running() {
-  if vagrant status "$1" --no-tty | grep running >/dev/null 2>&1; then
-    return 0
-  fi
-  return 1
-}
-
-start-vm() {
-  if ! is-vm-running "$1"; then
-    vagrant up "$1"
-  fi
-}
-
-shutdown-vm() {
-  if is-vm-running "$1"; then
-    vagrant halt "$1"
-  fi
-}
 
 trap 'abort "::: Unexpected error on line: $LINENO: ${BASH_COMMAND}"' ERR
