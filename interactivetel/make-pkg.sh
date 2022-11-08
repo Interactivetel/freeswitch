@@ -83,7 +83,7 @@ make-package() {
           --deb-after-purge "./dist/after-purge.sh" \
           --deb-compression xz --deb-dist stable \
           --deb-no-default-config-files \
-          /usr/local/freeswitch
+          --directories "/usr/local/freeswitch" /usr/local/freeswitch
     else
       TAG=$(echo "$VER" | cut -d '.' -f 1)
       fpm \
@@ -103,7 +103,7 @@ make-package() {
         --before-remove "./dist/before-remove.sh" \
         --after-remove "./dist/after-remove.sh" \
         --rpm-compression xz --rpm-dist "el$TAG" --rpm-os linux \
-        /usr/local/freeswitch
+        --directories "/usr/local/freeswitch" /usr/local/freeswitch
     fi
 
     # finally remove install, we are just making a package
