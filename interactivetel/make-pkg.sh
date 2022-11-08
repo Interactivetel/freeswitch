@@ -53,12 +53,12 @@ make-package() {
             command -v ruby || rvm install ruby
             command -v fpm || gem install fpm
         fi
-        printf "\n"
+        echo
     }
 
     # install freeswitch: /usr/local/freeswitch
     ./install.sh
-    printf "\n\n"
+    echo
 
     # finally make the package with FPM
     header "Creating FreeSWITCH package from: /usr/local/freeswitch"
@@ -75,12 +75,14 @@ make-package() {
           -d libldns-dev -d libedit-dev -d libsqlite3-dev -d libpcre3-dev -d libspeex-dev -d libspeexdsp-dev \
           -d libcurl4-gnutls-dev -d libbzrtp-dev -d libsndfile1-dev -d libflac-dev -d libogg-dev \
           -d libvorbis-dev -d wanpipe \
+          --config-files "/usr/local/freeswitch/conf" \
           --after-install "./dist/after-install.sh" \
           --after-upgrade "./dist/after-upgrade.sh" \
           --before-remove "./dist/before-remove.sh" \
+          --deb-after-purge "./dist/after-purge.sh" \
           --deb-compression xz --deb-dist stable \
           --deb-no-default-config-files \
-          --directories "/usr/local/freeswitch" /usr/local/freeswitch
+          /usr/local/freeswitch
     else
       TAG=$(echo "$VER" | cut -d '.' -f 1)
       fpm \
@@ -94,12 +96,16 @@ make-package() {
         -d gdbm-devel -d ncurses-devel -d expat-devel -d ldns-devel -d libedit-devel -d sqlite-devel -d curl-devel \
         -d openssl-devel -d gnutls-devel -d pcre-devel -d speex-devel -d libzrtpcpp-devel -d libsndfile-devel \
         -d flac-devel -d libogg-devel -d libvorbis-devel -d libxml2-devel -d wanpipe \
+        --config-files "/usr/local/freeswitch/conf" \
         --after-install "./dist/after-install.sh" \
         --after-upgrade "./dist/after-upgrade.sh" \
         --before-remove "./dist/before-remove.sh" \
         --rpm-compression xz --rpm-dist "el$TAG" --rpm-os linux \
-        --directories "/usr/local/freeswitch" /usr/local/freeswitch
+        /usr/local/freeswitch
     fi
+
+    # finally remove install, we are just making a package
+    sudo rm -rf /usr/local/freeswitch
 }
 
 if [[ $# -eq 0 ]]; then

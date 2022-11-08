@@ -7,6 +7,22 @@ cd "$(dirname "$0" 2>/dev/null)"
 # include files
 . lib.sh
 
+MODULES=$(cat << EOM
+applications/mod_commands
+applications/mod_dptools
+dialplans/mod_dialplan_xml
+event_handlers/mod_event_socket
+event_handlers/mod_json_cdr
+formats/mod_native_file
+formats/mod_sndfile
+loggers/mod_console
+loggers/mod_logfile
+loggers/mod_syslog
+xml_int/mod_xml_cdr
+../../libs/freetdm/mod_freetdm
+EOM
+)
+
 
 usage() {
   info "::: Description:"
@@ -107,7 +123,7 @@ install-freeswitch() {
 
   mkdir -p "$BUILD_DIR/freeswitch"
   cp -a .. "$BUILD_DIR/freeswitch"
-  cp modules.conf "$BUILD_DIR/freeswitch"
+  echo "$MODULES" | sudo tee "$BUILD_DIR/freeswitch/modules.conf" >/dev/null 2>&1
   pushd "$BUILD_DIR/freeswitch" >/dev/null 2>&1
   ./bootstrap.sh -j
 
