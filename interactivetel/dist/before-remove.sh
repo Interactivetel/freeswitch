@@ -1,19 +1,17 @@
 #!/bin/sh
 
-if ! pgrep freeswitch > /dev/null 2>&1; then
-  echo "FreeSWITCH is not running, nothing to do!"
-  exit 0
+SUPERVISORCTL=supervisorctl
+if [ -e /usr/local/bin/supervisorctl ]; then
+  SUPERVISORCTL=/usr/local/bin/supervisorctl
+elif [ -e /usr/bin/supervisorctl ]; then
+  SUPERVISORCTL=/usr/bin/supervisorctl
 fi
 
-SUPERVISORCTL=$(command -v supervisorctl)
-if [[ -n "$SUPERVISORCTL" ]]; then
-  if "$SUPERVISORCTL" status freeswitch >/dev/null 2>&1; then
-    echo "Detected FreeSWITCH running under supervisord ..."
-    "$SUPERVISORCTL" stop freeswitch
-  fi
+if "$SUPERVISORCTL" status freeswitch >/dev/null 2>&1; then
+  echo
+  echo "######################################################################"
+  echo "::: FreeSWITCH: Running under supervisord, restarting it"
+  echo "######################################################################"
+  echo
+  "$SUPERVISORCTL" stop freeswitch
 fi
-
-rm -f /usr/local/bin/freeswitch
-rm -f /usr/local/bin/fs_cli
-
-exit 0

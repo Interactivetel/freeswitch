@@ -79,6 +79,7 @@ make-package() {
           --after-install "./dist/after-install.sh" \
           --after-upgrade "./dist/after-upgrade.sh" \
           --before-remove "./dist/before-remove.sh" \
+          --after-remove "./dist/after-remove.sh" \
           --deb-after-purge "./dist/after-purge.sh" \
           --deb-compression xz --deb-dist stable \
           --deb-no-default-config-files \
@@ -100,6 +101,7 @@ make-package() {
         --after-install "./dist/after-install.sh" \
         --after-upgrade "./dist/after-upgrade.sh" \
         --before-remove "./dist/before-remove.sh" \
+        --after-remove "./dist/after-remove.sh" \
         --rpm-compression xz --rpm-dist "el$TAG" --rpm-os linux \
         /usr/local/freeswitch
     fi
