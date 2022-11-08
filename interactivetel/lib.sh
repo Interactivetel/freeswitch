@@ -280,21 +280,4 @@ system-detect() {
   fi
 }
 
-is-writable() {
-  if [[ -d "$1" ]]; then
-    if [[ -w "$1" ]]; then
-      return 0
-    fi
-    return 1
-  else
-    if ! mkdir -p "$1" >/dev/null 2>&1; then
-      return 1
-    else
-      rmdir "$1"
-      return 0
-    fi
-  fi
-}
-
-
-trap 'abort "::: Unexpected error on line: $LINENO: ${BASH_COMMAND}"' ERR
+#trap 'abort "::: Unexpected error on line: $LINENO: ${BASH_COMMAND}"' ERR
