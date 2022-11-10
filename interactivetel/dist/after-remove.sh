@@ -2,7 +2,7 @@
 
 echo
 echo "######################################################################"
-echo "::: FreeSWITCH: Removing leftover files"
+echo "::: FreeSWITCH: Removing symlinks for: fs_cli and freeswitch"
 echo "######################################################################"
 echo
 

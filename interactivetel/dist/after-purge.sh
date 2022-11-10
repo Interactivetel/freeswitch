@@ -7,7 +7,7 @@ echo "######################################################################"
 echo
 
 if [ -d /usr/local/freeswitch ]; then
-  echo "Found leftover config directory, removing it: /etc/wanpipe"
+  echo "Found leftover config directory, removing it: /usr/local/freeswitch"
   rm -rf /usr/local/freeswitch
 fi
 
